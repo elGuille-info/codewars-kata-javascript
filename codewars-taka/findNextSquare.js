@@ -13,8 +13,78 @@ Examples:(Input --> Output)
 114 --> -1 since 114 is not a perfect square
 */
 
+/*
+  // Soluciones
+
+  // 1- DivyanshBatham, -Downfall, milad_vafaeifard, pgetta, kokkatnivin, chiefLit, Okami92, Jchui, slpstn, Immaterial (+ 202)
+  function findNextSquare(sq) {
+    return Math.sqrt(sq)%1? -1 : Math.pow(Math.sqrt(sq)+1,2);
+  }
+
+  // 2- M-Ulyanov, azar1787, lucymonie, coffeebeans2836, diok22, johnnyblazeum, francisngo, MitraSamira, luisf11, TraddSpecter (+ 54)
+  function findNextSquare(sq) {
+    var number = Math.sqrt(sq);
+    if(Math.round(number) === number) {
+      return Math.pow(++number, 2)
+    }
+    return -1;
+  }
+
+  // 3- chrisd19, electriclouds, dynakashima, helloitsjoe, ajwehunt, kmmdong, vlmatv13, eccnil, jacobcarey93, gmbh1 (+ 8)
+  function findNextSquare(sq) {
+    var root = Math.sqrt(sq);
+    return root % 1 === 0 ? Math.pow(root + 1, 2) : -1;
+  }
+
+  // 4- kgrace, tealjos, AnDeacracht, Twill1906, rparker24, veinard, tawatts3, camstreeter, Saspect-IO, hibow (+ 13)
+  function findNextSquare(sq) {
+    // Return the next square if sq if a perfect square, -1 otherwise
+    var root = Math.sqrt(sq);
+    if (Number.isInteger(root)) {
+      return Math.pow(root + 1, 2);
+    } else {
+      return -1;
+    }
+  }
+
+*/
+
+/**
+ * Devuelve true si el número indicado es un número entero.
+ *
+ * @param {*} res El número a comprobar
+ * @returns true si el número es entero, en otro caso false.
+ */
+ function esEntero(res) {
+  return Math.round(res) == res;
+
+  // Existe un método para esto:
+  //return Number.isInteger(res);
+}
+
+// La solución presentada
+function findNextSquare0(sq) {
+  // Return the next square if sq is a perfect square, -1 otherwise
+
+  // Si el parámetro no es un cuadrado perfecto, devolver -1
+  if (!esEntero(Math.sqrt(sq))) return -1;
+
+  // Buscar el siguiente entero que sea un cuadrado perfecto
+  // Solo comprobar 1.000.000 números.
+  for (let i = sq + 1, total = 1; total < 10000000; i++, total++) {
+    // Si la raíz cuadrada del número comprobado es entero, este es el resultado.
+    if (esEntero(Math.sqrt(i))) {
+      // El número de veces comprobado
+      console.log("\t" + total);
+      return i;
+    }
+  }
+
+  return -1;
+}
+
 // Versión larga
-function findNextSquare(sq) {
+function findNextSquare1(sq) {
     // Return the next square if sq is a perfect square, -1 otherwise
 
     // Si el parámetro no es un cuadrado perfecto, devolver -1
@@ -36,14 +106,25 @@ function findNextSquare(sq) {
     return -1;
 }
 
-/**
- * Devuelve true si el número indicado es un número entero.
- *
- * @param {*} res El número a comprobar
- * @returns true si el número es entero, en otro caso false.
- */
-function esEntero(res) {
-    return Math.round(res) == res;
+// Usando Number.isInteger en vez de esEntero
+function findNextSquare(sq) {
+  // Return the next square if sq is a perfect square, -1 otherwise
+
+  // Si el parámetro no es un cuadrado perfecto, devolver -1
+  if (!Number.isInteger(Math.sqrt(sq))) return -1;
+
+  // Buscar el siguiente entero que sea un cuadrado perfecto
+  // Solo comprobar 1.000.000 números.
+  for (let i = sq + 1, total = 1; total < 10000000; i++, total++) {
+    // Si la raíz cuadrada del número comprobado es entero, este es el resultado.
+    if (Number.isInteger(Math.sqrt(i))) {
+      // El número de veces comprobado
+      console.log("\t" + total);
+      return i;
+    }
+  }
+
+  return -1;
 }
 
 function deepEqual(valor, resOK) {
