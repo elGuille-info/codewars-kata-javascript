@@ -1,4 +1,6 @@
-﻿String.prototype.toJadenCase = function () {
+﻿// Poner en mayúscula la primera letra de cada palabra de una cadena
+
+String.prototype.toJadenCase = function () {
     function capitalizeWords ( str ) {
       // Dividir la cadena en palabras (separadas por espacios).
       let palabras = str.split(' ');
