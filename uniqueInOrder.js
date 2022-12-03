@@ -13,13 +13,54 @@ uniqueInOrder([1,2,2,3,3])       == [1,2,3]
 function uniqueInOrder(iterable){
     //your code here - remember iterable can be a string or an array
 
+    //return A.find(item => A.filter(el => el == item).length % 2)
+    //return iterable.find(item => iterable.filter(it2 => it2 == item));
+
+    // Array con los números y/o letras hallados
+    let unicos = [];
+    let digitoAnt = "";
+
+    for (let i = 0; i < iterable.length; i++) {
+      // El carácter que estamos analizando
+      let digito = iterable[i];
+      // Si no es igual al hallado anteriormente, añadirlo a la colección
+      if (digito != digitoAnt) {
+        unicos.push(digito);
+        digitoAnt = digito;
+        continue;
+      }
+    }
+
+    return unicos;
 }
+// Mi versión largar
+function uniqueInOrder1(iterable){
+  //your code here - remember iterable can be a string or an array
+
+  // Array con los números y/o letras hallados
+  let unicos = [];
+  let digitoAnt = "";
+
+  for (let i = 0; i < iterable.length; i++) {
+    // El carácter que estamos analizando
+    let digito = iterable[i];
+    // Si no es igual al hallado anteriormente, añadirlo a la colección
+    if (digito != digitoAnt) {
+      unicos.push(digito);
+      digitoAnt = digito;
+      continue;
+    }
+  }
+
+  return unicos;
+}
+
 
 function deepEqual(iterable, resOK ) {
     console.log(iterable + " = " + resOK);
 
     let res = uniqueInOrder(iterable);
-    if (res != resOK) {
+    if (res.toString() != resOK.toString()) {
         console.log("\tNo es correcto. El resultado calculado es " + res + " debería ser " + resOK);
     }
 }
@@ -28,6 +69,7 @@ function deepEqual(iterable, resOK ) {
 deepEqual('AAAABBBCCDAABBB', ['A','B','C','D','A','B']);
 deepEqual('ABBCcAD', ['A', 'B', 'C', 'c', 'A', 'D']);
 deepEqual([1,2,2,3,3], [1,2,3]);
+deepEqual([1], [1]);
 
 /*
 const chai = require("chai");
