@@ -22,16 +22,25 @@ var maxSequence = function (arr) {
   let total = arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   if (total < 0) return 0;
 
-  //const sum = (a, from, to) => a.slice(from, to).reduce((a, b) => a + b, 0)
-  //const valores = arr.findIndex((el, i) => sum(arr, 0, i) == sum(arr, i + 1));
-  //callback(accumulator, currentValue, currentIndex, array)
-  //let valores = arr.map(i => sum(arr, 0, i));
+  let mayor = total;
 
+  let i = 0;
+  do {
+    for (let j= i + 1; j < arr.length; j++) {
+      total = arr[i] + arr[j];
+      // si se encuentra un número mayor de cero, seguir por este valor
+      if (total > mayor) {
+        mayor = total;
+        console.log("  mayor = " + mayor);
+      }
+      else {
+        i++;
+      }
+    }
+  } while (i < arr.length - 1);
 
-  console.log("  --> " + valores.toString());
-
-
-  return -1;
+  // Buscar el mayor de los números en resultado
+  return mayor;
 }
 
 function strictEqual(valor, resOK) {
@@ -44,9 +53,15 @@ function strictEqual(valor, resOK) {
 }
 
 // Pruebas
-strictEqual([], 0);
-strictEqual([-2, -3, -1], 0);
-strictEqual([-2, 1, -3, 4, -1, 2, 1, -5, 4], 6);
+//strictEqual([], 0);
+// strictEqual([-2, -3, -1], 0);
+// strictEqual([-2, 1, -3, 4, -1, 2, 1, -5, 4], 6);
+// strictEqual([7,4,11,-11,39,36,10,-6,37,-10,-32,44,-26,-34,43,43], 155);
+
+// Estas fallan
+strictEqual([9,-6,-19,-16,1,-35,49,-31,-45,30,9,23,-38,-19,28,-32,32,-36,27,16,-36,-19,5,6,-12,22,-9,-20], 62);
+strictEqual([9,-47,0,-22,11], 11);
+strictEqual([-13,-49,-20,-21,-15,35,-6,8,45,-23,-10,33,-41,-11,11,-9,7,-27,-27,13,-38,7,-44,49,20,-10,13,9,-8,46,23,20,-14,-42,3,19,26,42,-40,40,12,19,-2,-13,10,-46,-40,-44,-47,-46,-15,-20,-10,-44,1,-14,-21,9,39,-9,46,2,17,-23], 227);
 
 /*
 const { assert } = require ('chai');
