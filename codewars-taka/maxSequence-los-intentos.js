@@ -48,6 +48,34 @@ Empty list is considered to have zero greatest sum. Note that the empty list or 
 
 */
 
+var maxSequenceS3 = function(arr){
+  var max = 0;
+  var cur = 0;
+  arr.forEach(function(i){
+    cur = Math.max(0, cur + i);
+    max = Math.max(max, cur);
+  });
+  return max;
+}
+
+var maxSequenceS2 = function(arr){
+  var currentSum = 0;
+  return arr.reduce(function(maxSum, number){
+      currentSum = Math.max(currentSum+number, 0);
+      return Math.max(currentSum, maxSum);
+  }, 0);
+}
+
+var maxSequenceS1 = function(arr){
+  var min = 0, ans = 0, i, sum = 0;
+  for (i = 0; i < arr.length; ++i) {
+    sum += arr[i];
+    min = Math.min(sum, min);
+    ans = Math.max(ans, sum - min);
+  }
+  return ans;
+}
+
 // La enviada
 var maxSequence = function (arr) {
 
@@ -219,6 +247,8 @@ strictEqual([9,-47,0,-22,11], 11);
 strictEqual([-13,-49,-20,-21,-15,35,-6,8,45,-23,-10,33,-41,-11,11,-9,7,-27,-27,13,-38,7,-44,49,20,-10,13,9,-8,46,23,20,-14,-42,3,19,26,42,-40,40,12,19,-2,-13,10,-46,-40,-44,-47,-46,-15,-20,-10,-44,1,-14,-21,9,39,-9,46,2,17,-23], 227);
 // Esta falla
 strictEqual([10,-38,-41,-42,45,-38,-7,36], 45)
+strictEqual([-2, 1, 2, -2, -2, 7], 7);
+
 /*
 const { assert } = require ('chai');
 
