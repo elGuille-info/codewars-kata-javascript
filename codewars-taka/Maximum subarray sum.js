@@ -13,7 +13,15 @@ Empty list is considered to have zero greatest sum. Note that the empty list or 
 */
 
 var maxSequence = function(arr){
-    // ...
+    // Si no hay elementos, devolver cero.
+    if (arr.length == 0) return 0;
+    // Si todos son negativos devolver 0
+    let total = arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    if (total < 0) return 0;
+
+    //
+
+    return -1;
 }
 
 function strictEqual(valor, resOK) {
@@ -27,6 +35,7 @@ function strictEqual(valor, resOK) {
 
 // Pruebas
 strictEqual([], 0);
+strictEqual([-2, -3, -1], 0);
 strictEqual([-2, 1, -3, 4, -1, 2, 1, -5, 4], 6);
 
 /*
