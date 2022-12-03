@@ -9,12 +9,43 @@ uniqueInOrder('ABBCcAD')         == ['A', 'B', 'C', 'c', 'A', 'D']
 uniqueInOrder([1,2,2,3,3])       == [1,2,3]
 */
 
+/*
+  // Otras soluciones
+
+  //1- ooflorent, AlexanderDerGrosse, pachareal, xsm2016, FoxJS, michaeltvincent, Jonathanv3232, Aquavis, SergiyGV, a.swarnkar@gmail.com (+ 170)
+  function uniqueInOrder(it) {
+    var result = []
+    var last
+
+    for (var i = 0; i < it.length; i++) {
+      if (it[i] !== last) {
+        result.push(last = it[i])
+      }
+    }
+
+    return result
+  }
+
+  //2- sensone, Pamonyango, trizah, Melioo, amber-tamara, AsliUral, ThisIsMeka, umizrah, Bikcodeh, Johjoh-6 (+ 20)
+  var uniqueInOrder=function(iterable){
+    return [...iterable].filter((a, i) => a !== iterable[i-1])
+  }
+
+  //3- Freywar, setkyar, jokerdoom777, marcusg999, Ch@mp4789, dakshshah, polluxCast0r, denis_maxim0v, the7, sillyseeli (+ 61)
+  var uniqueInOrder = function (iterable)
+  {
+	  return [].filter.call(iterable, (function (a, i) { return iterable[i - 1] !== a }));
+  }
+*/
+
 //var uniqueInOrder=function(iterable){
 function uniqueInOrder(iterable){
     //your code here - remember iterable can be a string or an array
 
     //return A.find(item => A.filter(el => el == item).length % 2)
     //return iterable.find(item => iterable.filter(it2 => it2 == item));
+
+    return [].filter.call(iterable, (function (a, i) { return iterable[i - 1] !== a }));
 
     // Array con los números y/o letras hallados
     let unicos = [];
@@ -32,27 +63,6 @@ function uniqueInOrder(iterable){
     }
 
     return unicos;
-}
-// Mi versión largar
-function uniqueInOrder1(iterable){
-  //your code here - remember iterable can be a string or an array
-
-  // Array con los números y/o letras hallados
-  let unicos = [];
-  let digitoAnt = "";
-
-  for (let i = 0; i < iterable.length; i++) {
-    // El carácter que estamos analizando
-    let digito = iterable[i];
-    // Si no es igual al hallado anteriormente, añadirlo a la colección
-    if (digito != digitoAnt) {
-      unicos.push(digito);
-      digitoAnt = digito;
-      continue;
-    }
-  }
-
-  return unicos;
 }
 
 
