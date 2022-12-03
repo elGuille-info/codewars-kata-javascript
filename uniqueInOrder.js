@@ -45,7 +45,7 @@ function uniqueInOrder(iterable){
     //return A.find(item => A.filter(el => el == item).length % 2)
     //return iterable.find(item => iterable.filter(it2 => it2 == item));
 
-    return [].filter.call(iterable, (function (a, i) { return iterable[i - 1] !== a }));
+    //return [].filter.call(iterable, (function (a, i) { return iterable[i - 1] !== a }));
 
     // Array con los números y/o letras hallados
     let unicos = [];
