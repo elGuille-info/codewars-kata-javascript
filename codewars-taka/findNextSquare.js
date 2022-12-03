@@ -134,10 +134,11 @@ function findNextSquare(sq) {
   //  devolver el siguiente entero al cuadrado,
   // si no -1.
 
-  // Estas dos formas hacen lo mismo.
+  // Estas tres formas hacen lo mismo.
+  return root % 1 ? -1 : Math.pow(root + 1, 2);
   //return root % 1 == 0 ? Math.pow(root + 1, 2) : -1;
 
-  return Number.isInteger(root) ? Math.pow(root + 1, 2) : -1;
+  //return Number.isInteger(root) ? Math.pow(root + 1, 2) : -1;
 }
 
 function deepEqual(valor, resOK) {
