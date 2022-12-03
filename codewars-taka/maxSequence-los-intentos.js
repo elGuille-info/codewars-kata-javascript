@@ -46,8 +46,36 @@ Empty list is considered to have zero greatest sum. Note that the empty list or 
     return max;
   }
 
+  //4- ooflorent, barbibubbi, GetRecked
+  function maxSequence(arr) {
+    var max = 0
+
+    for (var i = 0; i < arr.length; i++) {
+      for (var sum = 0, j = i; j < arr.length; j++) {
+        sum += arr[j]
+        if (sum > max) max = sum
+      }
+    }
+
+    return max
+  }
 */
 
+//4- ooflorent, barbibubbi, GetRecked
+function maxSequence(arr) {
+  var max = 0
+
+  for (var i = 0; i < arr.length; i++) {
+    for (var sum = 0, j = i; j < arr.length; j++) {
+      sum += arr[j]
+      if (sum > max) max = sum
+    }
+  }
+
+  return max
+}
+
+//3- avaver, pitchblaknight, architechnium, medhichemlemsi
 var maxSequenceS3 = function(arr){
   var max = 0;
   var cur = 0;
@@ -58,6 +86,7 @@ var maxSequenceS3 = function(arr){
   return max;
 }
 
+//2- hiasen, rscarlisle, Instigator, zhaihaoran, perception30, AhmedElhalaby, qwetexac, ccnklc, igof, PsychO_o, technomage (+ 17)
 var maxSequenceS2 = function(arr){
   var currentSum = 0;
   return arr.reduce(function(maxSum, number){
@@ -66,6 +95,7 @@ var maxSequenceS2 = function(arr){
   }, 0);
 }
 
+//1- itsPG, AlexanderDerGrosse, classic016, Fantom1991, user9878128, CHUENWEI, 14bce128@nirmauni.ac.in, dubdjon, AwsIdris, medokin (+ 125)
 var maxSequenceS1 = function(arr){
   var min = 0, ans = 0, i, sum = 0;
   for (i = 0; i < arr.length; ++i) {
@@ -77,7 +107,7 @@ var maxSequenceS1 = function(arr){
 }
 
 // La enviada
-var maxSequence = function (arr) {
+var maxSequence0 = function (arr) {
 
   // Si no hay elementos, devolver cero
   if (arr.length == 0) return 0;
