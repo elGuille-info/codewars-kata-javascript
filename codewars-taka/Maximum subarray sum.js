@@ -35,9 +35,11 @@ var maxSequence = function (arr) {
   // }
 
   let i = 0;
+  //total = arr[i];
   do {
-    for (let j= i + 1; j < arr.length; j++) {
+    for (let j = i + 1; j < arr.length; j++) {
       total = arr[i] + arr[j];
+      //total += arr[j];
       // si se encuentra un número mayor de cero, seguir por este valor
       if (total > mayor) {
         mayor = total;
@@ -45,6 +47,8 @@ var maxSequence = function (arr) {
       }
       else {
         i++;
+        //total = arr[i];
+        break;
       }
     }
   } while (i < arr.length - 1);
