@@ -5,7 +5,9 @@ En algunos de los ficheros se incluyen las primeras soluciones que apararecen.
 
 <br>
 
-En la carpeta _mdn-mozilla_ hay código de ejemplo de la [documentación en línea de JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference).
+En la carpeta _mdn-mozilla_ hay código de ejemplo de la [documentación en línea de JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference).<br>
+<br>
+En la carpeta _codewars-taka_ está el código que yo he mandado como solución. <br>
 
 
 <br>
