@@ -20,7 +20,6 @@ function findNextSquare(sq) {
     // Si el parámetro no es un cuadrado perfecto, devolver -1
     let res = Math.sqrt(sq);
     // Si res no es un número entero, devolver -1
-    //if (Math.round(res) != res) return -1;
     if (!esEntero(res)) return -1;
 
     // Buscar el siguiente entero que sea un cuadrado perfecto
@@ -29,7 +28,7 @@ function findNextSquare(sq) {
         res = Math.sqrt(i);
         if (esEntero(res)) {
             // El número de veces comprobado
-            //console.log("\t"+total);
+            console.log("\t"+total);
             return i;
         }
     }
