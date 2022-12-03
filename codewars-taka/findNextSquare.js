@@ -107,7 +107,7 @@ function findNextSquare1(sq) {
 }
 
 // Usando Number.isInteger en vez de esEntero
-function findNextSquare(sq) {
+function findNextSquare3(sq) {
   // Return the next square if sq is a perfect square, -1 otherwise
 
   // Si el parámetro no es un cuadrado perfecto, devolver -1
@@ -125,6 +125,19 @@ function findNextSquare(sq) {
   }
 
   return -1;
+}
+
+function findNextSquare(sq) {
+  var root = Math.sqrt(sq);
+
+  // Si la raíz cuadrada del número indicado es un entero,
+  //  devolver el siguiente entero al cuadrado,
+  // si no -1.
+
+  // Estas dos formas hacen lo mismo.
+  //return root % 1 == 0 ? Math.pow(root + 1, 2) : -1;
+
+  return Number.isInteger(root) ? Math.pow(root + 1, 2) : -1;
 }
 
 function deepEqual(valor, resOK) {
