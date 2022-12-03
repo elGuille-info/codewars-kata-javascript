@@ -130,6 +130,11 @@ function findNextSquare(sq) {
 function deepEqual(valor, resOK) {
     console.log(valor + " = " + resOK);
 
+    // var root = Math.sqrt(valor);
+    // console.log(root + " % 1 ==  " + (root % 1));
+    // console.log(root + " % 1 ==  " + ((root % 1) == 0));
+    // console.log(root + " % 1 === " + ((root % 1) === 0));
+
     let res = findNextSquare(valor);
     if (res.toString() != resOK.toString()) {
         console.log("\tNo es correcto. El resultado calculado es " + res + " debería ser " + resOK);
