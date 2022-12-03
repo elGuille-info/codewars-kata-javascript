@@ -24,11 +24,11 @@ function findNextSquare(sq) {
 
     // Buscar el siguiente entero que sea un cuadrado perfecto
     // Solo comprobar 1.000.000 números.
-    for (let i = sq + 1, total = 0; total < 10000000; i++, total++) {
+    for (let i = sq + 1, total = 1; total < 10000000; i++, total++) {
         res = Math.sqrt(i);
         if (esEntero(res)) {
             // El número de veces comprobado
-            console.log("\t"+total);
+            console.log("\t" + total);
             return i;
         }
     }
@@ -57,14 +57,14 @@ function deepEqual(valor, resOK) {
 
 // Para probar
 // should return the next square for perfect squares
-deepEqual(121, 144); // Wrong output for 121
-deepEqual(625, 676); // Wrong output for 625
-deepEqual(319225, 320356); // Wrong output for 319225
-deepEqual(15241383936, 15241630849); // Wrong output for 15241383936
+deepEqual(121, 144);
+deepEqual(625, 676);
+deepEqual(319225, 320356);
+deepEqual(15241383936, 15241630849);
 
 // should return -1 for numbers which aren't perfect squares
-deepEqual(155, -1); // Wrong output for 155
-deepEqual(342786627, -1); // Wrong output for 342786627
+deepEqual(155, -1);
+deepEqual(342786627, -1);
 
 
 /*
