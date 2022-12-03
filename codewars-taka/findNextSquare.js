@@ -13,16 +13,44 @@ Examples:(Input --> Output)
 114 --> -1 since 114 is not a perfect square
 */
 
+// Versión larga
 function findNextSquare(sq) {
     // Return the next square if sq is a perfect square, -1 otherwise
-    
+
+    // Si el parámetro no es un cuadrado perfecto, devolver -1
+    let res = Math.sqrt(sq);
+    // Si res no es un número entero, devolver -1
+    //if (Math.round(res) != res) return -1;
+    if (!esEntero(res)) return -1;
+
+    // Buscar el siguiente entero que sea un cuadrado perfecto
+    // Solo comprobar 1.000.000 números.
+    for (let i = sq + 1, total = 0; total < 10000000; i++, total++) {
+        res = Math.sqrt(i);
+        if (esEntero(res)) {
+            // El número de veces comprobado
+            //console.log("\t"+total);
+            return i;
+        }
+    }
+
     return -1;
 }
 
-function deepEqual(friends, resOK) {
-    console.log(friends + " = " + resOK);
+/**
+ * Devuelve true si el número indicado es un número entero.
+ *
+ * @param {*} res El número a comprobar
+ * @returns true si el número es entero, en otro caso false.
+ */
+function esEntero(res) {
+    return Math.round(res) == res;
+}
 
-    let res = friend(friends);
+function deepEqual(valor, resOK) {
+    console.log(valor + " = " + resOK);
+
+    let res = findNextSquare(valor);
     if (res.toString() != resOK.toString()) {
         console.log("\tNo es correcto. El resultado calculado es " + res + " debería ser " + resOK);
     }
