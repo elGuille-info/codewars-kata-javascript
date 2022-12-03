@@ -60,6 +60,9 @@ Empty list is considered to have zero greatest sum. Note that the empty list or 
     return max
   }
 
+  //6- Rativel, VladimirMamaevsky
+  const maxSequence = (a,sum=0) => a.reduce((max,v) => Math.max(sum = Math.max(sum + v, 0), max), 0);
+
 */
 
 // La enviada
