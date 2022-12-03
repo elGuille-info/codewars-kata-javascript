@@ -71,7 +71,7 @@ function strictEqual(valor, resOK) {
 //strictEqual([-2, -3, -1], 0);
 strictEqual([-2, 1, -3, 4, -1, 2, 1, -5, 4], 6);
 strictEqual([7,4,11,-11,39,36,10,-6,37,-10,-32,44,-26,-34,43,43], 155);
-
+console.log("\nEstas fallan:");
 // Estas fallan
 strictEqual([9,-6,-19,-16,1,-35,49,-31,-45,30,9,23,-38,-19,28,-32,32,-36,27,16,-36,-19,5,6,-12,22,-9,-20], 62);
 strictEqual([9,-47,0,-22,11], 11);
