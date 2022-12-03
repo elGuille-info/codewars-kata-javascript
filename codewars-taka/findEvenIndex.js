@@ -32,6 +32,50 @@ The lowest index N where the side to the left of N is equal to the side to the r
 Note:
 If you are given an array with multiple answers, return the lowest correct index.
 */
+
+/*
+Tengo que decir, que desconocía la función "reduce" de los arrays de JavaScript, que hubiese simplificado un poco el código,
+sobre todo después de ver cómo lo han usado algunos en sus respuestas en el [Kata - Equal Sides Of An Array](https://www.codewars.com/kata/5679aa472b8f57fb8c000047/javascript)
+Aquí te pongo un par de códigos que usan reduce.<br>
+
+
+//de zoid:
+
+function findEvenIndex(arr)
+{
+  var left = 0, right = arr.reduce(function(pv, cv) { return pv + cv; }, 0);
+  for(var i = 0; i < arr.length; i++) {
+      if(i > 0) left += arr[i-1];
+      right -= arr[i];
+
+      if(left == right) return i;
+  }
+
+  return -1;
+}
+
+
+//de Rahul:
+
+const sum = (a, from, to) => a.slice(from, to).reduce((a, b) => a + b, 0)
+const findEvenIndex = a => a.findIndex((el, i) => sum(a, 0, i) === sum(a, i + 1));
+
+
+//de d-sheep:
+
+function findEvenIndex(arr)
+{
+  let left = 0;
+  let right = arr.reduce((s,n) => s + n, 0);
+  for (let i = 0; i < arr.length; i++) {
+    right -= arr[i];
+    if (left === right) return i;
+    left += arr[i];
+  }
+  return -1;
+}
+*/
+
 function findEvenIndex(arr)
 {
   //Code goes here!
