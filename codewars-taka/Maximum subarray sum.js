@@ -21,8 +21,18 @@ var maxSequence = function (arr) {
   // La suma de todos los elementos del array
   let total = arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   if (total < 0) return 0;
-
   let mayor = total;
+
+  // let mayor = 0;
+  // for (let i = 0; i < arr.length; i++) {
+  //   //total = arr.reduce((accumulator, currentValue, i) => accumulator + currentValue, 0);
+  //   total = arr.reduce((accumulator, i) => accumulator + arr[i], 0);
+  //   if (total < 0) return 0;
+  //   if (total > mayor) {
+  //     mayor = total;
+  //     console.log("  mayor = " + mayor);
+  //   }
+  // }
 
   let i = 0;
   do {
@@ -31,7 +41,7 @@ var maxSequence = function (arr) {
       // si se encuentra un número mayor de cero, seguir por este valor
       if (total > mayor) {
         mayor = total;
-        console.log("  mayor = " + mayor);
+        //console.log("  mayor = " + mayor);
       }
       else {
         i++;
@@ -54,9 +64,9 @@ function strictEqual(valor, resOK) {
 
 // Pruebas
 //strictEqual([], 0);
-// strictEqual([-2, -3, -1], 0);
-// strictEqual([-2, 1, -3, 4, -1, 2, 1, -5, 4], 6);
-// strictEqual([7,4,11,-11,39,36,10,-6,37,-10,-32,44,-26,-34,43,43], 155);
+//strictEqual([-2, -3, -1], 0);
+strictEqual([-2, 1, -3, 4, -1, 2, 1, -5, 4], 6);
+strictEqual([7,4,11,-11,39,36,10,-6,37,-10,-32,44,-26,-34,43,43], 155);
 
 // Estas fallan
 strictEqual([9,-6,-19,-16,1,-35,49,-31,-45,30,9,23,-38,-19,28,-32,32,-36,27,16,-36,-19,5,6,-12,22,-9,-20], 62);
