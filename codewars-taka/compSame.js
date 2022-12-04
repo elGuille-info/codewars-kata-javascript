@@ -39,7 +39,7 @@ The two arrays have the same size (> 0) given as parameter in function comp.
  * Indicar aquí la función a usar dentro de strictEqual
  * @see compararArrays
  */
-const laFuncion = comp; //compAvisos;
+const laFuncion = comp;
 
 /**
  * Para comprobar si el resultado de la función es válido.
@@ -119,6 +119,7 @@ function comp(array1, array2){
 
     return true;
 }
+
 
 // Pruebas
 compararArrays([8, 5, 4, 7, 5, 6, 9, 8, 4, 0, 4, 3, 6, 7, 6, 9, 10, 3, 6, 8, 8, 10, 0, 1], [9, 16, 25, 36, 49, 0, 36, 16, 9, 64, 49, 100, 16, 64, 81, 36, 81, 25, 1, 0, 36, 100, 64, 64], true);
