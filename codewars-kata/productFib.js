@@ -91,6 +91,19 @@ F(n) being the smallest one such as F(n) * F(n+1) > prod.
         }
         return [a, b, a*b===prod];
     }
+
+    //5- serudio
+    // https://www.codewars.com/kata/reviews/554398d646002df491000183/groups/5dde6eaccb430c00013dbecc
+    function productFib(prod){
+        let num1 = 0,
+            num2 = 1;
+
+        while(num1 * num2 < prod){
+            num2 = num2 + num1
+            num1 = num2 - num1
+        }
+        return [num1, num2, num1 * num2 === prod]
+    }
 */
 
 // Comprobado en el kata
