@@ -19,6 +19,7 @@ It will never give you an empty array (that's not a walk, that's standing still!
 /*
     La soluciones más "votadas"
     //1- ooflorent, user3769065, Raman_Nerad, yangliyi, DbImOK85, anryyett, AndrewSushyi, b.volotovskyy, skyweebb, UserID (+ 187)
+    // https://www.codewars.com/kata/reviews/54da539c98b8a2ad7600022a/groups/54db48f003e88a647c0003e9
     function isValidWalk(walk) {
     var dx = 0
     var dy = 0
@@ -37,6 +38,7 @@ It will never give you an empty array (that's not a walk, that's standing still!
     }
 
     //2- pox, rramesh, Gtufc, d310jvu, ronnyere, ooneill, liukaixin, L whisper, wang shuang, qinl (+ 49)
+    // https://www.codewars.com/kata/reviews/54da539c98b8a2ad7600022a/groups/550303b534137e37d4001575
     function isValidWalk(walk) {
         function count(val) {
             return walk.filter(function(a){return a==val;}).length;
@@ -45,6 +47,7 @@ It will never give you an empty array (that's not a walk, that's standing still!
     }
 
     //3- mersocarlin, VladaZh, horchaniwissem, nekzito, alexdodevski, maceA, RomanLeo, stella6319618, koichi-sann, cezaryskura (+ 64)
+    // https://www.codewars.com/kata/reviews/54da539c98b8a2ad7600022a/groups/55bf95d52dfe76bcfc000027
     function isValidWalk(walk) {
         const north = walk.filter(item => { return item === "n" }).length;
         const south = walk.filter(item => { return item === "s" }).length;
@@ -55,6 +58,7 @@ It will never give you an empty array (that's not a walk, that's standing still!
     }
 
     // Este no está entre los primeros, pero funciona.
+    // En respuesta al 3-
     const isValidWalkuser8722283 = walk => {
         if (walk.length !== 10) return false;
 
@@ -66,17 +70,17 @@ It will never give you an empty array (that's not a walk, that's standing still!
         for (let step of walk) {
             switch (step) {
                 case 'n':
-                directions.north++;
-                break;
+                    directions.north++;
+                    break;
                 case 's':
-                directions.north--;
-                break;
+                    directions.north--;
+                    break;
                 case 'w':
-                directions.west++;
-                break;
+                    directions.west++;
+                    break;
                 case 'e':
-                directions.west--;
-                break;
+                    directions.west--;
+                    break;
             }
         }
 
@@ -84,9 +88,32 @@ It will never give you an empty array (that's not a walk, that's standing still!
         return directions.north === directions.west;
     };
 
+    //5- ZozoFouchtra, SterlingChin, minhdongsss
+    // https://www.codewars.com/kata/reviews/54da539c98b8a2ad7600022a/groups/54db955703e88af3ba000b70
+    function isValidWalk(walk) {
+        return walk.length == 10 && !walk.reduce(function(w,step){ return w + {"n":-1,"s":1,"e":99,"w":-99}[step]},0)
+    }
+
+    // Harsesis en respuesta al 5-
+    function isValidWalk(walk) {
+        const WALK_LENGTH = 10;
+        return walk.length == WALK_LENGTH && !walk.reduce( (w,step) => w + {"n":-1,"s":1,"e":WALK_LENGTH,"w":-WALK_LENGTH}[step], 0)
+    }
 */
 
-const isValidWalkuser8722283 = walk => {
+
+/**
+ * Indicar aquí la función a usar dentro de strictEqual
+ * @see strictEqual
+ */
+const laFuncion = isValidWalk_Harsesis; //isValidWalk;
+
+function isValidWalk_Harsesis(walk) {
+    const WALK_LENGTH = 10;
+    return walk.length == WALK_LENGTH && !walk.reduce( (w,step) => w + {"n":-1,"s":1,"e":WALK_LENGTH,"w":-WALK_LENGTH}[step], 0)
+}
+
+const isValidWalk_user8722283 = walk => {
     if (walk.length != 10) return false;
 
     let directions = {
@@ -244,13 +271,12 @@ function isValidWalk(walk) {
     return true;
 }
 
-const laFuncion = isValidWalkuser8722283; //isValidWalk;
-
 /**
  * Para comprobar si el resultado de la función es válido.
  *
  * @param {*} valor El valor a comprobar.
  * @param {*} resOK El resultado que debe dar.
+ * @see laFuncion Para asignar la función a usar.
  */
 function strictEqual(valor, resOK) {
     console.log(valor + " = " + resOK);
