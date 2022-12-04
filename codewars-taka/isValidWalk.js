@@ -26,6 +26,8 @@ function isValidWalk(walk) {
 
     // Que solo contenga, 'n', 's', 'e' o 'w'
     const direcciones = ['n', 's', 'e', 'w'];
+    // Las rutas en las direcciones indicadas
+    let rutas = [0, 0, 0, 0];
 
     // Número de direcciones en el paseo
     let total = 0;
@@ -37,6 +39,7 @@ function isValidWalk(walk) {
             if ( j > -1) {
                 total++;
                 desde = j + 1;
+                rutas[i] += 1;
             }
             else {
                 break;
@@ -50,6 +53,16 @@ function isValidWalk(walk) {
     if (total != 10) return false;
 
     // Y que las direcciones sean equivalentes, es decir, si se usan 3 n debe haber 3 s, etc. ???
+    // Las rutas n, s
+    const rutaNS = rutas[0] + rutas[1];
+    if (rutaNS > 0 && rutas[0] != rutas[1]) {
+        return false;
+    }
+    // Las rutas e, w
+    const rutaEW = rutas[2] + rutas[3];
+    if (rutaEW > 0 && rutas[2] != rutas[3]) {
+        return false;
+    }
 
     return true;
 }
