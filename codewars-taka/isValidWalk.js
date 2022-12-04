@@ -17,7 +17,7 @@ It will never give you an empty array (that's not a walk, that's standing still!
 */
 
 // Para avisar de que no es válido el paseo
-function isValidWalk(walk) {
+function isValidWalkAvisos(walk) {
     //insert brilliant code here
 
     // El número de letras en el paseo
@@ -90,7 +90,7 @@ function isValidWalk(walk) {
 
 
 // Mi respuesta
-function isValidWalk0(walk) {
+function isValidWalk(walk) {
     //insert brilliant code here
 
     // El número de letras en el paseo
