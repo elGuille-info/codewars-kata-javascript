@@ -56,6 +56,43 @@ productFib(800) # should return [34, 55, false],
 F(n) being the smallest one such as F(n) * F(n+1) > prod.
 */
 
+/*
+    // Las soluciones
+
+    //1- joeycozza, ethanhan2013, zuka123456, Snehal Dwivedi, deyw, Trey64, ウィリアム, Bande, hebamohamed, othmanovich (+ 395)
+    // https://www.codewars.com/kata/reviews/554398d646002df491000183/groups/555eaedf3c904cb4c400004c
+    function productFib(prod){
+        var n = 0;
+        var nPlus = 1;
+        while(n*nPlus < prod) {
+            nPlus = n + nPlus;
+            n = nPlus - n;
+        }
+        return [n, nPlus, n*nPlus===prod];
+    }
+
+    //2- andrzejmobileweb, gkucmierz, kamiknx, flynntsc, arseniokl, Gaziz1989, hugodcrq, zacktoth, goose9192, danmcatee (+ 97)
+    // https://www.codewars.com/kata/reviews/554398d646002df491000183/groups/57fbdc44be6b1d5f0f00008c
+    function productFib(prod){
+        let [a, b] = [0, 1];
+        while(a * b < prod) [a, b] = [b, a + b];
+        return [a, b, a * b === prod];
+    }
+
+    //3- Abbe, DjAlbator, b2369373, felipessantos87
+    // https://www.codewars.com/kata/reviews/554398d646002df491000183/groups/55519faa3d5202a9b5000007
+    function productFib(prod){
+        var a = 1
+        var b = 1;
+        while (a*b < prod) {
+            var next = a+b;
+            a = b;
+            b = next;
+        }
+        return [a, b, a*b===prod];
+    }
+*/
+
 // Comprobado en el kata
 function productFib(prod) {
     // ...
