@@ -39,7 +39,7 @@ The two arrays have the same size (> 0) given as parameter in function comp.
  * Indicar aquí la función a usar dentro de strictEqual
  * @see strictEqual
  */
-const laFuncion = comp;
+const laFuncion = compAvisos;
 
 /**
  * Para comprobar si el resultado de la función es válido.
@@ -60,6 +60,34 @@ function strictEqual(valor1, valor2, resOK) {
     }
 }
 
+// Con avisos de porqué no es correcto
+function compAvisos(array1, array2){
+    //your code here
+
+    // Si cualquiera de los arrays es nulo, devolver falso
+    if (array1 == null || array2 == null) {
+        console.log("\tLos arrays no deben ser nulos.")
+        return false;
+    }
+    // Si la longitud de los arrays es cero o no tienen el mismo tamaño, devolver falso
+    if ((array1.length + array2.length) == 0 || array1.length != array2.length) {
+        console.log("\tLos arrays no pueden tener cero elementos y deben tener el mismo tamaño.")
+        return false;
+    }
+
+    // buscar la potencia de 2 de array1 en array2
+    for (let n of array2) {
+        const sqrtN = Math.sqrt(n);
+
+        if (array1.indexOf(sqrtN) == -1) {
+            console.log("\tEl valor de sqrt(" + n + ") == " + sqrtN + " no está en el primer array.")
+            return false;
+        }
+    }
+
+    return true;
+}
+
 
 function comp(array1, array2){
     //your code here
@@ -75,9 +103,9 @@ function comp(array1, array2){
 
     // buscar la potencia de 2 de array1 en array2
     for (let n of array2) {
-        const powN = Math.sqrt(n);
+        const sqrtN = Math.sqrt(n);
 
-        if (array1.indexOf(powN) == -1) {
+        if (array1.indexOf(sqrtN) == -1) {
             return false;
         }
     }
