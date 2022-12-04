@@ -88,12 +88,13 @@ function comp1(array1, array2) {
 const laFuncion = comp4;
 
 /**
- * Para comprobar si el resultado de la función es válido.
- *
- * @param {*} valor El valor a comprobar.
- * @param {*} resOK El resultado que debe dar.
- * @see laFuncion Para asignar la función a usar.
- */
+  * Para comprobar si el resultado de la función es válido.
+  *
+  * @param {*} valor1 El valor del primer array a comprobar.
+  * @param {*} valor2 El valor del segundo array a comprobar
+  * @param {*} resOK El resultado que debe dar.
+  * @see laFuncion Para asignar la función a usar.
+  */
 function compararArrays(valor1, valor2, resOK) {
     console.log("[" + valor1?.toString() + "] =? [" + valor2?.toString() + "] = " + resOK);
 
