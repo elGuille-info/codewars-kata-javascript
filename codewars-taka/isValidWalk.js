@@ -104,7 +104,7 @@ It will never give you an empty array (that's not a walk, that's standing still!
 
 /**
  * Indicar aquí la función a usar dentro de strictEqual
- * @see strictEqual
+ * @see compararArrays
  */
 const laFuncion = isValidWalk_Harsesis; //isValidWalk;
 
@@ -278,7 +278,7 @@ function isValidWalk(walk) {
  * @param {*} resOK El resultado que debe dar.
  * @see laFuncion Para asignar la función a usar.
  */
-function strictEqual(valor, resOK) {
+function compararArrays(valor, resOK) {
     console.log(valor + " = " + resOK);
 
     let res = laFuncion(valor);
@@ -291,10 +291,10 @@ function strictEqual(valor, resOK) {
 }
 
 // Pruebas
-strictEqual(['n','s','n','s','n','s','n','s','n','s'], true);
-strictEqual(['w','e','w','e','w','e','w','e','w','e','w','e'], false);
-strictEqual(['w'], false);
-strictEqual(['n','n','n','s','n','s','n','s','n','s'], false);
+compararArrays(['n','s','n','s','n','s','n','s','n','s'], true);
+compararArrays(['w','e','w','e','w','e','w','e','w','e','w','e'], false);
+compararArrays(['w'], false);
+compararArrays(['n','n','n','s','n','s','n','s','n','s'], false);
 
 /*
 const chai = require("chai");

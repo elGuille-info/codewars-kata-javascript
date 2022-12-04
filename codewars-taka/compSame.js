@@ -37,9 +37,9 @@ The two arrays have the same size (> 0) given as parameter in function comp.
 
 /**
  * Indicar aquí la función a usar dentro de strictEqual
- * @see strictEqual
+ * @see compararArrays
  */
-const laFuncion = compAvisos;
+const laFuncion = comp; //compAvisos;
 
 /**
  * Para comprobar si el resultado de la función es válido.
@@ -48,8 +48,8 @@ const laFuncion = compAvisos;
  * @param {*} resOK El resultado que debe dar.
  * @see laFuncion Para asignar la función a usar.
  */
-function strictEqual(valor1, valor2, resOK) {
-    console.log(valor1 + " =? " + valor2 + " = " + resOK);
+function compararArrays(valor1, valor2, resOK) {
+    console.log("[" + valor1?.toString() + "] =? [" + valor2?.toString() + "] = " + resOK);
 
     let res = laFuncion(valor1, valor2);
     if (res.toString() != resOK.toString()) {
@@ -60,35 +60,7 @@ function strictEqual(valor1, valor2, resOK) {
     }
 }
 
-// Con avisos de porqué no es correcto
-function compAvisos(array1, array2){
-    //your code here
-
-    // Si cualquiera de los arrays es nulo, devolver falso
-    if (array1 == null || array2 == null) {
-        console.log("\tLos arrays no deben ser nulos.")
-        return false;
-    }
-    // Si la longitud de los arrays es cero o no tienen el mismo tamaño, devolver falso
-    if ((array1.length + array2.length) == 0 || array1.length != array2.length) {
-        console.log("\tLos arrays no pueden tener cero elementos y deben tener el mismo tamaño.")
-        return false;
-    }
-
-    // buscar la potencia de 2 de array1 en array2
-    for (let n of array2) {
-        const sqrtN = Math.sqrt(n);
-
-        if (array1.indexOf(sqrtN) == -1) {
-            console.log("\tEl valor de sqrt(" + n + ") == " + sqrtN + " no está en el primer array.")
-            return false;
-        }
-    }
-
-    return true;
-}
-
-
+// Ya funciona
 function comp(array1, array2){
     //your code here
 
@@ -96,12 +68,14 @@ function comp(array1, array2){
     if (array1 == null || array2 == null) {
         return false;
     }
-    // Si la longitud de los arrays es cero o no tienen el mismo tamaño, devolver falso
-    if ((array1.length + array2.length) == 0 || array1.length != array2.length) {
+    // Se ve que se acepta que los dos arrays tengan cero elementos
+    // if ((array1.length + array2.length) == 0 || array1.length != array2.length) {
+    // Si la longitud de los arrays no tienen el mismo tamaño, devolver falso
+    if (array1.length != array2.length) {
         return false;
     }
 
-    // buscar la potencia de 2 de array1 en array2
+    // Buscar la raíz cuadrada de array2 en array1
     for (let n of array2) {
         const sqrtN = Math.sqrt(n);
 
@@ -110,15 +84,54 @@ function comp(array1, array2){
         }
     }
 
+    // Ordenar los elementos para que estén en la misma posición
+    array1 = array1.sort();
+    array2 = array2.sort();
+
+    let desde = -1;
+    let num = -1;
+    for (let n of array1) {
+        const pow2 = Math.pow(n, 2);
+        if (num == -1) {
+            num = n;
+        }
+        else if (num != n) {
+            num = n;
+            desde = 0;
+        }
+        if (desde == -1) {
+            desde = 0;
+        }
+        let j = array2.indexOf(pow2, desde);
+        if (j == -1) {
+            return false;
+        }
+        else {
+            if (n != num) {
+                num = n;
+                desde = 0;
+            }
+            else {
+                desde = j + 1;
+            }
+        }
+    }
+
     return true;
 }
 
 // Pruebas
-strictEqual([], null, false);
-strictEqual([121, 144, 19, 161, 19, 144, 19, 11], [121, 14641, 20736, 361, 25921, 361, 20736, 361], true);
-strictEqual([121, 144, 19, 161, 19, 144, 19, 11], [11*11, 121*121, 144*144, 19*19, 161*161, 19*19, 144*144, 19*19], true);
-strictEqual([121, 144, 19, 161, 19, 144, 19, 11], [132, 14641, 20736, 361, 25921, 361, 20736, 361], false);
-strictEqual([121, 144, 19, 161, 19, 144, 19, 11], [121, 14641, 20736, 36100, 25921, 361, 20736, 361], false);
+compararArrays([8, 5, 4, 7, 5, 6, 9, 8, 4, 0, 4, 3, 6, 7, 6, 9, 10, 3, 6, 8, 8, 10, 0, 1], [9, 16, 25, 36, 49, 0, 36, 16, 9, 64, 49, 100, 16, 64, 81, 36, 81, 25, 1, 0, 36, 100, 64, 64], true);
+compararArrays([1, 10, 9, 4, 9, 9, 9, 1, 8, 0], [64, 81, 100, 1, 81, 1, 81, 81, 1, 16], false);
+compararArrays([4, 6, 10, 3, 4, 4, 6, 2, 10, 8, 5, 4, 5, 8, 5, 6, 0, 0, 9, 1, 8, 8], [100, 64, 1, 4, 64, 16, 36, 0, 16, 1, 16, 81, 64, 25, 9, 25, 64, 25, 100, 36, 16, 36], false);
+compararArrays([1, 8, 6, 2, 9, 9, 4, 5, 2, 4, 3, 0, 7, 2, 4, 0, 0, 6, 8, 1, 2, 9, 4, 6], [16, 4, 4, 1, 49, 81, 1, 64, 16, 25, 1, 4, 4, 36, 36, 0, 16, 9, 64, 81, 36, 81, 16, 0], false);
+compararArrays([2, 2, 3], [4, 9, 9], false);
+compararArrays([], [], true);
+compararArrays([], null, false);
+compararArrays([121, 144, 19, 161, 19, 144, 19, 11], [121, 14641, 20736, 361, 25921, 361, 20736, 361], true);
+compararArrays([121, 144, 19, 161, 19, 144, 19, 11], [11*11, 121*121, 144*144, 19*19, 161*161, 19*19, 144*144, 19*19], true);
+compararArrays([121, 144, 19, 161, 19, 144, 19, 11], [132, 14641, 20736, 361, 25921, 361, 20736, 361], false);
+compararArrays([121, 144, 19, 161, 19, 144, 19, 11], [121, 14641, 20736, 36100, 25921, 361, 20736, 361], false);
 
 /*
 const { assert } = require('chai');
