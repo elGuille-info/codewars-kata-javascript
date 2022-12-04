@@ -52,10 +52,27 @@ productFib(714) # should return [21, 34, true],
 
 productFib(800) # should return [34, 55, false],
                 # since F(8) = 21, F(9) = 34, F(10) = 55 and 21 * 34 < 800 < 34 * 55
+
+F(n) being the smallest one such as F(n) * F(n+1) > prod.
 */
 
+// Comprobado en el kata
 function productFib(prod) {
     // ...
+
+    let number = 1;
+    while (true) {
+        let fib1 = fib(number);
+        let fib2 = fib(number + 1);
+        let fibProd = fib1 * fib2;
+        if (fibProd == prod) {
+            return [fib1, fib2, true];
+        }
+        if (fibProd > prod) {
+            return [fib1, fib2, false];
+        }
+        number++;
+    }
 
     //F(n) = F(n-1) + F(n-2) with F(0) = 0 and F(1) = 1.
     function fib(n) {
