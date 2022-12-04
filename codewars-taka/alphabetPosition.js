@@ -41,8 +41,26 @@ La primera solución no es muy "clever" ni nada parecido, pero...
 
 */
 
-// Otra forma sin concatenar el resultado.
+// sin usar las letras del alfabeto
 function alphabetPosition(text) {
+    let res = [];
+
+    for (let i = 0; i < text.length; i++) {
+        const c = text[i].charCodeAt()
+        // A = 65...Z= 90; a = 97...z=122
+        if (c > 64 && c < 91) {
+            res.push(c - 64);
+        }
+        else if (c > 96 && c < 123) {
+            res.push(c - 96);
+        }
+    }
+
+    return res.join(' ');
+}
+
+// Otra forma sin concatenar el resultado.
+function alphabetPosition1(text) {
     const alfabeto = "abcdefghijklmnopqrstuvwxyz";
     let res = [];
 
