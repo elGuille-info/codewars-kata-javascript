@@ -16,6 +16,45 @@ Note: you will always receive a valid array containing a random assortment of di
 It will never give you an empty array (that's not a walk, that's standing still!).
 */
 
+/*
+    La soluciones más "votadas"
+    //1- ooflorent, user3769065, Raman_Nerad, yangliyi, DbImOK85, anryyett, AndrewSushyi, b.volotovskyy, skyweebb, UserID (+ 187)
+    function isValidWalk(walk) {
+    var dx = 0
+    var dy = 0
+    var dt = walk.length
+
+    for (var i = 0; i < walk.length; i++) {
+        switch (walk[i]) {
+            case 'n': dy--; break
+            case 's': dy++; break
+            case 'w': dx--; break
+            case 'e': dx++; break
+        }
+    }
+
+    return dt === 10 && dx === 0 && dy === 0
+    }
+
+    //2- pox, rramesh, Gtufc, d310jvu, ronnyere, ooneill, liukaixin, L whisper, wang shuang, qinl (+ 49)
+    function isValidWalk(walk) {
+        function count(val) {
+            return walk.filter(function(a){return a==val;}).length;
+        }
+        return walk.length==10 && count('n')==count('s') && count('w')==count('e');
+    }
+
+    //3- mersocarlin, VladaZh, horchaniwissem, nekzito, alexdodevski, maceA, RomanLeo, stella6319618, koichi-sann, cezaryskura (+ 64)
+    function isValidWalk(walk) {
+        const north = walk.filter(item => { return item === "n" }).length;
+        const south = walk.filter(item => { return item === "s" }).length;
+        const east = walk.filter(item => { return item === "e" }).length;
+        const west = walk.filter(item => { return item === "w" }).length;
+
+        return walk.length === 10 && north === south && east === west;
+    }
+*/
+
 // Para avisar de que no es válido el paseo
 function isValidWalkAvisos(walk) {
     //insert brilliant code here
