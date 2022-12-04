@@ -43,10 +43,10 @@ productFib(800) # should return {34, 55, false},
 Note:
 You can see examples for your language in "Sample Tests".
 
-ALGORITHMSMATHEMATICS
+ALGORITHMS, MATHEMATICS
 */
 
-function productFib(prod){
+function productFib(prod) {
     // ...
 }
 
@@ -54,24 +54,53 @@ function productFib(prod){
  * Indicar aquí la función a usar dentro de strictEqual
  * @see compararArrays
  */
- const laFuncion = productFib;
+const laFuncion = productFib;
 
- /**
-  * Para comprobar si el resultado de la función es válido.
-  *
-  * @param {*} valor1 El valor del primer array a comprobar.
-  * @param {*} valor2 El valor del segundo array a comprobar
+/**
+ * Para comprobar si el resultado de la función es válido.
+ *
+ * @param {*} valor El número a evaluar por la función.
   * @param {*} resOK El resultado que debe dar.
-  * @see laFuncion Para asignar la función a usar.
-  */
- function compararArrays(valor1, valor2, resOK) {
-     console.log("[" + valor1?.toString() + "] =? [" + valor2?.toString() + "] = " + resOK);
+ * @see laFuncion Para asignar la función a usar.
+ */
+function compararResultados(valor, resOK) {
+    console.log(valor + " = " + resOK);
 
-     let res = laFuncion(valor1, valor2);
-     if (res.toString() != resOK.toString()) {
-         console.log("\tNo es correcto. El resultado calculado es " + res + " debería ser " + resOK);
-     }
-     else {
-         console.log("\tCorrecto!");
-     }
- }
+    let res = laFuncion(valor);
+    if (res.toString() != resOK.toString()) {
+        console.log("\tNo es correcto. El resultado calculado es " + res + " debería ser " + resOK);
+    }
+    else {
+        console.log("\tCorrecto!");
+    }
+}
+
+// Pruebas
+compararResultados(4895, [55, 89, true]);
+compararResultados(5895, [89, 144, false]);
+compararResultados((74049690), [6765, 10946, true]);
+compararResultados((84049690), [10946, 17711, false]);
+compararResultados((193864606), [10946, 17711, true]);
+compararResultados((447577), [610, 987, false]);
+compararResultados((602070), [610, 987, true]);
+compararResultados((714), [21, 34, true]);
+compararResultados((800), [34, 55, false]);
+//compararResultados();
+//compararResultados();
+//compararResultados();
+
+/*
+const { assert } = require('chai');
+
+describe("Tests", () => {
+  it("test", () => {
+    assert.sameOrderedMembers(productFib(4895), [55, 89, true])
+    assert.sameOrderedMembers(productFib(5895), [89, 144, false])
+    assert.sameOrderedMembers(productFib(74049690), [6765, 10946, true])
+    assert.sameOrderedMembers(productFib(84049690), [10946, 17711, false])
+    assert.sameOrderedMembers(productFib(193864606), [10946, 17711, true])
+    assert.sameOrderedMembers(productFib(447577), [610, 987, false])
+    assert.sameOrderedMembers(productFib(602070), [610, 987, true])
+  });
+});
+*/
