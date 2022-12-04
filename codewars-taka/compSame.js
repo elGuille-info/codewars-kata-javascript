@@ -35,11 +35,57 @@ The two arrays have the same size (> 0) given as parameter in function comp.
 
 */
 
+/*
+    // Las soluciones
+    //1- Azuaron, osereso, johanlevinsson, Mia Xue, bncordier, 19vad91, drinkerpay@gmail.com, sinaoui, tamarajaber, omarkhalid1998 (+ 244)
+    // https://www.codewars.com/kata/reviews/5556c27101231dd24f00031a/groups/55aeb4b5075d3039950000ec
+    // Aunque no pasa el test de "[], [25,9,54], false" dice que es true
+    function comp(array1, array2) {
+        if(array1 == null || array2 == null) return false;
+        array1.sort((a, b) => a - b); array2.sort((a, b) => a - b);
+        return array1.map(v => v * v).every((v, i) => v == array2[i]);
+    }
+
+    //2- omiceron, BearCobos, AltSquich, McMFC, amine931, tessst, LaKy3, mukhkhammad, rakomJS
+    // https://www.codewars.com/kata/reviews/5556c27101231dd24f00031a/groups/59beaea016ec647d4c000283
+    //
+    // whats that "!!a"? is it an operator? a conditional? how is it called?
+    //  It's just like !a called twice. It's sometimes called "double-bang" and is used to coalesce a value to a bool.
+    //  !!truthy turns into true, and !!falsy turns into false.
+    //
+    function comp(a, b) {
+        return !!a && !!b && a.map(x => x*x).sort().join() == b.sort().join();
+    }
+
+    //4- medmelki, mbazhlekova, KayUmoren004, divya.nat2009, doniyorbek0124, Betty Noir, MadaraFallen
+    // https://www.codewars.com/kata/reviews/5556c27101231dd24f00031a/groups/59ec9e02da62db9095001b3a
+    function comp(a, b) {
+        if (!a || !b || a.length !== b.length) return false;
+        return a.map(x => x * x).sort().toString() === b.sort().toString();
+    }
+
+*/
+
+function comp4(a, b) {
+    if (!a || !b || a.length !== b.length) return false;
+    return a.map(x => x * x).sort().toString() === b.sort().toString();
+}
+
+function comp2(a, b) {
+    return !!a && !!b && a.map(x => x*x).sort().join() == b.sort().join();
+}
+
+function comp1(array1, array2) {
+    if(array1 == null || array2 == null) return false;
+    array1.sort((a, b) => a - b); array2.sort((a, b) => a - b);
+    return array1.map(v => v * v).every((v, i) => v == array2[i]);
+}
+
 /**
  * Indicar aquí la función a usar dentro de strictEqual
  * @see compararArrays
  */
-const laFuncion = comp;
+const laFuncion = comp4;
 
 /**
  * Para comprobar si el resultado de la función es válido.
@@ -122,6 +168,10 @@ function comp(array1, array2){
 
 
 // Pruebas
+compararArrays([2,3,4], [4,9,16,32], false);
+compararArrays([19, 11], [11 * 11 * 11, 19 * 19 * 19], false);
+// Esta dicen que 1- no la pasa...
+compararArrays([], [25,9,54], false);
 compararArrays([8, 5, 4, 7, 5, 6, 9, 8, 4, 0, 4, 3, 6, 7, 6, 9, 10, 3, 6, 8, 8, 10, 0, 1], [9, 16, 25, 36, 49, 0, 36, 16, 9, 64, 49, 100, 16, 64, 81, 36, 81, 25, 1, 0, 36, 100, 64, 64], true);
 compararArrays([1, 10, 9, 4, 9, 9, 9, 1, 8, 0], [64, 81, 100, 1, 81, 1, 81, 81, 1, 16], false);
 compararArrays([4, 6, 10, 3, 4, 4, 6, 2, 10, 8, 5, 4, 5, 8, 5, 6, 0, 0, 9, 1, 8, 8], [100, 64, 1, 4, 64, 16, 36, 0, 16, 1, 16, 81, 64, 25, 9, 25, 64, 25, 100, 36, 16, 36], false);
