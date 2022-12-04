@@ -53,7 +53,67 @@ It will never give you an empty array (that's not a walk, that's standing still!
 
         return walk.length === 10 && north === south && east === west;
     }
+
+    // Este no está entre los primeros, pero funciona.
+    const isValidWalkuser8722283 = walk => {
+        if (walk.length !== 10) return false;
+
+        let directions = {
+            north: 0,
+            west: 0,
+        };
+
+        for (let step of walk) {
+            switch (step) {
+                case 'n':
+                directions.north++;
+                break;
+                case 's':
+                directions.north--;
+                break;
+                case 'w':
+                directions.west++;
+                break;
+                case 'e':
+                directions.west--;
+                break;
+            }
+        }
+
+        // Aquí todas deben dar cero (hubiera o no originalmente)
+        return directions.north === directions.west;
+    };
+
 */
+
+const isValidWalkuser8722283 = walk => {
+    if (walk.length != 10) return false;
+
+    let directions = {
+        north: 0,
+        west: 0,
+    };
+
+    for (let step of walk) {
+        switch (step) {
+            case 'n':
+                directions.north++;
+                break;
+            case 's':
+                directions.north--;
+                break;
+            case 'w':
+                directions.west++;
+                break;
+            case 'e':
+                directions.west--;
+                break;
+        }
+    }
+
+    // Aquí todas deben dar cero (hubiera o no originalmente)
+    return directions.north == directions.west;
+};
 
 // Para avisar de que no es válido el paseo
 function isValidWalkAvisos(walk) {
@@ -184,7 +244,7 @@ function isValidWalk(walk) {
     return true;
 }
 
-const laFuncion = isValidWalk;
+const laFuncion = isValidWalkuser8722283; //isValidWalk;
 
 /**
  * Para comprobar si el resultado de la función es válido.
