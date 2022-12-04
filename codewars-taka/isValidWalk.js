@@ -16,7 +16,81 @@ Note: you will always receive a valid array containing a random assortment of di
 It will never give you an empty array (that's not a walk, that's standing still!).
 */
 
+// Para avisar de que no es válido el paseo
 function isValidWalk(walk) {
+    //insert brilliant code here
+
+    // El número de letras en el paseo
+    const totalDirecciones = walk.length;
+    // Comprobar que no sea un array vacío
+    if (totalDirecciones == 0) {
+        console.log("\tDebes indicar algunas direcciones para el paseo.");
+        return false;
+    }
+
+    // Que solo contenga, 'n', 's', 'e' o 'w'
+    const direcciones = ['n', 's', 'e', 'w'];
+    // Las rutas en las direcciones indicadas
+    let rutas = [0, 0, 0, 0];
+
+    // Número de direcciones en el paseo
+    let total = 0;
+    for (let i = 0; i < direcciones.length; i++) {
+        const c = direcciones[i];
+        let desde = 0;
+        while (total < totalDirecciones) {
+            let j = walk.indexOf(c, desde);
+            if ( j > -1) {
+                total++;
+                desde = j + 1;
+                rutas[i] += 1;
+            }
+            else {
+                break;
+            }
+        }
+    }
+    // Si todas las letras no son direcciones, devolver false
+    if (total != totalDirecciones) {
+        console.log("\tNo todas las direcciones son válidas.");
+        return false;
+    }
+
+    // Según entiendo, para volver al mismo sitio, la longitud debe ser 10
+    if (total != 10) {
+        if (total < 10) {
+            console.log("\tEl paseo es corto y no te llevará de vuelta.");
+        }
+        else {
+            console.log("\tEl paseo es largo y no te llevará de vuelta.");
+        }
+        return false;
+    }
+
+    // Si llega aquí es que hay 10 direcciones
+
+    // Y que las direcciones sean equivalentes, es decir, si se usan 3 n debe haber 3 s, etc. ???
+    // Las rutas n, s
+    const rutaNS = rutas[0] + rutas[1];
+    // Si hay direcciones norte, sur y no hay la misma cantidad, devolver false
+    if (rutaNS > 0 && rutas[0] != rutas[1]) {
+        console.log("\tDebes ir el mismo número de veces al norte que al sur.");
+        return false;
+    }
+    // Las rutas e, w
+    const rutaEW = rutas[2] + rutas[3];
+    // Si hay direcciones este, oeste y no hay la misma cantidad, devolver false
+    if (rutaEW > 0 && rutas[2] != rutas[3]) {
+        console.log("\tDebes ir el mismo número de veces al este que al oeste.");
+        return false;
+    }
+
+    return true;
+}
+
+
+// Mi respuesta
+function isValidWalk0(walk) {
     //insert brilliant code here
 
     // El número de letras en el paseo
@@ -52,14 +126,18 @@ function isValidWalk(walk) {
     // Según entiendo, para volver al mismo sitio, la longitud debe ser 10
     if (total != 10) return false;
 
+    // Si llega aquí es que hay 10 direcciones
+
     // Y que las direcciones sean equivalentes, es decir, si se usan 3 n debe haber 3 s, etc. ???
     // Las rutas n, s
     const rutaNS = rutas[0] + rutas[1];
+    // Si hay direcciones norte, sur y no hay la misma cantidad, devolver false
     if (rutaNS > 0 && rutas[0] != rutas[1]) {
         return false;
     }
     // Las rutas e, w
     const rutaEW = rutas[2] + rutas[3];
+    // Si hay direcciones este, oeste y no hay la misma cantidad, devolver false
     if (rutaEW > 0 && rutas[2] != rutas[3]) {
         return false;
     }
