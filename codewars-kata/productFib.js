@@ -18,7 +18,7 @@ Your function productFib takes an integer (prod) and returns an array:
 [F(n), F(n+1), true] or {F(n), F(n+1), 1} or (F(n), F(n+1), True)
 depending on the language if F(n) * F(n+1) = prod.
 
-If you don't find two consecutive F(n) verifying F(n) * F(n+1) = prodyou will return
+If you don't find two consecutive F(n) verifying F(n) * F(n+1) = prod you will return
 
 [F(n), F(n+1), false] or {F(n), F(n+1), 0} or (F(n), F(n+1), False)
 F(n) being the smallest one such as F(n) * F(n+1) > prod.
@@ -46,48 +46,13 @@ You can see examples for your language in "Sample Tests".
 ALGORITHMS, MATHEMATICS
 */
 
-// Para probar la función Fibonacci
-// console.log("fib(8) = " + fib(8)); // 21
-// console.log("fib(9) = " + fib(9)); // 34
-// console.log("fib(1) = " + fib(1)); // 1
-// console.log("fib(-5) = " + fib(-5)); // 1
-// console.log("fib(20) = " + fib(20)); // 6765
-// console.log("fib(77) = " + fib(77)); // 5527939700884757
-// return;
+/*
+productFib(714) # should return [21, 34, true],
+                # since F(8) = 21, F(9) = 34 and 714 = 21 * 34
 
-// function fib(n) {
-//     return n <= 1 ? n : fib(n - 1) + fib(n - 2);
-// }
-
-/**
- * Función de fibonacci optimizada.
- * De https://javascript.info/task/fibonacci-numbers
- * Usando https://en.wikipedia.org/wiki/Dynamic_programming
- *
- * @param {*} n El número a evaluar según la secuencia Fibonacci.
- * @returns El resultado. F(n) = F(n-1) + F(n-2) with F(0) = 0 and F(1) = 1.
- */
-function fib(n) {
-    let a = 1;
-    let b = 1;
-    for (let i = 3; i <= n; i++) {
-        let c = a + b;
-        a = b;
-        b = c;
-    }
-    return b;
-}
-
-// function fib(num) {
-//     //F(n) = F(n-1) + F(n-2) with F(0) = 0 and F(1) = 1.
-//     // if (num == 0 || num == 1) {
-//     //     return num;
-//     // }
-//     if (num <= 1) {
-//         return num;
-//     }
-//     return fib(num - 1) + fib(num - 2);
-// }
+productFib(800) # should return [34, 55, false],
+                # since F(8) = 21, F(9) = 34, F(10) = 55 and 21 * 34 < 800 < 34 * 55
+*/
 
 function productFib(prod) {
     // ...
