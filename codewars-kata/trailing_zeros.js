@@ -25,11 +25,28 @@ ALGORITHMS, LOGIC, MATHEMATICS
 18! = 6402373705728000 --> 3 trailing zeros
 */
 
+// De: https://forum.freecodecamp.org/t/help-with-codewars-kata-number-of-trailing-zeros-of-n/241990/3
+// iamcharliekim 25-Nov-2018
+function zeros_3 (n) {
+    let divider = 1
+    let sum = 0
+
+    while (divider <= n){
+        sum = Math.floor(sum + n/(divider *= 5))
+    }
+    return sum
+}
+
 function zeros (n) {
     // your code here
+
+    // si el número es mayor de 18 no funciona con el factorial.
+    if (n > 18 ) {
+        return zeros_3(n);
+    }
     let n2 = fact(n);
     let s = String(n2)
-    let res = Infinity;
+    let res = 0;
     for (let i = s.length -1; i >= 0; i--) {
         if (s[i] != '0') {
             break;
@@ -61,7 +78,7 @@ function fact(number) {
  * Indicar aquí la función a usar dentro de
  * @see compararResultados
  */
- const laFuncion = zeros;
+ const laFuncion = zeros; //zeros_3;
 
  /**
   * Para comprobar si el resultado de la función es válido.
