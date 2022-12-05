@@ -180,3 +180,8 @@ describe("FindEvenIndex", function() {
   });
 });
 */
+
+/*
+Para C# usando la solución de zoid
+https://www.codewars.com/kata/reviews/5679c8ba5da43f03ad0000a1/groups/638e6eb63b7f36000194a37b
+*/

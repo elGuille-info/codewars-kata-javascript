@@ -311,3 +311,8 @@ describe("Gap",function() {
     assert.deepEqual(gap(10,300,400), [337, 347]);
 })})
 */
+
+/*
+  kata en C#
+  https://www.codewars.com/kata/reviews/561ea93e5b3086893a00005d/groups/638e67afe76b1d0001c57f6c
+*/
