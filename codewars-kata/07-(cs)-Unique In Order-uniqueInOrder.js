@@ -94,3 +94,7 @@ describe("Tests", () => {
   });
 });
 */
+
+/*
+En C# https://www.codewars.com/kata/reviews/59b1fff4837809ac630001f2/groups/638e77731d08c00001192b75
+*/
