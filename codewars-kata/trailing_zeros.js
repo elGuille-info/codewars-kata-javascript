@@ -63,7 +63,7 @@ function zeros_3 (n) {
 */
 // De: https://forum.freecodecamp.org/t/help-with-codewars-kata-number-of-trailing-zeros-of-n/241990/3
 // iamcharliekim 25-Nov-2018
-function zeros_div (n) {
+function zeros_3 (n) {
     let divider = 1
     let sum = 0
 
@@ -73,6 +73,8 @@ function zeros_div (n) {
     return sum
 }
 
+// <Código presentado>
+// https://www.codewars.com/kata/reviews/52fd3e3460f49cddcf000f1f/groups/638dc570f4dbd80001980bb8
 function zeros (n) {
     // your code here
 
@@ -113,11 +115,22 @@ function fact(number) {
     return number;
 }
 
+function zeros_div (n) {
+    let divider = 1
+    let sum = 0
+
+    while (divider <= n){
+        sum = Math.floor(sum + n/(divider *= 5))
+    }
+    return sum
+}
+// </ Código presentado>
+
 /**
  * Indicar aquí la función a usar dentro de
  * @see compararResultados
  */
- const laFuncion = zeros_3; //zeros_div;
+ const laFuncion = zeros; //zeros_div;
 
  /**
   * Para comprobar si el resultado de la función es válido.
