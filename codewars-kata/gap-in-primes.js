@@ -47,9 +47,85 @@ https://en.wikipedia.org/wiki/Prime_gap
 FUNDAMENTALS
 
 */
+
+// Convertido y modificadp  del código en Python de: https://zhuangyan.gitbooks.io/codewars/content/5-kyu/gap-in-primes.html
+
+/**
+ * g (integer >= 2) which indicates the gap we are looking for
+ * m (integer > 2) which gives the start of the search (m inclusive)
+ * n (integer >= m) which gives the end of the search (n inclusive)
+ *
+ * gap(2, 3, 50) will return [3, 5] which is the first pair between 3 and 50 with a 2-gap.
+ *
+ * This function should return the first pair of two prime numbers spaced with a gap of g between the limits m, n if these numbers exist
+ * otherwise null.
+ *
+ * @param {*} g (integer >= 2) which indicates the gap we are looking for
+ * @param {*} m (integer > 2) which gives the start of the search (m inclusive)
+ * @param {*} n (integer >= m) which gives the end of the search (n inclusive)
+ */
 function gap(g, m, n) {
     // your code
 
+    // Validar los parámetros
+    if (g < 2 || m < 3 || n < m) {
+        return null;
+    }
+
+    let primeAnt = n;
+    for (let i = m; i <= n; i++) {
+        if (isPrime(i)) {
+            if (i - primeAnt == g) {
+                return [primeAnt, i];
+            }
+            primeAnt = i;
+        }
+    }
+    return null;
+
+    function isPrime(num) {
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+function gap2(g, m, n) {
+    // your code
+
+    // Validar los parámetros
+    if (g < 2 || m < 3 || n < m) {
+        return null;
+    }
+
+    let primeAnt = n;
+    for (let i = m; i <= n; i++) {
+        if (isPrime2(i)) {
+            if (i - primeAnt == g) {
+                return [primeAnt, i];
+            }
+            primeAnt = i;
+        }
+    }
+    return null;
+}
+
+/**
+ * Comprobar si el número indicado es un número primo.
+ *
+ * @param {*} num El número a comprobar.
+ * @returns True si lo es, false en otro caso.
+ */
+function isPrime2(num) {
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i == 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
 /**
@@ -69,10 +145,10 @@ function gap(g, m, n) {
    * @see laFuncion Para asignar la función a usar.
    */
 function comprobar3(valor1, valor2, valor3, resOK) {
-  console.log(valor1?.toString() + ", " + valor2?.toString() + ", " + valor3?.toString() + " = " + resOK);
+  console.log(valor1 + ", " + valor2 + ", " + valor3 + " = " + resOK);
 
   let res = laFuncion(valor1, valor2, valor3);
-  if (res.toString() != resOK.toString()) {
+  if (res?.toString() != resOK?.toString()) {
     console.log("\tNo es correcto. El resultado calculado es '" + res + "' debería ser '" + resOK + "'");
   }
   else {
@@ -81,10 +157,14 @@ function comprobar3(valor1, valor2, valor3, resOK) {
 }
 
 // Pruebas
+comprobar3(1, 3, 500, null);
+comprobar3(1, 3, 50, null);
 comprobar3(2, 3, 50, [3, 5]);
 comprobar3(2,100,110, [101, 103]);
 comprobar3(4,100,110, [103, 107]);
 comprobar3(6,100,110, null);
+comprobar3(2,100,110, [101, 103]);
+comprobar3(3,100,110, null);
 comprobar3(8,300,400, [359, 367]);
 comprobar3(10,300,400, [337, 347]);
 // comparar3();
