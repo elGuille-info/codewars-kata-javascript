@@ -25,6 +25,42 @@ ALGORITHMS, LOGIC, MATHEMATICS
 18! = 6402373705728000 --> 3 trailing zeros
 */
 
+/*
+    Soluciones
+*/
+//1- Krapock, dimitrylebedev, iamchingel, ChoiUt, xxxxzero, andreyElama, olipolip, Balsam-Faysal, qwerty123654 (+ 149)
+// https://www.codewars.com/kata/reviews/52fd3e3460f49cddcf000f1f/groups/542518dcd5df9ac0b80005dc
+function zeros_1 (n) {
+    var zs = 0;
+    while(n>0){
+      n=Math.floor(n/5);
+      zs+=n
+    }
+    return zs;
+}
+
+//2- mjstromberg, charleslai1994
+// https://www.codewars.com/kata/reviews/52fd3e3460f49cddcf000f1f/groups/57a3c091cf1fa57075000359
+function zeros_2(n) {
+    return n/5 < 1 ? 0 : Math.floor(n/5) + zeros(n/5);
+}
+
+//3- kebien6020, sai_coder, EvgeniyVV, qasemqaren, heba.rr
+// https://www.codewars.com/kata/reviews/52fd3e3460f49cddcf000f1f/groups/551e27b0bf4e52585c00028e
+//
+// El código original falla con 5! (120 - 1 cero)
+function zeros_3 (n) {
+    var res = 0;
+    // Así falla
+    //for(var i=5; i<n; i*=5)
+    for(var i=5; i<=n; i*=5)
+      res += Math.floor(n/i);
+    return res;
+}
+
+/*
+    La usada para enviar la solución.
+*/
 // De: https://forum.freecodecamp.org/t/help-with-codewars-kata-number-of-trailing-zeros-of-n/241990/3
 // iamcharliekim 25-Nov-2018
 function zeros_div (n) {
@@ -81,7 +117,7 @@ function fact(number) {
  * Indicar aquí la función a usar dentro de
  * @see compararResultados
  */
- const laFuncion = zeros; //zeros_div;
+ const laFuncion = zeros_3; //zeros_div;
 
  /**
   * Para comprobar si el resultado de la función es válido.
