@@ -35,17 +35,18 @@ ALGORITHMS, LINKED LISTS, PERFORMANCE
 class Node {
 	// constructor
 	constructor(element) {
-		this.element = element;
+		//this.element = element;
 		this.next = null
 	}
     // Asignar el siguiente elemento
     setNext(element) {
-        this.element = element;
+        //this.element = element;
         this.next = element;
     }
     // Obtener el siguiente elemento
     getNext() {
-        return this.element;
+        //return this.element;
+        return this.next;
     }
 }
 
@@ -138,7 +139,7 @@ function loop_size_n1(node) {
 
 
 /**
- * Indicar aquí la función a usar dentro de 
+ * Indicar aquí la función a usar dentro de
  * @see compararResultados
  */
 const laFuncion = loop_size2;
