@@ -20,10 +20,42 @@ Hint: You're not meant to calculate the factorial. Find another way to find the 
 ALGORITHMS, LOGIC, MATHEMATICS
 */
 
+/*
+30! = 265252859812191100000000000000000 --> 7 trailing zeros (me da que son 17)
+18! = 6402373705728000 --> 3 trailing zeros
+*/
 function zeros (n) {
     // your code here
+    let n2 = fact(n);
+    let s = String(n2)
+    let res = 0;
+    for (let i = s.length -1; i >= 0; i--) {
+        if (s[i] != '0') {
+            break;
+        }
+        res++;
+    }
+
+    return res;
 }
 
+
+/**
+ * El factorial de un número, sin notación exponencial el valor mayor es 18.
+ *
+ * @param {*} number El número del que queremos el factorial.
+ * @returns El factorial del número indicado. Hasta el 18 no muestra notación exponencial.
+ */
+function fact(number) {
+    if (number == 0) return 1;
+    if (number == 2) return 2;
+
+    // Calcularlo multiplicando el número hasta el 2.
+    for (let i = number - 1; i > 1; i--) {
+        number *= i;
+    }
+    return number;
+}
 
 /**
  * Indicar aquí la función a usar dentro de
@@ -51,10 +83,12 @@ function zeros (n) {
  }
 
 // Pruebas
+compararResultados(18, 3);
 compararResultados(0, 0);
 compararResultados(5, 1);
 compararResultados(6, 1);
 compararResultados(30, 7);
+
 //  compararResultados();
 //  compararResultados();
 //  compararResultados();
