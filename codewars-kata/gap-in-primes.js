@@ -60,7 +60,7 @@ FUNDAMENTALS
  * This function should return the first pair of two prime numbers spaced with a gap of g between the limits m, n if these numbers exist
  * otherwise null.
  *
- * @param {*} g (integer >= 2) which indicates the gap we are looking for
+ * @param {*} g (integer >= 2) which indicates the gap (diferencia) we are looking for
  * @param {*} m (integer > 2) which gives the start of the search (m inclusive)
  * @param {*} n (integer >= m) which gives the end of the search (n inclusive)
  */
@@ -74,16 +74,18 @@ function gap(g, m, n) {
 
     let primeAnt = -1;
     for (let i = m; i <= n; i++) {
-        // Si es primo, comprobar si hay el "gap" con el primo anterior
+        // Si es primo, comprobar si hay la diferencia indicada con el primo anterior
         if (isPrime(i)) {
             if (primeAnt > -1 && i - primeAnt == g) {
                 return [primeAnt, i];
             }
+            // El último primo hallado antes de encontrar la solución
             primeAnt = i;
         }
     }
     return null;
 
+    // Función para comprobar si un número es primo
     function isPrime(num) {
         for (let i = 2; i <= Math.sqrt(num); i++) {
             if (num % i == 0) {
@@ -188,14 +190,15 @@ function comprobar3(valor1, valor2, valor3, resOK) {
 }
 
 // Pruebas
-// Probar con las 2 funciones
-console.log("Usando gap:");
-laFuncion = gap;
+// // Probar con las 2 funciones
+// console.log("Usando gap:");
+// laFuncion = gap;
+// comprobar3(4, 6, 11, [7,11]);
+// laFuncion = gap0;
+// console.log("Usando gap0:");
+// comprobar3(4, 6, 11, [7,11]);
+// console.log("---");
 comprobar3(4, 6, 11, [7,11]);
-laFuncion = gap0;
-console.log("Usando gap0:");
-comprobar3(4, 6, 11, [7,11]);
-console.log("---");
 comprobar3(4, 7, 11, [7,11]);
 comprobar3(1, 3, 500, null);
 comprobar3(1, 3, 50, null);
