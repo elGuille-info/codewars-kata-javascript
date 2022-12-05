@@ -130,7 +130,55 @@ function getDivisors (n) {
 }
 */
 
+// Otras soluciones
+
+//1- boo1ean, mikejames386, zsychy, mahmoudjameel, 0ERROR, Noor Khaled, mario.rivera, LucasMartinCalderon, StupendouS, ronso007 (+ 27)
+// https://www.codewars.com/kata/reviews/55aa0d71c1eba8a65a000132/groups/5787db6eba5c4b1c8c0016ae
+function listSquared_1 (m, n) {
+	var matches = [];
+
+	for (var i = m; i <= n; ++i) {
+		var sum = getDivisors(i).reduce((sum, n) => sum + n * n, 0);
+		var ok = Number.isInteger(Math.sqrt(sum));
+
+		if (ok) {
+			matches.push([i, sum]);
+		}
+	}
+
+	return matches;
+}
+
+function getDivisors (n) {
+	var divisors = [];
+
+	for (var i = 1; i <= n / 2; ++i) {
+		if (n % i) {
+			continue;
+		}
+
+		divisors.push(i);
+	}
+
+	return divisors.concat([n]);
+}
+
+//2- user3863845, TedCorleone, ZHULINYI, vsvs5667, Porlockzzz, whyuenac, Lito_0512, Ardy85, 7287vencent, MasterH (+ 11)
+// https://www.codewars.com/kata/reviews/55aa0d71c1eba8a65a000132/groups/57cc64dd58da9e47bc000185
+function listSquared_2(m, n) {
+  var arr = [];
+  for (var i = m; i <= n; i++){
+    var temp = 0;
+    for (var j = 1; j <= i; j++) {
+      if ( i % j == 0) temp += j*j;
+    };
+    if ( Math.sqrt(temp) % 1 == 0) arr.push([i, temp]);
+  };
+  return arr;
+}
+
 // La presentada, una fusión (modificada) de https://github.com/seonatic/Integers-Recreation-One/blob/master/solution.js
+// que resulta que es la 1-
 function listSquared (m, n) {
   // your code
   var resultado = [];
@@ -164,7 +212,7 @@ function listSquared (m, n) {
  * Indicar aquí la función a usar dentro de
  * @see comparar2
  */
- const laFuncion = listSquared;
+ const laFuncion = listSquared_2;
 
  /**
    * Para comprobar si el resultado de la función es válido.
