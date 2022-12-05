@@ -29,7 +29,7 @@ function zeros (n) {
     // your code here
     let n2 = fact(n);
     let s = String(n2)
-    let res = 0;
+    let res = Infinity;
     for (let i = s.length -1; i >= 0; i--) {
         if (s[i] != '0') {
             break;
