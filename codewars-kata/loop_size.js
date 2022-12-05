@@ -104,6 +104,22 @@ De las soluciones (las más recientes)
 
 */
 
+class Node {
+	// constructor
+	constructor(element) {
+		this.element = element;
+		this.next = null
+	}
+    setNext(element) {
+        this.element = element;
+        this.next = element;
+    }
+    getNext() {
+        return this.element;
+    }
+}
+
+
 //1- laoris, c0deguy, dubdjon, rattLR, nicole_NT, Makemesuffer, nasnik, Strygevale, Protanton, Sergej-Karyuhin (+ 142)
 // https://www.codewars.com/kata/reviews/52b020ce0b1d4565ec0003f2/groups/52b21ab778cdcd98af000c65
 function loop_size1(node) {
@@ -136,9 +152,9 @@ function loop_size1(node) {
     return count;
 }
 
-//-2 douglas06mpp
+//n2- douglas06mpp
 // https://www.codewars.com/kata/reviews/52b020ce0b1d4565ec0003f2/groups/63884cc69a77550001d4df03
-function loop_size_2(node) {
+function loop_size_n2(node) {
     const map = new Map()
     let count = 0
     let currentNode = node
@@ -157,9 +173,9 @@ function loop_size_2(node) {
     return 0
 }
 
-//-1 ivanK_rep
+//n1- ivanK_rep
 // https://www.codewars.com/kata/reviews/52b020ce0b1d4565ec0003f2/groups/638ca977f4dbd8000197db29
-function loop_size(node) {
+function loop_size_n1(node) {
     let map = new Map();
     let index = 0;
     map.set(node, 0);
@@ -183,26 +199,26 @@ function loop_size(node) {
  * Indicar aquí la función a usar dentro de strictEqual
  * @see compararResultados
  */
- const laFuncion = loop_size;
+const laFuncion = loop_size1;
 
- /**
-  * Para comprobar si el resultado de la función es válido.
-  *
-  * @param {*} valor El número a evaluar por la función.
-   * @param {*} resOK El resultado que debe dar.
-  * @see laFuncion Para asignar la función a usar.
-  */
- function compararResultados(valor, resOK) {
-     console.log(valor + " = " + resOK);
+/**
+ * Para comprobar si el resultado de la función es válido.
+ *
+ * @param {*} valor El número a evaluar por la función.
+  * @param {*} resOK El resultado que debe dar.
+ * @see laFuncion Para asignar la función a usar.
+ */
+function compararResultados(valor, resOK) {
+    console.log(valor + " = " + resOK);
 
-     let res = laFuncion(valor);
-     if (res.toString() != resOK.toString()) {
-         console.log("\tNo es correcto. El resultado calculado es " + res + " debería ser " + resOK);
-     }
-     else {
-         console.log("\tCorrecto!");
-     }
- }
+    let res = laFuncion(valor);
+    if (res.toString() != resOK.toString()) {
+        console.log("\tNo es correcto. El resultado calculado es " + res + " debería ser " + resOK);
+    }
+    else {
+        console.log("\tCorrecto!");
+    }
+}
 
 //var Node = require('Node')
 
