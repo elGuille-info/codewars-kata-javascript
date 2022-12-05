@@ -27,7 +27,7 @@ ALGORITHMS, LOGIC, MATHEMATICS
 
 // De: https://forum.freecodecamp.org/t/help-with-codewars-kata-number-of-trailing-zeros-of-n/241990/3
 // iamcharliekim 25-Nov-2018
-function zeros_3 (n) {
+function zeros_div (n) {
     let divider = 1
     let sum = 0
 
@@ -42,8 +42,11 @@ function zeros (n) {
 
     // si el número es mayor de 18 no funciona con el factorial.
     if (n > 18 ) {
-        return zeros_3(n);
+        return zeros_div(n);
     }
+
+    // Mi código pero solo hasta el valor de 18.
+    // Mis matemáticas no son tan buenas como la de los otros...
     let n2 = fact(n);
     let s = String(n2)
     let res = 0;
@@ -78,7 +81,7 @@ function fact(number) {
  * Indicar aquí la función a usar dentro de
  * @see compararResultados
  */
- const laFuncion = zeros; //zeros_3;
+ const laFuncion = zeros; //zeros_div;
 
  /**
   * Para comprobar si el resultado de la función es válido.
