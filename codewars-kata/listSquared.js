@@ -134,16 +134,23 @@ function getDivisors (n) {
 function listSquared (m, n) {
   // your code
   var resultado = [];
+
+  // Analizar todos los números y buscar los divisores
   for (let num = m; num <= n; num++) {
-    let divisors = [];
+
+    // Los divisores
+    let divisores = [];
+
     for (let i = 1; i <= num / 2; i++) {
       if (num % i == 0) {
-        divisors.push(i);
+        divisores.push(i);
       }
     }
-    divisors.push(num);
+    divisores.push(num);
 
-    let total = divisors.reduce((a, b) => a + b * b, 0);
+    // La suma de los cuadrados de los divisores
+    let total = divisores.reduce((accumulator, currentValue) => accumulator + currentValue * currentValue, 0);
+    // Si la raíz cuadrada de la suma de los cuadrados de los divisores es un número entero, añadir el número y la suma
     if (Number.isInteger(Math.sqrt(total))) {
       resultado.push([num, total]);
     }
@@ -157,7 +164,7 @@ function listSquared (m, n) {
  * Indicar aquí la función a usar dentro de
  * @see comparar2
  */
- const laFuncion = listSquared_py;
+ const laFuncion = listSquared;
 
  /**
    * Para comprobar si el resultado de la función es válido.
