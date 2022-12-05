@@ -48,6 +48,85 @@ FUNDAMENTALS
 
 */
 
+// Las soluciones
+
+//1- zoid, user9878128, yiling0627, zeus-jen, nonie7@onet.pl, phptonist1, soroosh96, yun0926, scott.ling, patelv2 (+ 96)
+// https://www.codewars.com/kata/reviews/561ea39f353ce43dbd00002e/groups/5672247d2ff94645d500003b
+// Esta falla con gap(2, 2, 6) = null devuelve [0,2]
+// en el comentario de lindaxiao-hust indica que falla con gap(3, 3, 4) debe ser null y devuelve [0,3]
+function gap_1(g, m, n) {
+    var lastPrime = 0;
+    var isPrime = function(x) {
+      for (var i=2; i*i<=x; i++) { if (x % i == 0) return false; } return true;
+    }
+
+    for(var i = m; i <= n; i++)
+        if(isPrime(i)) {
+            if(i - lastPrime == g) return [lastPrime, i];
+            else lastPrime = i;
+        }
+
+    return null;
+}
+
+//2- pwynn, msservice
+// https://www.codewars.com/kata/reviews/561ea39f353ce43dbd00002e/groups/568397e95b85c71022000045
+function isPrime_2(n) {
+    if (isNaN(n) || !isFinite(n) || n%1 || n<2) return false;
+    var m = Math.sqrt(n);
+    for (var i=2;i<=m;i++) if (n%i==0) return false;
+    return true;
+ }
+
+
+ function gap_2(g, m, n) {
+   let mx = 0;
+   for (m, n; m < n; m++) {
+     if (isPrime_2(m)) {
+       if (m - mx === g) return [mx, m];
+       mx = m;
+     }
+   }
+   return null;
+ }
+
+//3- jeremybini
+// https://www.codewars.com/kata/reviews/561ea39f353ce43dbd00002e/groups/569e3819ae152e644300002a
+// Esta falla con: gap(4, 6, 11) y gap(4, 7, 11) devuelve null y debe ser [7,11]
+var primes = [2];
+var notPrimes = [];
+
+function gap_3(g, m, n) {
+  if(m%2===0) m = m+1;
+  for(var i = m; i < n-g; i+=2) {
+    if(isPrime_3(i) && isPrime_3(i+g)) {
+      var concurrent = true;
+      for(var j = i+2; j<(i+g); j+=2) {
+        if(isPrime_3(j)) { concurrent = false; break; }
+      }
+      if (concurrent) return [i, i+g];
+    }
+  }
+  return null;
+}
+
+function isPrime_3(num) {
+  if(primes.indexOf(num)!==-1) return true;
+  if(notPrimes.indexOf(num)!==-1) return false;
+  if(num%2===0) return false;
+  if(num%3===0) return false;
+  if(num%5===0) return false;
+
+  for(var i = 7; i<=Math.sqrt(num); i+=2) {
+    if(num%i===0) {
+      notPrimes.push(num);
+      return false
+    }
+  }
+  primes.push(num);
+  return true;
+}
+
 // Convertido y modificadp  del código en Python de: https://zhuangyan.gitbooks.io/codewars/content/5-kyu/gap-in-primes.html
 
 /**
@@ -76,6 +155,7 @@ function gap(g, m, n) {
     for (let i = m; i <= n; i++) {
         // Si es primo, comprobar si hay la diferencia indicada con el primo anterior
         if (isPrime(i)) {
+            // Solo comprobarlo si se encontró un primo anterior
             if (primeAnt > -1 && i - primeAnt == g) {
                 return [primeAnt, i];
             }
@@ -83,6 +163,7 @@ function gap(g, m, n) {
             primeAnt = i;
         }
     }
+    // Si llega aquí es que no se ha encontrado nada
     return null;
 
     // Función para comprobar si un número es primo
@@ -126,7 +207,7 @@ function gap0(g, m, n) {
     }
 }
 
-function gap2(g, m, n) {
+function gap02(g, m, n) {
     // your code
 
     // Validar los parámetros
@@ -136,7 +217,7 @@ function gap2(g, m, n) {
 
     let primeAnt = n;
     for (let i = m; i <= n; i++) {
-        if (isPrime2(i)) {
+        if (isPrime02(i)) {
             if (i - primeAnt == g) {
                 return [primeAnt, i];
             }
@@ -152,7 +233,7 @@ function gap2(g, m, n) {
  * @param {*} num El número a comprobar.
  * @returns True si lo es, false en otro caso.
  */
-function isPrime2(num) {
+function isPrime02(num) {
     for (let i = 2; i <= Math.sqrt(num); i++) {
         if (num % i == 0) {
             return false;
@@ -198,6 +279,11 @@ function comprobar3(valor1, valor2, valor3, resOK) {
 // console.log("Usando gap0:");
 // comprobar3(4, 6, 11, [7,11]);
 // console.log("---");
+laFuncion = gap;
+comprobar3(3, 2, 6, null);
+comprobar3(3, 3, 4, null);
+comprobar3(2, 2, 6, null);
+comprobar3(3, 5, 6, null);
 comprobar3(4, 6, 11, [7,11]);
 comprobar3(4, 7, 11, [7,11]);
 comprobar3(1, 3, 500, null);
