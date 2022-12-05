@@ -1,4 +1,6 @@
 ﻿/*
+  # Get the Middle Character
+
 You are going to be given a word.
 Your job is to return the middle character of the word.
 If the word's length is odd (impar), return the middle character.

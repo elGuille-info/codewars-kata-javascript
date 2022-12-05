@@ -27,6 +27,12 @@ ARRAYS, ALGORITHMS
 //snail = function(array) {
 function snail(array) {
     // enjoy
+
+    if (array == null || array.length == 0) {
+        return [];
+    }
+
+    return [];
 }
 
 /**
@@ -36,10 +42,10 @@ function snail(array) {
  let laFuncion = snail;
 
 function pruebas(arr, resOK) {
-    var res = findEvenIndex(arr);
-    console.log("[" + arr.toString() + "] = " + resOK + " ?= (" + res + ")");
-    if (resOK != res) {
-        console.log("\tEl valor devuelto es " + res + " y debe ser " + resOK);
+    var res = laFuncion(arr);
+    console.log("[" + arr.toString() + "] = [" + resOK + "] ?= ([" + res + "])");
+    if ("[" + resOK + "]" != "[" + res + "]") {
+        console.log("\tEl valor devuelto es [" + res + "] y debe ser [" + resOK + "]");
     }
     else {
         console.log("\tCorrecto!");

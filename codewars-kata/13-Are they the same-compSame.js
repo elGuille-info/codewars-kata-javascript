@@ -33,6 +33,7 @@ If a or b are nil (or null or None, depending on the language), the problem does
 Note for C
 The two arrays have the same size (> 0) given as parameter in function comp.
 
+FUNDAMENTALS
 */
 
 /*

@@ -1,5 +1,5 @@
 ﻿/*
-# Take a Ten Minutes Walk
+    # Take a Ten Minutes Walk
 
 You live in the city of Cartesia where all roads are laid out in a perfect grid.
 You arrived ten minutes too early to an appointment, so you decided to take the opportunity to go for a short walk.
@@ -14,6 +14,8 @@ Return false otherwise.
 
 Note: you will always receive a valid array containing a random assortment of direction letters ('n', 's', 'e', or 'w' only).
 It will never give you an empty array (that's not a walk, that's standing still!).
+
+ARRAYS, FUNDAMENTALS
 */
 
 /*
