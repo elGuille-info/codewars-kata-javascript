@@ -72,8 +72,39 @@ function gap(g, m, n) {
         return null;
     }
 
+    let primeAnt = -1;
+    for (let i = m; i <= n; i++) {
+        // Si es primo, comprobar si hay el "gap" con el primo anterior
+        if (isPrime(i)) {
+            if (primeAnt > -1 && i - primeAnt == g) {
+                return [primeAnt, i];
+            }
+            primeAnt = i;
+        }
+    }
+    return null;
+
+    function isPrime(num) {
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+function gap0(g, m, n) {
+    // your code
+
+    // Validar los parámetros
+    if (g < 2 || m < 3 || n < m) {
+        return null;
+    }
+
     let primeAnt = n;
     for (let i = m; i <= n; i++) {
+        // Si es primo, comprobar si hay el "gap" con el primo anterior
         if (isPrime(i)) {
             if (i - primeAnt == g) {
                 return [primeAnt, i];
@@ -132,7 +163,7 @@ function isPrime2(num) {
  * Indicar aquí la función a usar dentro de
  * @see comprobar3
  */
- const laFuncion = gap;
+ let laFuncion = gap;
 
  /**
    * Para comprobar si el resultado de la función es válido.
@@ -157,6 +188,15 @@ function comprobar3(valor1, valor2, valor3, resOK) {
 }
 
 // Pruebas
+// Probar con las 2 funciones
+console.log("Usando gap:");
+laFuncion = gap;
+comprobar3(4, 6, 11, [7,11]);
+laFuncion = gap0;
+console.log("Usando gap0:");
+comprobar3(4, 6, 11, [7,11]);
+console.log("---");
+comprobar3(4, 7, 11, [7,11]);
 comprobar3(1, 3, 500, null);
 comprobar3(1, 3, 50, null);
 comprobar3(2, 3, 50, [3, 5]);
