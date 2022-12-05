@@ -24,6 +24,7 @@ ALGORITHMS, LOGIC, MATHEMATICS
 30! = 265252859812191100000000000000000 --> 7 trailing zeros (me da que son 17)
 18! = 6402373705728000 --> 3 trailing zeros
 */
+
 function zeros (n) {
     // your code here
     let n2 = fact(n);
@@ -38,7 +39,6 @@ function zeros (n) {
 
     return res;
 }
-
 
 /**
  * El factorial de un número, sin notación exponencial el valor mayor es 18.
@@ -87,9 +87,9 @@ compararResultados(18, 3);
 compararResultados(0, 0);
 compararResultados(5, 1);
 compararResultados(6, 1);
+// Estos son muy grandes para evaluarlos con mi función fact.
 compararResultados(30, 7);
-
-//  compararResultados();
+compararResultados(647601557, 161900383);
 //  compararResultados();
 //  compararResultados();
 //  compararResultados();
