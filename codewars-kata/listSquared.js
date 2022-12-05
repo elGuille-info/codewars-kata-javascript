@@ -130,42 +130,12 @@ function getDivisors (n) {
 }
 */
 
-// Esta no funciona
-function listSquared_py(m, n) {
-  // your code
-  let result = [];
-  for (let num = m; num <= n; num++) {
-    let divisors = [];
-    //for (let i = 1; i < Math.sqrt(num); i++) {
-    for (let i = 1; i <= num / 2; i++) {
-      if (num % i == 0) {
-        //divisors.push(i**2);
-        divisors.push(i);
-        //divisors.push(Math.pow(i, 2));
-        //divisors.push((num/i)**2);
-        //divisors.push(Math.pow(num/i), 2);
-      }
-      divisors.push(num);
-
-      // total = sum(divisors)
-      let total = divisors.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-      if (Number.isInteger(Math.sqrt(total))) {
-        result.push([num, total]);
-      }
-    }
-  }
-  return result;
-}
-
+// La presentada, una fusión (modificada) de https://github.com/seonatic/Integers-Recreation-One/blob/master/solution.js
 function listSquared (m, n) {
   // your code
-  
   var resultado = [];
-
   for (let num = m; num <= n; num++) {
     let divisors = [];
-    //for (let i = 1; i <= num / 2; i++) {
-    //for (let i = 1; i <= Math.sqrt(num); i++) {
     for (let i = 1; i <= num / 2; i++) {
       if (num % i == 0) {
         divisors.push(i);
