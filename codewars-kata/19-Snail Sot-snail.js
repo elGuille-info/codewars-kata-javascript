@@ -38,7 +38,56 @@ function snail(array) {
         return [];
     }
 
-    return [];
+    let resultado = [];
+
+    // for(var i = 0; i < array.length; i++) {
+    //     var arr1 = array[i];
+    //     for(var j = 0; j < arr1.length; j++) {
+    //         console.log("arr1[" + i + "][" + j + "] = " + arr1[j]);
+    //     }
+    // }
+
+    // for(let i = 0; i < array.length; i++) {
+    //     for(let j = 0; j < array[i].length; j++) {
+    //         console.log("  array[" + i + "][" + j + "] = " + array[i][j]);
+    //     }
+    // }
+
+    // Para saber si hay sub-arrays en un array
+    for (let i = 0; i < array.length; i++) {
+        let k = array[i].length;
+        if (k != undefined) {
+            console.log("  array[" + i + "].length = " + k);
+            for (let j = 0; j < k; j++) {
+                console.log("    array[" + i + "][" + j + "] = " + array[i][j]);
+            }
+        }
+        // En este caso, esto no se dará
+        else {
+          console.log("  array[" + i + "] = " + array[i]);
+        }
+    }
+
+    // // Todos los valores
+    // for (let i of array) {
+    //   for (let j of i) {
+    //     console.log(j) //Should log numbers from 1 to 10
+    //   }
+    // }
+
+    // for (let i of array) {
+    //     if (i.length != undefined) {
+    //       console.log("i.length = " + i.length)
+    //         for (let j of i) {
+    //           console.log("  " + j)
+    //         }
+    //     }
+    //     else {
+    //       console.log(i);
+    //     }
+    // }
+
+    return resultado;
 }
 
 /**
