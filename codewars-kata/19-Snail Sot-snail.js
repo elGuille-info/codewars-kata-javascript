@@ -24,6 +24,12 @@ NOTE 2: The 0x0 (empty matrix) is represented as en empty array inside an array 
 ARRAYS, ALGORITHMS
 */
 
+/*
+    Si tienen 3 filas, el último está en la 2ª fila, ¿en el 2º elemento?
+    Si tienen 4 filas, el último está en la 3ª fila, ¿en el 2º elemento?
+*/
+
+
 //snail = function(array) {
 function snail(array) {
     // enjoy
