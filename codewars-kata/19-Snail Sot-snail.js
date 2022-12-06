@@ -40,50 +40,42 @@ function snail(array) {
 
     let resultado = [];
 
-    // for(var i = 0; i < array.length; i++) {
-    //     var arr1 = array[i];
-    //     for(var j = 0; j < arr1.length; j++) {
-    //         console.log("arr1[" + i + "][" + j + "] = " + arr1[j]);
-    //     }
-    // }
-
-    // for(let i = 0; i < array.length; i++) {
-    //     for(let j = 0; j < array[i].length; j++) {
-    //         console.log("  array[" + i + "][" + j + "] = " + array[i][j]);
-    //     }
-    // }
-
-    // Para saber si hay sub-arrays en un array
-    for (let i = 0; i < array.length; i++) {
-        let k = array[i].length;
-        if (k != undefined) {
-            console.log("  array[" + i + "].length = " + k);
-            for (let j = 0; j < k; j++) {
-                console.log("    array[" + i + "][" + j + "] = " + array[i][j]);
-            }
-        }
-        // En este caso, esto no se dará
-        else {
-          console.log("  array[" + i + "] = " + array[i]);
-        }
+    let numSub = array.length;
+    // Añadir al principio todos los elementos del primer array
+    for (let j = 0; j < array[0].length; j++) {
+        resultado.push(array[0][j]);
     }
 
-    // // Todos los valores
-    // for (let i of array) {
-    //   for (let j of i) {
-    //     console.log(j) //Should log numbers from 1 to 10
-    //   }
-    // }
+    // Añadir el último de cada sub array (salvo la primera)
+    for (let i = 1; i < array.length; i++) {
+        let n = array[i].length - 1;
+        resultado.push(array[i][n]);
+    }
+    // Del último array, añadir todos desde el penúltimo hasta el primero
+    for (let i = array[numSub - 1].length - 2; i >= 0; i--) {
+        resultado.push(array[numSub - 1][i]);
+    }
 
-    // for (let i of array) {
-    //     if (i.length != undefined) {
-    //       console.log("i.length = " + i.length)
-    //         for (let j of i) {
-    //           console.log("  " + j)
-    //         }
+    // TODO: Añadir los intermedios...
+
+    // Añadir los del final
+    let x = numSub - 2;
+    for (let i = 0; i < array[x].length - 1; i++) {
+        resultado.push(array[x][i]);
+    }
+
+    // // Ahora depende de los subarrays que haya
+    // // Si son 3: Añadir del array[1] del primero al penúltimo.
+    // if (numSub == 3) {
+    //     for (let i = 0; i < array[1].length - 1; i++) {
+    //         resultado.push(array[1][i]);
     //     }
-    //     else {
-    //       console.log(i);
+    // }
+    // else {
+    //     // Si hay más de 3 sub arrays
+    //     let x = numSub - 2;
+    //     for (let i = 0; i < array[x].length - 1; i++) {
+    //         resultado.push(array[x][i]);
     //     }
     // }
 
@@ -108,11 +100,11 @@ function pruebas(arr, resOK) {
 }
 
 // Pruebas
-pruebas([[]], []);
-pruebas([[1]], [1]);
+// pruebas([[]], []);
+// pruebas([[1]], [1]);
 pruebas([[1, 2, 3], [4, 5, 6], [7, 8, 9]], [1, 2, 3, 6, 9, 8, 7, 4, 5]);
 pruebas([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25]], [1, 2, 3, 4, 5, 10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6, 7, 8, 9, 14, 19, 18, 17, 12, 13]);
-pruebas([[1, 2, 3, 4, 5, 6], [20, 21, 22, 23, 24, 7], [19, 32, 33, 34, 25, 8], [18, 31, 36, 35, 26, 9], [17, 30, 29, 28, 27, 10], [16, 15, 14, 13, 12, 11]], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36]);
+// pruebas([[1, 2, 3, 4, 5, 6], [20, 21, 22, 23, 24, 7], [19, 32, 33, 34, 25, 8], [18, 31, 36, 35, 26, 9], [17, 30, 29, 28, 27, 10], [16, 15, 14, 13, 12, 11]], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36]);
 //pruebas();
 
 /*
