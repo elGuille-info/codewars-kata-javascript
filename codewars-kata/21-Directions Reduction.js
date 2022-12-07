@@ -65,21 +65,20 @@ function dirReduc(arr){
     }
 
     let j = 0;
-    let hay = false;
     let desde = 0;
     let noHay = 0;
     while (res.length > 0) {
         desde = 0;
-        hay = false;
         while (desde < res.length) {
             j = res.indexOf(n, desde);
-            if (j == -1) {
+            if (j == -1 || j == res.length - 1) {
                 noHay++;
                 break;
             }
             if (j > -1) {
                 if (res[j + 1] == s) {
                     res = removeTwoAt(res, j);
+                    noHay = 0;
                     desde = j;
                 }
                 else {
@@ -88,16 +87,16 @@ function dirReduc(arr){
             }
         }
         desde = 0;
-        hay = false;
         while (desde < res.length) {
             j = res.indexOf(s, desde);
-            if (j == -1) {
+            if (j == -1 || j == res.length - 1) {
                 noHay++;
                 break;
             }
             if (j > -1) {
                 if (res[j + 1] == n) {
                     res = removeTwoAt(res, j);
+                    noHay = 0;
                     desde = j;
                 }
                 else {
@@ -106,16 +105,16 @@ function dirReduc(arr){
             }
         }
         desde = 0;
-        hay = false;
         while (desde < res.length) {
             j = res.indexOf(e, desde);
-            if (j == -1) {
+            if (j == -1 || j == res.length - 1) {
                 noHay++;
                 break;
             }
             if (j > -1) {
                 if (res[j + 1] == w) {
                     res = removeTwoAt(res, j);
+                    noHay = 0;
                     desde = j;
                 }
                 else {
@@ -124,16 +123,16 @@ function dirReduc(arr){
             }
         }
         desde = 0;
-        hay = false;
         while (desde < res.length) {
             j = res.indexOf(w, desde);
-            if (j == -1) {
+            if (j == -1 || j == res.length - 1) {
                 noHay++;
                 break;
             }
             if (j > -1) {
                 if (res[j + 1] == e) {
                     res = removeTwoAt(res, j);
+                    noHay = 0;
                     desde = j;
                 }
                 else {
@@ -142,26 +141,11 @@ function dirReduc(arr){
             }
         }
 
-        //if (noHay == 4) {
-        if (noHay == 4 || noHay + res.length == 4) {
+        if (noHay == 4 || noHay + res.length == 4 || noHay + res.length == 8) {
             break;
         }
         noHay = 0;
     }
-
-    // for (let i = 0; i < res.length; i++) {
-    //     if (i == res.length -1) {
-    //         break;
-    //     }
-    //     if ((res[i] == n && res[i+1] == s) || (res[i] == s && res[i+1] == n)) {
-    //         res = removeTwoAt(res, i);
-    //         i = 0;
-    //     }
-    //     if ((res[i] == e && res[i+1] == w) || (res[i] == w && res[i+1] == e)) {
-    //         res = removeTwoAt(res, i);
-    //         i = 0;
-    //     }
-    // }
 
     function removeTwoAt(res, j) {
         let res1 = [];
@@ -255,15 +239,15 @@ function dirReduc(arr){
 
 // Pruebas
 
-// pruebas(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"], ["WEST"]);
+pruebas(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"], ["WEST"]);
+pruebas(["NORTH", "EAST", "WEST", "SOUTH", "WEST", "WEST"], ["WEST", "WEST"]);
+
 // pruebas(["EAST","EAST","WEST","NORTH","WEST","EAST","EAST","SOUTH","NORTH","WEST"], ['EAST', 'NORTH']);
 // pruebas(["SOUTH","NORTH","WEST","EAST","SOUTH","NORTH","SOUTH","WEST","WEST","EAST","SOUTH","NORTH","EAST","WEST"], ['SOUTH', 'WEST'])
-// pruebas(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"], ["WEST"]);
-pruebas(["NORTH", "WEST", "SOUTH", "EAST"], ["NORTH", "WEST", "SOUTH", "EAST"]);
-pruebas(["NORTH", "SOUTH", "EAST", "WEST", "EAST", "WEST"], []);
-pruebas(["NORTH", "EAST", "WEST", "SOUTH", "WEST", "WEST"], ["WEST", "WEST"]);
-pruebas(["NORTH", "SOUTH"], []);
-pruebas(["EAST", "WEST", "EAST", "WEST"], []);
+// pruebas(["NORTH", "WEST", "SOUTH", "EAST"], ["NORTH", "WEST", "SOUTH", "EAST"]);
+// pruebas(["NORTH", "SOUTH", "EAST", "WEST", "EAST", "WEST"], []);
+// pruebas(["NORTH", "SOUTH"], []);
+// pruebas(["EAST", "WEST", "EAST", "WEST"], []);
 //pruebas();
 
 /*
