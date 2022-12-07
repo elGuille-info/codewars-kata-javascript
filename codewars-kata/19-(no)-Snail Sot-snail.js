@@ -25,10 +25,69 @@ ARRAYS, ALGORITHMS
 */
 
 /*
+    Las soluciones
+
+*/
+//1- Unihedron, altrubypirate, xiaright, lgabster, YGYOOO, osekh, link., theyellowkang, manchunteak, dubdjon! (+ 120)
+// https://www.codewars.com/kata/reviews/5220c5750b1ba099360003e2/groups/55213b8f48b3baa1b90009ff
+//
+// Resulta que es la que he copiado para presentarla... no soy el único "ladronzuelo"
+//
+//snail = function(array) {
+function snail_1(array) {
+  var result;
+  while (array.length) {
+    // Steal the first row.
+    result = (result ? result.concat(array.shift()) : array.shift());
+    // Steal the right items.
+    for (var i = 0; i < array.length; i++)
+      result.push(array[i].pop());
+    // Steal the bottom row.
+    result = result.concat((array.pop() || []).reverse());
+    // Steal the left items.
+    for (var i = array.length - 1; i >= 0; i--)
+      result.push(array[i].shift());
+  }
+  return result;
+}
+
+//2- buttonupbub, abeir1994, cristhian.mesta, user5209600, sreysa, Sum Sovann, Dron1666, 啾哝., user6723683, marwa channoufi (+ 142)
+// https://www.codewars.com/kata/reviews/5220c5750b1ba099360003e2/groups/583b55348bbc048410000c2c
+function snail_2(array) {
+    var vector = [];
+    while (array.length) {
+      vector.push(...array.shift());
+      array.map(row => vector.push(row.pop()));
+      array.reverse().map(row => row.reverse());
+    }
+    return vector;
+}
+
+//3- Rawk, underdoglzd, rdevjke, nikvlkv, user22221234
+// https://www.codewars.com/kata/reviews/5220c5750b1ba099360003e2/groups/57442b74ce32aa4ae4000835
+function snail_3(array) {
+//snail_3 = function(array) {
+    var size = array.length;
+
+    if (size == 0)
+      return [];
+
+    if (size == 1)
+      return array[0];
+
+    var top    = array[0].slice(0, -1);
+    var right  = array.slice(0, -1).map(a => a[size - 1]);
+    var bottom = array[size -1].slice(1).reverse();
+    var left   = array.slice(1).map(a => a[0]).reverse();
+    var inner  = array.slice(1, -1).map(a => a.slice(1, -1));
+
+    return [].concat(top, right, bottom, left, snail(inner));
+}
+
+/*
     Si tienen 3 filas, el último está en la 2ª fila, ¿en el 2º elemento?
     Si tienen 4 filas, el último está en la 3ª fila, ¿en el 2º elemento?
 */
-
 
 //snail = function(array) {
 function snailNO(array) {
@@ -192,7 +251,7 @@ function snail(array) {
  * Indicar aquí la función a usar dentro de
  * @see pruebas
  */
- let laFuncion = snail;
+ let laFuncion = snail_1;
 
 function pruebas(arr, resOK) {
     var res = laFuncion(arr);
