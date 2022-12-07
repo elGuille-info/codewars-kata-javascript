@@ -87,6 +87,24 @@ function dirReduc_3(arr){
   }, [])
 }
 
+//4- chrisd19, ched88, aaabbbaaa
+// https://www.codewars.com/kata/reviews/551075dcaacf809d25000248/groups/56ad8fd35b0c3e8d3f000014
+function dirReduc_4(arr){
+    var count = 0;
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] === "WEST" && arr[i+1] === "EAST" ||
+          arr[i] === "EAST" && arr[i+1] === "WEST" ||
+          arr[i] === "NORTH" && arr[i+1] === "SOUTH" ||
+          arr[i] === "SOUTH" && arr[i+1] === "NORTH") {
+          arr.splice(i, 2);
+          count++;
+          i--;
+      }
+    }
+    return count === 0 ? arr : dirReduc(arr);
+}
+
+
 function dirReduc(arr){
     // ...
     const n = "NORTH";
