@@ -64,6 +64,119 @@ function dirReduc(arr){
         res.push(arr[i]);
     }
 
+    let j = 0;
+    let hay = false;
+    let desde = 0;
+    let noHay = 0;
+    while (res.length > 0) {
+        desde = 0;
+        hay = false;
+        while (desde < res.length) {
+            j = res.indexOf(n, desde);
+            if (j == -1) {
+                noHay++;
+                break;
+            }
+            if (j > -1) {
+                if (res[j + 1] == s) {
+                    res = removeTwoAt(res, j);
+                    desde = j;
+                }
+                else {
+                    desde = j + 1;
+                }
+            }
+        }
+        desde = 0;
+        hay = false;
+        while (desde < res.length) {
+            j = res.indexOf(s, desde);
+            if (j == -1) {
+                noHay++;
+                break;
+            }
+            if (j > -1) {
+                if (res[j + 1] == n) {
+                    res = removeTwoAt(res, j);
+                    desde = j;
+                }
+                else {
+                    desde = j + 1;
+                }
+            }
+        }
+        desde = 0;
+        hay = false;
+        while (desde < res.length) {
+            j = res.indexOf(e, desde);
+            if (j == -1) {
+                noHay++;
+                break;
+            }
+            if (j > -1) {
+                if (res[j + 1] == w) {
+                    res = removeTwoAt(res, j);
+                    desde = j;
+                }
+                else {
+                    desde = j + 1;
+                }
+            }
+        }
+        desde = 0;
+        hay = false;
+        while (desde < res.length) {
+            j = res.indexOf(w, desde);
+            if (j == -1) {
+                noHay++;
+                break;
+            }
+            if (j > -1) {
+                if (res[j + 1] == e) {
+                    res = removeTwoAt(res, j);
+                    desde = j;
+                }
+                else {
+                    desde = j + 1;
+                }
+            }
+        }
+
+        //if (noHay == 4) {
+        if (noHay == 4 || noHay + res.length == 4) {
+            break;
+        }
+        noHay = 0;
+    }
+
+    // for (let i = 0; i < res.length; i++) {
+    //     if (i == res.length -1) {
+    //         break;
+    //     }
+    //     if ((res[i] == n && res[i+1] == s) || (res[i] == s && res[i+1] == n)) {
+    //         res = removeTwoAt(res, i);
+    //         i = 0;
+    //     }
+    //     if ((res[i] == e && res[i+1] == w) || (res[i] == w && res[i+1] == e)) {
+    //         res = removeTwoAt(res, i);
+    //         i = 0;
+    //     }
+    // }
+
+    function removeTwoAt(res, j) {
+        let res1 = [];
+        for (let i = 0; i < res.length; i++) {
+            if (i != j && i != (j+1)) {
+                res1.push(res[i]);
+            }
+        }
+        return res1;
+    }
+
+    return res;
+}
+
+/*
     for (let i = 0; i < res.length; i++) {
         if (i == res.length -1) {
             break;
@@ -121,28 +234,7 @@ function dirReduc(arr){
     //         break;
     //     }
     //}
-
-    function removeTwoAt(res, j) {
-        let res1 = [];
-        for (let i = 0; i < res.length; i++) {
-            if (i != j && i != (j+1)) {
-                res1.push(res[i]);
-            }
-        }
-        // if (j > 0) {
-        //     //for (let i = j-1; i < j; i++) {
-        //     for (let i = 0; i < j; i++) {
-        //         res1.push(res[i]);
-        //     }
-        // }
-        // for (let i = j + 1; i < res.length; i++) {
-        //     res1.push(res[i]);
-        // }
-        return res1;
-    }
-
-    return res;
-}
+*/
 
 /**
  * Indicar aquí la función a usar dentro de
@@ -162,14 +254,16 @@ function dirReduc(arr){
 }
 
 // Pruebas
-pruebas(["EAST","EAST","WEST","NORTH","WEST","EAST","EAST","SOUTH","NORTH","WEST"], ['EAST', 'NORTH']);
-pruebas(["SOUTH","NORTH","WEST","EAST","SOUTH","NORTH","SOUTH","WEST","WEST","EAST","SOUTH","NORTH","EAST","WEST"], ['SOUTH', 'WEST'])
+
 // pruebas(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"], ["WEST"]);
-// pruebas(["NORTH", "WEST", "SOUTH", "EAST"], ["NORTH", "WEST", "SOUTH", "EAST"]);
-// pruebas(["NORTH", "SOUTH", "EAST", "WEST", "EAST", "WEST"], []);
-// pruebas(["NORTH", "EAST", "WEST", "SOUTH", "WEST", "WEST"], ["WEST", "WEST"]);
-// pruebas(["NORTH", "SOUTH"], []);
-// pruebas(["EAST", "WEST", "EAST", "WEST"], []);
+// pruebas(["EAST","EAST","WEST","NORTH","WEST","EAST","EAST","SOUTH","NORTH","WEST"], ['EAST', 'NORTH']);
+// pruebas(["SOUTH","NORTH","WEST","EAST","SOUTH","NORTH","SOUTH","WEST","WEST","EAST","SOUTH","NORTH","EAST","WEST"], ['SOUTH', 'WEST'])
+// pruebas(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"], ["WEST"]);
+pruebas(["NORTH", "WEST", "SOUTH", "EAST"], ["NORTH", "WEST", "SOUTH", "EAST"]);
+pruebas(["NORTH", "SOUTH", "EAST", "WEST", "EAST", "WEST"], []);
+pruebas(["NORTH", "EAST", "WEST", "SOUTH", "WEST", "WEST"], ["WEST", "WEST"]);
+pruebas(["NORTH", "SOUTH"], []);
+pruebas(["EAST", "WEST", "EAST", "WEST"], []);
 //pruebas();
 
 /*
