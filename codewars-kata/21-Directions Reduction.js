@@ -51,6 +51,42 @@ if you want to translate, please ask before translating.
 FUNDAMENTALS
 */
 
+/*
+    Soluciones
+*/
+
+//1- Unnamed, Meow, Quantumke, Kathure, JeffP6, jmcilhargey, Dimzdey, BuZZinga, Akash Chaudhary, user9150091 (+ 56)
+// https://www.codewars.com/kata/reviews/551075dcaacf809d25000248/groups/5516e513a5808bc4a2000074
+function dirReduc_1(plan) {
+    var opposite = {
+      'NORTH': 'SOUTH', 'EAST': 'WEST', 'SOUTH': 'NORTH', 'WEST': 'EAST'};
+    return plan.reduce(function(dirs, dir){
+        if (dirs[dirs.length - 1] === opposite[dir])
+          dirs.pop();
+        else
+          dirs.push(dir);
+        return dirs;
+      }, []);
+}
+
+//2- Balkoth, alili, lz-lee, Sacred6661, hajer62, Vlinder, Wissem-yah, njaja.midmark, dtcAlex, albertehc (+ 6)
+// https://www.codewars.com/kata/reviews/551075dcaacf809d25000248/groups/5511603aaacf8071e400087f
+function dirReduc_2(arr) {
+    var str = arr.join(''), pattern = /NORTHSOUTH|EASTWEST|SOUTHNORTH|WESTEAST/;
+    while (pattern.test(str)) str = str.replace(pattern,'');
+    return str.match(/(NORTH|SOUTH|EAST|WEST)/g)||[];
+}
+
+//3- xixa, flowOnWandering, jackwatk, cycy!, medhichemlemsi
+// https://www.codewars.com/kata/reviews/551075dcaacf809d25000248/groups/581c48645cfa83c36100006c
+function dirReduc_3(arr){
+	var opposite = { "SOUTH":"NORTH", "NORTH":"SOUTH", "WEST":"EAST", "EAST":"WEST"}
+	return arr.reduce(function (a, b, i) {
+  	opposite[a.slice(-1)] === b ? a.pop() : a.push(b)
+  	return a
+  }, [])
+}
+
 function dirReduc(arr){
     // ...
     const n = "NORTH";
