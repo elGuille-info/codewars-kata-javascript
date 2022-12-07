@@ -12,6 +12,22 @@ CIPHERS, FUNDAMENTALS
 
 */
 
+/*
+    Soluciones
+*/
+
+//1- ooflorent, Justiceleeg, irinainina, hawkf, buuuu, benkrzan, Ardy85, shivam_jackson, Drerrday, orangefruit21 (+ 44)
+// https://www.codewars.com/kata/reviews/550be338742fda753e000a03/groups/55f03d740d66a6a89800000b
+function rot13_1(message) {
+    var a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    var b = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"
+    return message.replace(/[a-z]/gi, c => b[a.indexOf(c)])
+}
+
+//2- acraileanu, Zakkie, leidy, Mida2009, gboxdaky, charleston1395, huangnan, aleclogronio, carlosProgrammer, skan2302 (+ 21)
+// https://www.codewars.com/kata/reviews/550be338742fda753e000a03/groups/5707673c924f3476af0007a9
+const rot13_2 = str => str.replace(/[a-z]/gi, letter => String.fromCharCode(letter.charCodeAt(0) + (letter.toLowerCase() <= 'm' ? 13: -13)));
+
 function rot13(message){
     //your code here
 
