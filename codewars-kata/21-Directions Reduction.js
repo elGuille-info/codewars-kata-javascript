@@ -64,72 +64,80 @@ function dirReduc(arr){
         res.push(arr[i]);
     }
 
-    let hay = false;
-    let j = 0;
-    while (res.length > 0) {
-        hay = false;
-        j = res.indexOf(n);
-        if (j > -1) {
-            if (j < res.length) {
-                if ( res[j + 1] == s ) {
-                    res = removeAt(res, j);
-                    res = removeAt(res, j);
-                    hay = true;
-                    desde = 0;
-                }
-            }
-        }
-        j = res.indexOf(s);
-        if (j > -1) {
-            if (j < res.length) {
-                if ( res[j + 1] == n ) {
-                    res = removeAt(res, j);
-                    res = removeAt(res, j);
-                    hay = true;
-                    desde = 0;
-                }
-            }
-        }
-        j = res.indexOf(e);
-        if (j > -1) {
-            if (j < res.length) {
-                if ( res[j + 1] == w ) {
-                    res = removeAt(res, j);
-                    res = removeAt(res, j);
-                    hay = true;
-                    desde = 0;
-                }
-            }
-        }
-        j = res.indexOf(w);
-        if (j > -1) {
-            if (j < res.length) {
-                if ( res[j + 1] == e ) {
-                    res = removeAt(res, j);
-                    res = removeAt(res, j);
-
-                    hay = true;
-                    desde = 0;
-                }
-            }
-        }
-
-        if (hay == false) {
+    for (let i = 0; i < res.length; i++) {
+        if (i == res.length -1) {
             break;
+        }
+        if ((res[i] == n && res[i+1] == s) || (res[i] == s && res[i+1] == n)) {
+            res = removeTwoAt(res, i);
+        }
+        if ((res[i] == e && res[i+1] == w) || (res[i] == w && res[i+1] == e)) {
+            res = removeTwoAt(res, i);
         }
     }
 
-    function removeAt(res, j) {
+    // let hay = false;
+    // let j = 0;
+    // while (res.length > 0) {
+    //     hay = false;
+    //     j = res.indexOf(n);
+    //     if (j > -1) {
+    //         if (j < res.length) {
+    //             if ( res[j + 1] == s ) {
+    //                 res = removeTwoAt(res, j);
+    //                 hay = true;
+    //             }
+    //         }
+    //     }
+    //     j = res.indexOf(s);
+    //     if (j > -1) {
+    //         if (j < res.length) {
+    //             if ( res[j + 1] == n ) {
+    //                 res = removeTwoAt(res, j);
+    //                 hay = true;
+    //             }
+    //         }
+    //     }
+    //     j = res.indexOf(e);
+    //     if (j > -1) {
+    //         if (j < res.length) {
+    //             if ( res[j + 1] == w ) {
+    //                 res = removeTwoAt(res, j);
+    //                 hay = true;
+    //             }
+    //         }
+    //     }
+    //     j = res.indexOf(w);
+    //     if (j > -1) {
+    //         if (j < res.length) {
+    //             if ( res[j + 1] == e ) {
+    //                 res = removeTwoAt(res, j);
+    //                 hay = true;
+    //             }
+    //         }
+    //     }
+
+    //     if (hay == false) {
+    //         break;
+    //     }
+    //}
+
+    function removeTwoAt(res, j) {
         let res1 = [];
-        if (j > 0) {
-            //for (let i = j-1; i < j; i++) {
-            for (let i = 0; i < j; i++) {
+        for (let i = 0; i < res.length; i++) {
+            if (i != j && i != (j+1)) {
                 res1.push(res[i]);
             }
         }
-        for (let i = j + 1; i < res.length; i++) {
-            res1.push(res[i]);
-        }
+        // if (j > 0) {
+        //     //for (let i = j-1; i < j; i++) {
+        //     for (let i = 0; i < j; i++) {
+        //         res1.push(res[i]);
+        //     }
+        // }
+        // for (let i = j + 1; i < res.length; i++) {
+        //     res1.push(res[i]);
+        // }
         return res1;
     }
 
