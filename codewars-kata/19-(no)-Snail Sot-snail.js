@@ -144,6 +144,9 @@ function snail2(array) {
 	return r;
 }
 
+// La presentada, copiada de aquí
+// De: yangzj1992
+// https://github.com/yangzj1992/FE-Questions/blob/master/codewars/521c2db8ddc89b9b7a0000c1.Snail%20Sort/Snail%20Sort.md
 function snail0(array) {
     var result;
     while (array.length) {
