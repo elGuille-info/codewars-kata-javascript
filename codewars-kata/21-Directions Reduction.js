@@ -104,8 +104,103 @@ function dirReduc_4(arr){
     return count === 0 ? arr : dirReduc(arr);
 }
 
-
 function dirReduc(arr){
+    // ...
+    const n = "NORTH";
+    const s = "SOUTH";
+    const e = "EAST";
+    const w = "WEST";
+
+    let res = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        res.push(arr[i]);
+    }
+
+    let j = 0;
+    let desde = 0;
+    let noHay = 0;
+    while (res.length > 0) {
+        desde = 0;
+        while (desde < res.length) {
+            j = res.indexOf(n, desde);
+            if (j == -1 || j == res.length - 1) {
+                noHay++;
+                break;
+            }
+            if (res[j + 1] == s) {
+                //res = removeTwoAt(res, j);
+                res.splice(j, 2);
+                noHay = 0;
+                desde = j;
+            }
+            else {
+                desde = j + 1;
+            }
+        }
+        desde = 0;
+        while (desde < res.length) {
+            j = res.indexOf(s, desde);
+            if (j == -1 || j == res.length - 1) {
+                noHay++;
+                break;
+            }
+            if (res[j + 1] == n) {
+                //res = removeTwoAt(res, j);
+                res.splice(j, 2);
+                noHay = 0;
+                desde = j;
+            }
+            else {
+                desde = j + 1;
+            }
+        }
+        desde = 0;
+        while (desde < res.length) {
+            j = res.indexOf(e, desde);
+            if (j == -1 || j == res.length - 1) {
+                noHay++;
+                break;
+            }
+            if (res[j + 1] == w) {
+                //res = removeTwoAt(res, j);
+                res.splice(j, 2);
+                noHay = 0;
+                desde = j;
+            }
+            else {
+                desde = j + 1;
+            }
+        }
+        desde = 0;
+        while (desde < res.length) {
+            j = res.indexOf(w, desde);
+            if (j == -1 || j == res.length - 1) {
+                noHay++;
+                break;
+            }
+            if (res[j + 1] == e) {
+                //res = removeTwoAt(res, j);
+                res.splice(j, 2);
+                noHay = 0;
+                desde = j;
+            }
+            else {
+                desde = j + 1;
+            }
+        }
+
+        if (noHay == 4 || res.length == 0) {
+            break;
+        }
+        noHay = 0;
+    }
+
+    return res;
+}
+
+// La presentada
+function dirReduc_0(arr){
     // ...
     const n = "NORTH";
     const s = "SOUTH";
