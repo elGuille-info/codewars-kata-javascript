@@ -59,55 +59,16 @@ function dirReduc(arr){
     const w = "WEST";
 
     let res = [];
-    //let dirNS = [n, s];
-    //let dirEW = [e, w];
-    let dirAnt = "";
 
     for (let i = 0; i < arr.length; i++) {
         res.push(arr[i]);
-        continue;
-
-        if (dirAnt == "") {
-            dirAnt = arr[i];
-        }
-        else {
-            switch (arr[i]) {
-                case n:
-                    if (dirAnt != s) {
-                        res.push(arr[i]);
-                    }
-                    break;
-                case s:
-                    if (dirAnt != n) {
-                        res.push(arr[i]);
-                    }
-                    break;
-                case e:
-                    if (dirAnt != w) {
-                        res.push(arr[i]);
-                    }
-                    break;
-                case w:
-                    if (dirAnt != e) {
-                        res.push(arr[i]);
-                    }
-                    break;
-            }
-            dirAnt = arr[i];
-        }
     }
 
     let hay = false;
-    let desde = -1;
     let j = 0;
     while (res.length > 0) {
         hay = false;
-        //desde++;
-        // if (desde >= res.length - 1) {
-        //     desde = 0;
-        // }
-        desde = 0;
-        j = res.indexOf(n, desde);
+        j = res.indexOf(n);
         if (j > -1) {
             if (j < res.length) {
                 if ( res[j + 1] == s ) {
@@ -116,12 +77,9 @@ function dirReduc(arr){
                     hay = true;
                     desde = 0;
                 }
-                // else {
-                //     desde = j + 1;
-                // }
             }
         }
-        j = res.indexOf(s,desde);
+        j = res.indexOf(s);
         if (j > -1) {
             if (j < res.length) {
                 if ( res[j + 1] == n ) {
@@ -130,14 +88,10 @@ function dirReduc(arr){
                     hay = true;
                     desde = 0;
                 }
-                // else {
-                //     desde = j + 1;
-                // }
             }
         }
-        j = res.indexOf(e,desde);
+        j = res.indexOf(e);
         if (j > -1) {
-            //desde = j + 1;
             if (j < res.length) {
                 if ( res[j + 1] == w ) {
                     res = removeAt(res, j);
@@ -145,14 +99,10 @@ function dirReduc(arr){
                     hay = true;
                     desde = 0;
                 }
-                // else {
-                //     desde = j + 1;
-                // }
             }
         }
-        j = res.indexOf(w,desde);
+        j = res.indexOf(w);
         if (j > -1) {
-            //desde = j + 1;
             if (j < res.length) {
                 if ( res[j + 1] == e ) {
                     res = removeAt(res, j);
@@ -161,9 +111,6 @@ function dirReduc(arr){
                     hay = true;
                     desde = 0;
                 }
-                // else {
-                //     desde = j + 1;
-                // }
             }
         }
 
@@ -175,7 +122,8 @@ function dirReduc(arr){
     function removeAt(res, j) {
         let res1 = [];
         if (j > 0) {
-            for (let i = j-1; i < j; i++) {
+            //for (let i = j-1; i < j; i++) {
+            for (let i = 0; i < j; i++) {
                 res1.push(res[i]);
             }
         }
@@ -206,12 +154,14 @@ function dirReduc(arr){
 }
 
 // Pruebas
-pruebas(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"], ["WEST"]);
-pruebas(["NORTH", "WEST", "SOUTH", "EAST"], ["NORTH", "WEST", "SOUTH", "EAST"]);
-pruebas(["NORTH", "SOUTH", "EAST", "WEST", "EAST", "WEST"], []);
-pruebas(["NORTH", "EAST", "WEST", "SOUTH", "WEST", "WEST"], ["WEST", "WEST"]);
-pruebas(["NORTH", "SOUTH"], []);
-pruebas(["EAST", "WEST", "EAST", "WEST"], []);
+pruebas(["EAST","EAST","WEST","NORTH","WEST","EAST","EAST","SOUTH","NORTH","WEST"], ['EAST', 'NORTH']);
+pruebas(["SOUTH","NORTH","WEST","EAST","SOUTH","NORTH","SOUTH","WEST","WEST","EAST","SOUTH","NORTH","EAST","WEST"], ['SOUTH', 'WEST'])
+// pruebas(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"], ["WEST"]);
+// pruebas(["NORTH", "WEST", "SOUTH", "EAST"], ["NORTH", "WEST", "SOUTH", "EAST"]);
+// pruebas(["NORTH", "SOUTH", "EAST", "WEST", "EAST", "WEST"], []);
+// pruebas(["NORTH", "EAST", "WEST", "SOUTH", "WEST", "WEST"], ["WEST", "WEST"]);
+// pruebas(["NORTH", "SOUTH"], []);
+// pruebas(["EAST", "WEST", "EAST", "WEST"], []);
 //pruebas();
 
 /*
