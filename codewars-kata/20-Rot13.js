@@ -39,7 +39,9 @@ function rot13(message){
         }
     }
 
-    return res.toString().replaceAll(",", "");
+    //return res.toString().replaceAll(",", "");
+    //return String(res).replaceAll(",", "");
+    return res.join('');
 
 }
 
