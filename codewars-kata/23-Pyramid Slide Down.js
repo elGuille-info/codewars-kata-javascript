@@ -31,8 +31,30 @@ ALGORITHMS, DYNAMIC PROGRAMMING
 */
 
 /*
-  Creo que la idea es tomar el índice n de cada fila n, salvo las 2 primeras que es el índice 0
+Segundo intento:
+Sumar lo que haya em la penúltima columna de cada fila, salvo en la primera
+*/
+function longestSlideDown (pyramid) {
+    let res= 0;
+    let num = 0;
+    for (let i = 0; i < pyramid.length; i++) {
+        if (i == 0) {
+            num = pyramid[i][0];
+            res += num;
+        }
+        else {
+            num = pyramid[i][pyramid[i].length - 2];
+            res += num;
+        }
+    }
+    return res;
+}
 
+/*
+Primer intento:
+  Creo que la idea es tomar el índice n1- de cada fila n, salvo la primera que es el índice 0
+
+                     i
 [      3   ], // i = 0, 0 (0)
 [      7, 4], // i = 1, 0 (i-1)
 [2,    4, 6], // i = 2, 1 (i-1)
@@ -41,7 +63,8 @@ ALGORITHMS, DYNAMIC PROGRAMMING
 Aquí sería la suma de 3+7+4+9
 
 */
-function longestSlideDown (pyramid) {
+// Primer intento
+function longestSlideDown00 (pyramid) {
     let res= 0;
     let num = 0;
     for (let i = 0; i < pyramid.length; i++) {
