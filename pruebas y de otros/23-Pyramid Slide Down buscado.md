@@ -2,7 +2,7 @@
 
 [Codewars kata en JavaScript](https://www.codewars.com/kata/551f23362ff852e2ab000037/train/javascript)
 
-Un artículo sobre el tema:
+Un artículo de Handhika Yanuar Pratama (Jan 6, 2021) sobre el tema:
 [[Write-Up] Pyramid Slide Down Solution Using JavaScript](https://handhikayp.medium.com/write-up-pyramid-slide-down-solution-using-javascript-80decd6d51de)
 
 La solución indicada en el artículo anterior:
