@@ -1,6 +1,10 @@
 ﻿/*
 Las diferentes funciones usadas para las pruebas. (08/dic/22 14.47)
 
+Para probar el código se puede usar cualquiera de los mdn:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Quantifiers#try_it
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join
+etc.
 */
 
 function nombre_de_la_funcion(parametro) {
