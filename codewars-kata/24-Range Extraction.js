@@ -20,10 +20,9 @@ ALGORITHMS
 /*
 De: https://stackoverflow.com/a/70138303/14338047
 Pero no es correcto.
-
 */
 function rangos_nova() {
-function solution(list){
+function solution_no(list){
     let result=[]
 
     for(let i=0;i<list.length;i++){
@@ -55,7 +54,7 @@ function solution(list){
     }
     return result.toString()
 }
-console.log(solution([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]))
+console.log(solution_no([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]))
 // Output: "-6,-3-1,3-5,7-11,14-15,17-20"
 }
 
@@ -76,9 +75,48 @@ function solutionClever(arr) {
     return arrCopy.join(",");
 }
   
-
-function solution0(list){
+/**
+ * Poner los números indicados en rango, teniendo en cuenta que un rango debe abarcar al menos 3 valores.
+ * Por ejemplo: 1,2,3,5,6,8,9,10,11 será: 1-3,5,6,8-11 --> 1,2,3: 1-3 and 5,6: 5,6 and 8,9,10,11: 8-11
+ * [-6, 
+ * -3, -2, -1, 0, 1, 
+ * 3, 4, 5, 
+ * 7, 8, 9, 10, 11, 
+ * 14, 15, 
+ * 17, 18, 19, 20]), "-6,-3-1,3-5,7-11,14,15,17-20"
+ *  
+ * @param {*} list List of integers in increasing order.
+ * @returns A correctly formatted string in the range format.
+ */
+function solution(list) {
     // TODO: complete solution 
+    let res = [];
+
+    let num1 = list[0];
+    for (let i = 1; i < list.length - 1; i++) {
+        let num2 = list[i];
+        // // Comprobar si el numero anterior está asignado
+        // if (num1 == NaN) {
+        //     // Asignar el primero
+        //     num1 = num2;
+        //     //res.push(num2);
+        //     continue;
+        // }
+        // Si no son consecutivos, añadir el número anterior
+        if (list[i + 1] - num2 != 1) {
+            if (num2 - num1 >= 3) {
+                res.push(num1 + "-" + num2);
+                // Asignar el último a comprobar
+                num1 = num2;
+                continue;
+            }
+            res.push(num1);
+            num1 = num2;
+            //continue;
+        }
+    }
+
+    return res.join(",");
 }
 
 /**
@@ -111,7 +149,13 @@ function testArrNum(arr, resOK) {
 }
 
 // Pruebas
-testArrNum([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20], "-6,-3-1,3-5,7-11,14,15,17-20");
+testArrNum([
+    -6, 
+    -3, -2, -1, 0, 1, 
+    3, 4, 5, 
+    7, 8, 9, 10, 11, 
+    14, 15, 
+    17, 18, 19, 20], "-6,-3-1,3-5,7-11,14,15,17-20");
 testArrNum([-5,-4,0,5,6,7,9,10], "-5,-4,0,5-7,9,10");
 testArrNum([1,2,3,5,6,8,9,10,11], "1-3,5,6,8-11");
 
