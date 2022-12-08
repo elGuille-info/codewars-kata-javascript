@@ -303,11 +303,17 @@ function dirReduc_0(arr){
 
 /**
  * Indicar aquí la función a usar dentro de
- * @see pruebas
+ * @see testArrArr
  */
  let laFuncion = dirReduc;
 
- function pruebas(arr, resOK) {
+ /**
+  * Comprueba los cálculos a realizar sobre un array que devuelven un valor de tipo array.
+  *
+  * @param {*} arr El array a analizar.
+  * @param {*} resOK El resultado correcto.
+  */
+ function testArrArr(arr, resOK) {
     var res = laFuncion(arr);
     console.log("[" + arr.toString() + "] = [" + resOK + "] ?= ([" + res + "])");
     if ("[" + resOK + "]" != "[" + res + "]") {
@@ -319,15 +325,15 @@ function dirReduc_0(arr){
 }
 
 // Pruebas
-pruebas(["NORTH","SOUTH","SOUTH","EAST","WEST","NORTH"], [])
-pruebas(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"], ["WEST"]);
-pruebas(["NORTH", "EAST", "WEST", "SOUTH", "WEST", "WEST"], ["WEST", "WEST"]);
-pruebas(["EAST","EAST","WEST","NORTH","WEST","EAST","EAST","SOUTH","NORTH","WEST"], ['EAST', 'NORTH']);
-pruebas(["SOUTH","NORTH","WEST","EAST","SOUTH","NORTH","SOUTH","WEST","WEST","EAST","SOUTH","NORTH","EAST","WEST"], ['SOUTH', 'WEST'])
-pruebas(["NORTH", "WEST", "SOUTH", "EAST"], ["NORTH", "WEST", "SOUTH", "EAST"]);
-pruebas(["NORTH", "SOUTH", "EAST", "WEST", "EAST", "WEST"], []);
-pruebas(["NORTH", "SOUTH"], []);
-pruebas(["EAST", "WEST", "EAST", "WEST"], []);
+testArrArr(["NORTH","SOUTH","SOUTH","EAST","WEST","NORTH"], [])
+testArrArr(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"], ["WEST"]);
+testArrArr(["NORTH", "EAST", "WEST", "SOUTH", "WEST", "WEST"], ["WEST", "WEST"]);
+testArrArr(["EAST","EAST","WEST","NORTH","WEST","EAST","EAST","SOUTH","NORTH","WEST"], ['EAST', 'NORTH']);
+testArrArr(["SOUTH","NORTH","WEST","EAST","SOUTH","NORTH","SOUTH","WEST","WEST","EAST","SOUTH","NORTH","EAST","WEST"], ['SOUTH', 'WEST'])
+testArrArr(["NORTH", "WEST", "SOUTH", "EAST"], ["NORTH", "WEST", "SOUTH", "EAST"]);
+testArrArr(["NORTH", "SOUTH", "EAST", "WEST", "EAST", "WEST"], []);
+testArrArr(["NORTH", "SOUTH"], []);
+testArrArr(["EAST", "WEST", "EAST", "WEST"], []);
 //pruebas();
 
 /*

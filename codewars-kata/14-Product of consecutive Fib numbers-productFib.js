@@ -139,7 +139,7 @@ function productFib(prod) {
 
 /**
  * Indicar aquí la función a usar dentro de strictEqual
- * @see compararResultados
+ * @see comparaResultado
  */
 const laFuncion = productFib;
 
@@ -150,7 +150,7 @@ const laFuncion = productFib;
   * @param {*} resOK El resultado que debe dar.
  * @see laFuncion Para asignar la función a usar.
  */
-function compararResultados(valor, resOK) {
+function comparaResultado(valor, resOK) {
     console.log(valor + " = " + resOK);
 
     let res = laFuncion(valor);
@@ -163,18 +163,15 @@ function compararResultados(valor, resOK) {
 }
 
 // Pruebas
-compararResultados(4895, [55, 89, true]);
-compararResultados(5895, [89, 144, false]);
-compararResultados((74049690), [6765, 10946, true]);
-compararResultados((84049690), [10946, 17711, false]);
-compararResultados((193864606), [10946, 17711, true]);
-compararResultados((447577), [610, 987, false]);
-compararResultados((602070), [610, 987, true]);
-compararResultados((714), [21, 34, true]);
-compararResultados((800), [34, 55, false]);
-//compararResultados();
-//compararResultados();
-//compararResultados();
+comparaResultado(4895, [55, 89, true]);
+comparaResultado(5895, [89, 144, false]);
+comparaResultado((74049690), [6765, 10946, true]);
+comparaResultado((84049690), [10946, 17711, false]);
+comparaResultado((193864606), [10946, 17711, true]);
+comparaResultado((447577), [610, 987, false]);
+comparaResultado((602070), [610, 987, true]);
+comparaResultado((714), [21, 34, true]);
+comparaResultado((800), [34, 55, false]);
 
 /*
 const { assert } = require('chai');
