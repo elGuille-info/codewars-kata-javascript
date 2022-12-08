@@ -36,6 +36,23 @@ ALGORITHMS, MATHEMATICS
 
 const lastDigit_11 = (str1, str2) => +!+str2 || str1.slice(-1) ** (str2.slice(-2) % 4 || 4) % 10;
 
+//- macnick
+// https://www.codewars.com/kata/reviews/5519da926ddf72874200004e/groups/631854a96bc61000017990a9
+
+// Theory: 1. You need only the last digit of the number a.
+//         2. You need only the remainder of the division by 4 of the number b (the exponent)
+//         3. To find the remainder of division by 4 of a huge number you need only it's last 2 digits
+//         4. Then you just do the math base ** remainder and you return the last digit
+
+const lastDigit_macnick = (a, b) => {
+    if (b == 0) return 1;
+    if (a == 0) return 0;
+    let base = a.slice(-1);
+    let remainder = +b.slice(-2) % 4;
+    if (remainder == 0) remainder = 4;
+    return base ** remainder % 10;
+  };
+
 
 var lastDigit0 = function(str1, str2){  
     return 0; // fix me
