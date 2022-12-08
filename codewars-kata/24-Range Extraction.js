@@ -22,6 +22,7 @@ De: https://stackoverflow.com/a/70138303/14338047
 Pero no es correcto.
 
 */
+function rangos_nova() {
 function solution(list){
     let result=[]
 
@@ -55,6 +56,26 @@ function solution(list){
     return result.toString()
 }
 console.log(solution([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]))
+// Output: "-6,-3-1,3-5,7-11,14-15,17-20"
+}
+
+/*
+De: https://codepen.io/TheEnd/pen/gzwRQj
+*/
+function solutionClever(arr) {
+    const arrCopy = arr.slice();
+    for (let i = 0; i < arrCopy.length; i++) {
+        let j = i;
+        while (arrCopy[j] - arrCopy[j + 1] === -1) {
+            j++;
+        }
+        if (j - i > 1) {
+            arrCopy.splice(i, j - i + 1, arrCopy[i] + "-" + arrCopy[j]);
+        }
+    }
+    return arrCopy.join(",");
+}
+  
 
 function solution0(list){
     // TODO: complete solution 
@@ -67,7 +88,7 @@ function solution0(list){
  * Poner arriba el método usado para las pruebas, aunque no es necesario.
  * Lo importante es asignar el valor a 'lafuncion', aunque eso se hace en el código a comprobar.
  */
-let laFuncion = solution;
+let laFuncion = solutionClever;
 
 /**
  * Comprueba los cálculos a realizar sobre un array que devuelven un valor numérico.
@@ -91,8 +112,27 @@ function testArrNum(arr, resOK) {
 
 // Pruebas
 testArrNum([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20], "-6,-3-1,3-5,7-11,14,15,17-20");
+testArrNum([-5,-4,0,5,6,7,9,10], "-5,-4,0,5-7,9,10");
+testArrNum([1,2,3,5,6,8,9,10,11], "1-3,5,6,8-11");
 
+/*
+Ejemplos de: https://www.sololearn.com/discuss/677451/challenge-range-extraction 
+(no hay solución, salvo en los enlaces para Python)
 
+Example:
+Input: [-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]
+Output "-6,-3-1,3-5,7-11,14,15,17-20"
+
+Example 2:
+Input: [-5,-4,0,5,6,7,9,10]
+output: "-5,-4,0,5-7,9,10"
+
+Example 3:
+Input: [1,2,3,5,6,8,9,10,11]
+Output: "1-3,5,6,8-11"
+
+Note: a range spans at least 3 numbers. e.g. 1,2,3: 1-3 and 5,6: 5,6 and 8,9,10,11: 8-11
+*/
 
 /*
 const chai = require("chai");
