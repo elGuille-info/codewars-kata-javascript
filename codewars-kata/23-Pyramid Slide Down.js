@@ -33,16 +33,30 @@ ALGORITHMS, DYNAMIC PROGRAMMING
 /*
   Creo que la idea es tomar el índice n de cada fila n, salvo las 2 primeras que es el índice 0
 
-[      3   ], // 0
-[      7, 4], // 0
-[2,    4, 6], // 1
-[8, 5, 9, 3]  // 2
+[      3   ], // i = 0, 0 (0)
+[      7, 4], // i = 1, 0 (i-1)
+[2,    4, 6], // i = 2, 1 (i-1)
+[8, 5, 9, 3]  // i = 3, 2 (i-1)
 
 Aquí sería la suma de 3+7+4+9
 
 */
 function longestSlideDown (pyramid) {
-
+    let res= 0;
+    let num = 0;
+    for (let i = 0; i < pyramid.length; i++) {
+        // En la primera fila tomar la posición 0
+        if ( i == 0) {
+            num = Number(pyramid[i][0])
+            res += pyramid[i][0];
+        }
+        // En las siguientes tomar la columna i-1 de la fila i
+        else {
+            num = Number(pyramid[i][i - 1])
+            res += pyramid[i][i - 1];
+        }
+    }
+    return res;
 }
 
 /**
