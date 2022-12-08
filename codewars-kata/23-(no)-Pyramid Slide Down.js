@@ -31,6 +31,31 @@ ALGORITHMS, DYNAMIC PROGRAMMING
 */
 
 /*
+  Las soluciones
+
+*/
+
+//1- perkee, dubdjon!, pompeu2004, qwerty123654, qimingzizhennan, GramYang, user3469798, JESUSBRINGAS, user69279, Sum Sovann, namanmodi (+ 247)
+// https://www.codewars.com/kata/reviews/56002fcb656fe9ec15000033/groups/563937503f81aa239b000004
+function longestSlideDown_1(pyramid) {
+    return pyramid.reduceRight((last, current) => current.map(
+        (v, i) => v + Math.max(last[i], last[i + 1])
+    ))[0];
+}
+
+//2- brianpck, 任自博, farg0695, Satenik15, Letonik, Jeff Zhang, kuldeep47, Volodya-Korol, piyush_sharma0211, lorent23 (+ 28)
+// https://www.codewars.com/kata/reviews/56002fcb656fe9ec15000033/groups/56460c21c5081089f3000017
+function longestSlideDown(pyramid) {
+    for (var i = pyramid.length - 2; i > -1; i--) {
+        for (var j = 0; j < pyramid[i].length; j++) {
+            pyramid[i][j] += Math.max(pyramid[i + 1][j], pyramid[i + 1][j + 1]);
+        }
+    }
+    return pyramid[0][0];
+}
+
+
+/*
 Otra solución de la página de [Write-Up] Pyramid Slide Down Solution Using JavaScript (donde analiza la de railsstudent)
 */
 function longestSlideDown_s2 (pyramid) {
