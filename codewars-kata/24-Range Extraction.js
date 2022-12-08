@@ -89,22 +89,25 @@ function solutionClever(arr) {
  * @returns A correctly formatted string in the range format.
  */
 function solution(list) {
+/*
+[1,2,3,5,6,8,9,10,11], "1-3,5,6,8-11"
+*/    
     // TODO: complete solution 
     let res = [];
 
     let num1 = list[0];
-    for (let i = 1; i < list.length - 1; i++) {
+    for (let i = 0; i < list.length - 1; i++) {
         let num2 = list[i];
         // // Comprobar si el numero anterior está asignado
         // if (num1 == NaN) {
         //     // Asignar el primero
         //     num1 = num2;
         //     //res.push(num2);
-        //     continue;
+        //     //continue;
         // }
         // Si no son consecutivos, añadir el número anterior
         if (list[i + 1] - num2 != 1) {
-            if (num2 - num1 >= 3) {
+            if (num2 - num1 > 2) {
                 res.push(num1 + "-" + num2);
                 // Asignar el último a comprobar
                 num1 = num2;
@@ -114,6 +117,7 @@ function solution(list) {
             num1 = num2;
             //continue;
         }
+        //num1 = num2;
     }
 
     return res.join(",");
@@ -139,7 +143,8 @@ function testArrNum(arr, resOK) {
     // Mostrar el array
     //console.log("[" + arr.toString() + "] = " + resOK + " ?= (" + res + ")");
     // No mostrar el array
-    console.log("Del array indicado la respuesta correcta es = " + resOK + " ?= (" + res + ")");
+    //console.log("Del array indicado la respuesta correcta es = " + resOK + " ?= (" + res + ")");
+    console.log("[" + arr.toString() + "]");
     if (resOK != res) {
         console.log("\tEl valor devuelto es " + res + " y debe ser " + resOK);
     }
