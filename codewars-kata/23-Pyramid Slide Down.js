@@ -60,6 +60,25 @@ function longestSlideDown_railsstudent (pyramid) {
   }
 
 /*
+ La solución basada en la railsstudent
+*/
+function longestSlideDown(pyramid) {
+    let laSuma = [];
+    pyramid.forEach((r, i) => {
+        laSuma.push(r.map((e) => {
+            return (i == pyramid.length - 1) ? e : 0;
+        }));
+    });
+
+    for (let i = laSuma.length - 2; i >= 0; i--) {
+        for (let j = 0; j < laSuma[i].length; j++) {
+            laSuma[i][j] = pyramid[i][j] + Math.max(laSuma[i + 1][j], laSuma[i + 1][j + 1]);
+        }
+    }
+    return laSuma[0][0];
+}
+
+/*
 Segundo intento:
 Sumar lo que haya em la penúltima columna de cada fila, salvo en la primera
 */
@@ -128,7 +147,7 @@ function longestSlideDown01(pyramid) {
  * Indicar aquí la función a usar dentro de
  * @see testArrNum
  */
-let laFuncion = longestSlideDown_s2;
+let laFuncion = longestSlideDown;
 
 /**
  * Comprueba los cálculos a realizar sobre un array que devuelven un valor numérico.
@@ -152,11 +171,15 @@ function testArrNum(arr, resOK) {
 
 // Pruebas
 testArrNum([
-    [3],
-    [7, 4],
-    [2, 4, 6],
-    [8, 5, 9, 3]],
-    23);
+       [3],
+      [7, 4],
+     [2, 4, 6],
+    [8, 5, 9, 3]
+    ], 23);
+testArrNum([
+    [2595],
+ [ 925, 7098],
+[6589,  345, 5396]], 15089);
 
 testArrNum([
     [75],
@@ -176,6 +199,29 @@ testArrNum([
     [4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23]],
     1074);
 
+/*
+                            [75],
+                          [95, 64],
+                        [17, 47, 82],
+                      [18, 35, 87, 10],
+                    [20,  4, 82, 47, 65],
+                  [19,  1, 23, 75,  3, 34],
+                [88,  2, 77, 73,  7, 63, 67],
+              [99, 65,  4, 28,  6, 16, 70, 92],
+            [41, 41, 26, 56, 83, 40, 80, 70, 33],
+          [41, 48, 72, 33, 47, 32, 37, 16, 94, 29],
+        [53, 71, 44, 65, 25, 43, 91, 52, 97, 51, 14],
+      [70, 11, 33, 28, 77, 73, 17, 78, 39, 68, 17, 57],
+    [91, 71, 52, 38, 17, 14, 91, 43, 58, 50, 27, 29, 48],
+  [63, 66,  4, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31],
+[ 4, 62, 98, 27, 23,  9, 70, 98, 73, 93, 38, 53, 60,  4, 23]
+
+         [ ],
+        [2595],
+     [ 925, 7098],
+  [6589,  345, 5396]
+
+*/
 
 /*
 const Test = require('@codewars/test-compat');
