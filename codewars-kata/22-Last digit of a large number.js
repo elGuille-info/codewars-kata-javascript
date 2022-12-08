@@ -23,10 +23,57 @@ Since these languages don't have native arbitrarily large integers, your argumen
 ALGORITHMS, MATHEMATICS
 */
 
-var lastDigit = function(str1, str2){  
+var lastDigit0 = function(str1, str2){  
     return 0; // fix me
 }
 
+// https://gist.github.com/railsstudent/ede7a5c3f69949dab98cdd998285d652
+// http://www.geeksforgeeks.org/find-last-digit-of-ab-for-large-numbers/
+//http://qa.geeksforgeeks.org/1061/given-big-number-form-string-how-do-take-mod-of-that-big-number
+
+var asciiZero = "0".charCodeAt(0);
+var findModulo = function(base, exponent) {
+  var mod = 0;
+  for (var i in exponent) {
+    //mod = (mod*10 + b[i] - '0')%a;
+    mod = (mod * 10 + exponent.charCodeAt(i) - asciiZero) % base;
+  }
+  return mod;
+}
+
+var lastDigit = function (str1, str2) {
+
+
+    // 0 ^ 0 = 1
+    if (str1.length === 1 && str2.length === 1 && str1 === "0" && str2 === "0") {
+        return 1; //0;
+    }
+
+    if (str2.length === 1 && str2 === "0") {
+        return 1;
+    }
+
+    if (str1.length === 1 && str1 === "0") {
+        return 0;
+    }
+
+    var e = 0; //findModulo(4, str2);
+    {
+        var mod = 0;
+        for (var i in str2) {
+            mod = (mod * 10 + exponent.charCodeAt(i) - asciiZero) % 4;
+        }
+        e = mod;
+    }
+    if (e == 0) {
+        e = 4;
+    }
+
+    var res = Math.pow(str1[str1.length - 1].charCodeAt(0) - asciiZero, e);
+
+    // Return last digit of result
+    return res % 10;
+}
 
 function powerStr(a, b) {
     //const numB = Number(b)
@@ -111,11 +158,11 @@ function multiplyStr(a, b) {
 }
 
 
-console.log(powerStr("9", "7"))
-console.log(powerStr("3715290469715693021198967285016729344580685479654510946723", "68819615221552997273737174557165657483427362207517952651"))
+// console.log(powerStr("9", "7"))
+// console.log(powerStr("3715290469715693021198967285016729344580685479654510946723", "68819615221552997273737174557165657483427362207517952651"))
 // console.log(multiplyStr("9", "7"))
 // console.log(multiplyStr("3715290469715693021198967285016729344580685479654510946723", "68819615221552997273737174557165657483427362207517952651"))
-return;
+
 pruebas("4", "1", 4);
 pruebas("4", "2", 6);
 pruebas("9", "7", 9);
