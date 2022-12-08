@@ -1,4 +1,6 @@
 // multiplying-numbers-as-strings.js
+//https://gist.github.com/e-mihaylin/0b91328e899db0eeeafedf070ee165ee
+
 const multiply = (a, b) => {
     const stack = [];
     a = a.split``.reverse();

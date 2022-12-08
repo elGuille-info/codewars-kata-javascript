@@ -4,7 +4,7 @@
 Define a function that takes in two non-negative integers a and b and returns the last decimal digit of a^b. 
 Note that a and b may be very large!
 
-For example, the last decimal digit of 9^7 is 9, since 9^7 = 47829699. 
+For example, the last decimal digit of 9^7 is 9, since 9^7 = 4782969. 
 The last decimal digit of (2^200)^2^300 ({2^{200}})^{2^{300}}, which has over 10^{92} decimal digits, is 6. 
 Also, please take 0^0 to be 1.
 
@@ -27,12 +27,22 @@ var lastDigit = function(str1, str2){
     return 0; // fix me
 }
 
+
+function powerStr(a, b) {
+    //const numB = Number(b)
+    let res = a
+    for (let i = 1; i < b; i++) {
+        res = multiplyStr(res, a);
+    }
+    return res;
+}
+
 /*
 primero tomas la última cifra del número inferior, y la vas multiplicando por cada una de las cifras del número superior 
 (y teniendo en cuenta si "te llevas algo" porque el resultado sea mayo que 10).
 */
 
-function MultiplyStr(a, b) {
+function multiplyStr(a, b) {
     let mul = [];
     let c = [];
     let temp = [];
@@ -100,8 +110,11 @@ function MultiplyStr(a, b) {
     }
 }
 
-console.log(MultiplyStr("9", "7"))
-console.log(MultiplyStr("3715290469715693021198967285016729344580685479654510946723", "68819615221552997273737174557165657483427362207517952651"))
+
+console.log(powerStr("9", "7"))
+console.log(powerStr("3715290469715693021198967285016729344580685479654510946723", "68819615221552997273737174557165657483427362207517952651"))
+// console.log(multiplyStr("9", "7"))
+// console.log(multiplyStr("3715290469715693021198967285016729344580685479654510946723", "68819615221552997273737174557165657483427362207517952651"))
 return;
 pruebas("4", "1", 4);
 pruebas("4", "2", 6);
