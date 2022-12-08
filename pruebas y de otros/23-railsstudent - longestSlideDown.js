@@ -1,4 +1,6 @@
-﻿
+﻿// [railsstudent - longestSlideDown.js](https://gist.github.com/railsstudent/d40bd874d773794ff358c3465a6d2f5d)
+
+
 // https://www.codewars.com/kata/pyramid-slide-down/train/javascript
 // longestSlideDown.js
 
