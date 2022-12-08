@@ -3,7 +3,7 @@
 
 A format for expressing an ordered list of integers is to use a comma separated list of either individual integers
 or a range of integers denoted by the starting integer separated from the end integer in the range by a dash, '-'.
-The range includes all integers in the interval including both endpoints. 
+The range includes all integers in the interval including both endpoints.
 It is not considered a range unless it spans at least 3 numbers. For example "12,13,15-17"
 
 Complete the solution so that it takes a list of integers in increasing order and returns a correctly formatted string in the range format.
@@ -28,7 +28,7 @@ function solution_no(list){
     for(let i=0;i<list.length;i++){
         //write first value in range to result
         result.push(list[i].toString())
-        //if this is the last entry, we are done 
+        //if this is the last entry, we are done
         if(i === list.length - 1){
             break
         }
@@ -41,7 +41,7 @@ function solution_no(list){
             //modify the OUTER LOOP index variable.
             //This means when we return to the beginning of hte for loop,
             // we will be at the beginning of the next range
-            i++ 
+            i++
             e1 = list[i]
             e2 = list[i+1]
             isRange = true
@@ -74,25 +74,25 @@ function solutionClever(arr) {
     }
     return arrCopy.join(",");
 }
-  
+
 /**
  * Poner los números indicados en rango, teniendo en cuenta que un rango debe abarcar al menos 3 valores.
  * Por ejemplo: 1,2,3,5,6,8,9,10,11 será: 1-3,5,6,8-11 --> 1,2,3: 1-3 and 5,6: 5,6 and 8,9,10,11: 8-11
- * [-6, 
- * -3, -2, -1, 0, 1, 
- * 3, 4, 5, 
- * 7, 8, 9, 10, 11, 
- * 14, 15, 
+ * [-6,
+ * -3, -2, -1, 0, 1,
+ * 3, 4, 5,
+ * 7, 8, 9, 10, 11,
+ * 14, 15,
  * 17, 18, 19, 20]), "-6,-3-1,3-5,7-11,14,15,17-20"
- *  
+ *
  * @param {*} list List of integers in increasing order.
  * @returns A correctly formatted string in the range format.
  */
 function solution(list) {
 /*
 [1,2,3,5,6,8,9,10,11], "1-3,5,6,8-11"
-*/    
-    // TODO: complete solution 
+*/
+    // TODO: complete solution
     let res = [];
 
     let num1 = list[0];
@@ -106,15 +106,18 @@ function solution(list) {
         //     //continue;
         // }
         // Si no son consecutivos, añadir el número anterior
+        let num3 = list[i + 1];
+        let num4 = num3 - num2;
         if (list[i + 1] - num2 != 1) {
             if (num2 - num1 > 2) {
                 res.push(num1 + "-" + num2);
                 // Asignar el último a comprobar
-                num1 = num2;
+                num1 = num3;
                 continue;
             }
             res.push(num1);
-            num1 = num2;
+            //num1 = num2;
+            num1 = num3;
             //continue;
         }
         //num1 = num2;
@@ -130,7 +133,7 @@ function solution(list) {
  * Poner arriba el método usado para las pruebas, aunque no es necesario.
  * Lo importante es asignar el valor a 'lafuncion', aunque eso se hace en el código a comprobar.
  */
-let laFuncion = solutionClever;
+let laFuncion = solution;
 
 /**
  * Comprueba los cálculos a realizar sobre un array que devuelven un valor numérico.
@@ -154,18 +157,18 @@ function testArrNum(arr, resOK) {
 }
 
 // Pruebas
-testArrNum([
-    -6, 
-    -3, -2, -1, 0, 1, 
-    3, 4, 5, 
-    7, 8, 9, 10, 11, 
-    14, 15, 
-    17, 18, 19, 20], "-6,-3-1,3-5,7-11,14,15,17-20");
-testArrNum([-5,-4,0,5,6,7,9,10], "-5,-4,0,5-7,9,10");
+// testArrNum([
+//     -6,
+//     -3, -2, -1, 0, 1,
+//     3, 4, 5,
+//     7, 8, 9, 10, 11,
+//     14, 15,
+//     17, 18, 19, 20], "-6,-3-1,3-5,7-11,14,15,17-20");
+// testArrNum([-5,-4,0,5,6,7,9,10], "-5,-4,0,5-7,9,10");
 testArrNum([1,2,3,5,6,8,9,10,11], "1-3,5,6,8-11");
 
 /*
-Ejemplos de: https://www.sololearn.com/discuss/677451/challenge-range-extraction 
+Ejemplos de: https://www.sololearn.com/discuss/677451/challenge-range-extraction
 (no hay solución, salvo en los enlaces para Python)
 
 Example:
