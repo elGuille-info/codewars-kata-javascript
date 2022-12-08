@@ -37,7 +37,6 @@ function MultiplyStr(a, b) {
     let c = [];
     let temp = [];
     let la, lb;
-    //let i, j, y;
     let k = 0, x = 0;
     let r = 0;
     let sum = 0;
@@ -77,41 +76,10 @@ function MultiplyStr(a, b) {
 
     r = 0;
     for (let i = k - 1; i >= 0; i--) {
-        //mul[j++] = c[i] + 48;
-        mul[r++] = c[i].toString();
+        mul[r++] = Math.floor(c[i]);
     }
-    mul[r] = "0"; //'\0';
     
-    return mul;
-}
-
-function multiplicarStrings(str1, str2) {
-  let res = [];
-  let resto = 0;
-  for (let j = str2.length - 1; j >= 0; j--) {
-    let operUno = Number(str2[j]);
-    for (let i = str1.length - 1; i >= 0; i--) {
-      let operDos = Number(str1[i]);
-      let result = operUno * operDos + resto;
-      if (result >= 10)
-      {
-          resto = result / 10;
-          result -= resto * 10;
-      }
-      else {
-          resto = 0;
-      }
-      res.push(result);
-    }
-  }
-  // if (resto != 0)
-  // {
-  //     for ( i = 3; i > 0; i--)
-  //         mult[i] = mult[i - 1];
-  //     mult[0] = resto;
-  // }
-
-  return res;
+    return mul.join('');
 }
 
 
@@ -132,7 +100,8 @@ function multiplicarStrings(str1, str2) {
     }
 }
 
-console.log(multiplicarStrings("9", "7"))
+console.log(MultiplyStr("9", "7"))
+console.log(MultiplyStr("3715290469715693021198967285016729344580685479654510946723", "68819615221552997273737174557165657483427362207517952651"))
 return;
 pruebas("4", "1", 4);
 pruebas("4", "2", 6);
