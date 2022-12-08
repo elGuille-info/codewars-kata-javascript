@@ -64,9 +64,10 @@ function longestSlideDown_railsstudent (pyramid) {
 */
 function longestSlideDown(pyramid) {
     let laSuma = [];
-    pyramid.forEach((r, i) => {
-        laSuma.push(r.map((e) => {
-            return (i == pyramid.length - 1) ? e : 0;
+    pyramid.forEach((element, index) => {
+      console.log("elemento = " + element);
+        laSuma.push(element.map((x) => {
+            return (index == pyramid.length - 1) ? x : 0;
         }));
     });
 
