@@ -109,7 +109,7 @@ function solution(list) {
         let num3 = list[i + 1];
         let num4 = num3 - num2;
         if (list[i + 1] - num2 != 1) {
-            if (num2 - num1 > 2) {
+            if (num2 - num1 >= 2) {
                 res.push(num1 + "-" + num2);
                 // Asignar el último a comprobar
                 num1 = num3;
