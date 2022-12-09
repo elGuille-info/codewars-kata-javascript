@@ -135,13 +135,13 @@ function convertToNumber(text) {
 
     // Divide la cadena en palabras y recorre cada palabra
 
-    const words = text.replaceAll("-", " ").replaceAll("and", "") .split(" ");
+    const words = text.replaceAll("-", " ").split(" ");
     let result = 0;
     let current = 0;
     //let last = "";
     for (const word of words) {
-    //   // Si la palabra es "and", simplemente la ignoramos
-    //   if (word === "and") continue;
+    // Si la palabra es "and", simplemente la ignoramos
+    if (word === "and") continue;
 
       // Si la palabra está en el diccionario de números, actualizamos el valor actual
       if (word in numbers) {
@@ -151,13 +151,18 @@ function convertToNumber(text) {
       } else if (word === "hundred") {
         // Si la palabra es "hundred", multiplicamos el valor actual por 100
         current *= 100;
+        //result += current * 100;
       } else if (word === "thousand") {
         // Si la palabra es "thousand", multiplicamos el valor actual por 1000 y lo agregamos al resultado, y luego reseteamos el valor actual
         result += current * 1000;
-        current = 0;
+        //result *= 1000;
+        //current = 0;
+        //current *= 1000;
+        //result += current;
       } else if (word === "million") {
         // Si la palabra es "million", multiplicamos el valor actual por 1000000 y lo agregamos al resultado, y luego reseteamos el valor actual
-        result += current * 1000000;
+        //result += current * 1000000;
+        result *= 1000000;
       }
     }
     return result;
