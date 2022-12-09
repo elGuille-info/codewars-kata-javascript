@@ -92,12 +92,15 @@ function solutionClever(arr) {
 function solution(list) {
 /*
 [1,2,3,5,6,8,9,10,11], "1-3,5,6,8-11"
-*/    
+*/
     // TODO: complete solution
     let res = [];
 
     let num1 = list[0];
-    for (let i = 0; i < list.length - 1; i++) {
+    let num2 = list[i];
+    let num3 = list[i + 1];
+    let num4 = num3 - num2;
+for (let i = 0; i < list.length - 1; i++) {
         let num2 = list[i];
         let num3 = list[i + 1];
         let num4 = num3 - num2;
