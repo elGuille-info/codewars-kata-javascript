@@ -118,28 +118,13 @@ function solution1(list) {
     return res.join(",");
 }
 
-// El código proporcionado por ChatGPT (OpenAI)
-
-/*
-Después de revisar el código, veo que hay algunos problemas en la función que pueden causar que no funcione correctamente.
-En primer lugar, la función no tiene ningún código para manejar el último número en la lista.
-Esto significa que si el último número en la lista es parte de un rango, ese rango no se agregará al resultado final.
-Además, en la línea 11, la variable num1 se establece en el segundo número en la lista en lugar del primer número.
-Esto significa que si el primer número en la lista es parte de un rango, ese rango no se agregará al resultado final.
-
-Para solucionar estos problemas, puedes agregar una comprobación adicional al final del bucle para manejar el último número en la lista.
-También puedes cambiar la línea 11 para establecer num1 en el primer número en la lista en lugar del segundo número.
-Aquí te muestro un ejemplo de cómo podrías hacerlo:
-
-*/
-
 function solution(list) {
     /*
     Por ejemplo, este array [1,2,3,5,6,8,9,10,11], debe devolver este resultado "1-3,5,6,8-11"
     */
     let res = [];
 
-    let num1 = list[0]; // Cambiamos esta línea para establecer num1 en el primer número en la lista
+    let num1 = list[0];
     let numi = 0;
     let numi_mas1 = 0;
     //let num4 = 0;
@@ -154,7 +139,10 @@ function solution(list) {
                 num1 = numi_mas1;
                 continue;
             }
-            res.push(num1);
+            // Agregamos esta comprobación para verificar si num1 es igual al primer número en la lista
+            if (num1 !== list[0]) {
+                res.push(num1);
+            }
             num1 = numi;
         }
     }
