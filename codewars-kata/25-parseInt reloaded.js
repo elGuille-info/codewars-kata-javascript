@@ -9,6 +9,7 @@ Examples:
 "twenty" => 20
 "two hundred forty-six" => 246
 "seven hundred eighty-three thousand nine hundred and nineteen" => 783919
+
 Additional Notes:
 
 The minimum number is "zero" (inclusively)
@@ -24,7 +25,7 @@ function parseInt(string) {
 
 /**
  * Indicar aquí la función a usar dentro de
- * @see testArrNum
+ * @see comparaResultado
  *
  * Poner arriba el método usado para las pruebas, aunque no es necesario.
  * Lo importante es asignar el valor a 'lafuncion', aunque eso se hace en el código a comprobar.
@@ -54,6 +55,7 @@ function comparaResultado(valor, resOK) {
 comparaResultado('one', 1);
 comparaResultado('twenty', 20);
 comparaResultado('two hundred forty-six', 246);
+comparaResultado('seven hundred eighty-three thousand nine hundred and nineteen', 783919);
 
 /*
 const Test = require('@codewars/test-compat');
