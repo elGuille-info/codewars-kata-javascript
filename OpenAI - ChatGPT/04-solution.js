@@ -58,7 +58,7 @@ Después de revisar el código nuevamente, veo que hay un problema adicional en 
 Para solucionar este problema, puedes agregar una comprobación adicional en la línea 13 para verificar si num1 es igual al primer número en la lista. Si lo es, entonces no se debe cambiar el valor de num1. Aquí te muestro un ejemplo de cómo podrías hacerlo:
 
 */
-function solution(list) {
+function solution2(list) {
     /*
     Por ejemplo, este array [1,2,3,5,6,8,9,10,11], debe devolver este resultado "1-3,5,6,8-11"
     */
@@ -107,4 +107,17 @@ Estoy aquí para ayudarte.
 Gracias, voy a probar el código.
 
 De nada, ¡espero que funcione para ti! Si tienes más preguntas o necesitas más ayuda, no dudes en preguntar. Estoy aquí para ayudarte. ¡Buena suerte!
+
+---
+
+El valor devuelto es 1-3,5,6-10 y debe ser 1-3,5,6,8-11
+
+Después de revisar el código nuevamente, veo que hay un problema adicional en la función.
+En la línea 14, se está comparando la diferencia entre numi y num1 en lugar de la diferencia entre numi_mas1 y num1.
+Esto significa que si hay un número en la lista que no es parte de un rango, ese número se agregará al resultado final en lugar de ignorarse.
+
+Para solucionar este problema, puedes cambiar la línea 14 para comparar la diferencia entre numi_mas1 y num1 en lugar de la diferencia entre numi y num1.
+Aquí te muestro un ejemplo de cómo podrías hacerlo:
+
+-- No lo terminó (y se me olvidó copiar lo que pueso!!!)
 */
