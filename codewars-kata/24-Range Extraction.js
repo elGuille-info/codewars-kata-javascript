@@ -90,20 +90,20 @@ function solutionClever(arr) {
  * @returns A correctly formatted string in the range format.
  */
 function solution(list) {
-/*
-[1,2,3,5,6,8,9,10,11], "1-3,5,6,8-11"
-*/
+    /*
+    [1,2,3,5,6,8,9,10,11], "1-3,5,6,8-11"
+    */
     // TODO: complete solution
     let res = [];
 
     let num1 = list[0];
-    let num2 = list[i];
-    let num3 = list[i + 1];
-    let num4 = num3 - num2;
-for (let i = 0; i < list.length - 1; i++) {
-        let num2 = list[i];
-        let num3 = list[i + 1];
-        let num4 = num3 - num2;
+    let num2 = 0;
+    let num3 = 0;
+    let num4 = 0;
+    for (let i = 0; i < list.length - 1; i++) {
+        num2 = list[i];
+        num3 = list[i + 1];
+        num4 = num3 - num2;
 
         // Si no son consecutivos, añadir el número anterior
         if (num3 - num2 != 1) {
@@ -121,7 +121,8 @@ for (let i = 0; i < list.length - 1; i++) {
         //num1 = num2;
     }
 
-    return res.join(",");}
+    return res.join(",");
+}
 
 /**
  * Indicar aquí la función a usar dentro de
