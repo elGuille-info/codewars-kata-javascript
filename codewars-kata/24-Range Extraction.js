@@ -118,51 +118,58 @@ function solution1(list) {
     return res.join(",");
 }
 
-/*
-Después de revisar el código nuevamente, veo que hay un problema adicional en la función.
-En la línea 14, se está comparando la diferencia entre numi y num1 en lugar de la diferencia entre numi_mas1 y num1.
-Esto significa que si hay un número en la lista que no es parte de un rango, ese número se agregará al resultado final en lugar de ignorarse.
+function solution(numbers) {
+    // Primero, ordenamos el array de números en orden ascendente
+    numbers.sort((a, b) => a - b);
 
-Para solucionar este problema, puedes cambiar la línea 14 para comparar la diferencia entre numi_mas1 y num1 en lugar de la diferencia entre numi y num1.
-Aquí te muestro un ejemplo de cómo podrías hacerlo:
+    // Creamos una variable para almacenar el resultado
+    let result = "";
 
-*/
-function solution(list) {
-    /*
-    Por ejemplo, este array [1, 2, 3, 5, 6, 8, 9, 10, 15], debe devolver este resultado "1-3,5,6,8-10,15"
-    */
-    let res = [];
+    // Creamos una variable para almacenar el último número que hemos visto
+    let lastNumber = numbers[0];
 
-    let num1 = list[0];
-    let numi = 0;
-    let numi_mas1 = 0;
-    for (let i = 0; i < list.length - 1; i++) {
-        numi = list[i];
-        numi_mas1 = list[i + 1];
+    // Creamos una variable para almacenar el primer número de la secuencia actual
+    let start = numbers[0];
 
-        if (numi_mas1 - numi != 1) {
-            if (numi - num1 >= 2) {
-                res.push(num1 + "-" + numi);
-                num1 = numi_mas1;
-                continue;
+    // Iteramos a través de cada número en el array
+    for (let i = 1; i < numbers.length; i++) {
+        let number = numbers[i];
+
+        // Si el número actual es uno más que el último número que hemos visto, entonces este número forma parte de la secuencia actual
+        if (number === lastNumber + 1) {
+            // Actualizamos el último número que hemos visto
+            lastNumber = number;
+        } else {
+            // Si el número actual no es uno más que el último número que hemos visto, entonces la secuencia actual ha terminado
+            // y necesitamos agregarla al resultado
+
+            // Si la secuencia actual tiene más de dos elementos, entonces la mostramos en el formato "start-lastNumber"
+            if (lastNumber - start > 1) {
+                result += `${start}-${lastNumber},`;
+            } else {
+                // Si la secuencia actual tiene solo dos elementos, entonces la mostramos en el formato "start,lastNumber"
+                result += `${start},${lastNumber},`;
             }
-            // Agregamos esta comprobación para verificar si num1 es igual al primer número en la lista
-            if (num1 !== list[0]) {
-                res.push(num1);
-            }
-            num1 = numi;
+
+            // Actualizamos el primer número de la secuencia actual y el último número que hemos visto
+            start = number;
+            lastNumber = number;
         }
     }
 
-    // Agregamos este código para manejar el último número en la lista
-    if (numi - num1 >= 2) {
-        res.push(num1 + "-" + numi);
+    // Después de iterar a través de todos los números, aún tenemos la última secuencia que no hemos agregado al resultado
+    // así que lo agregamos ahora
+
+    // Si la secuencia actual tiene más de dos elementos, entonces la mostramos en el formato "start-lastNumber"
+    if (lastNumber - start > 1) {
+        result += `${start}-${lastNumber}`;
     } else {
-        res.push(num1);
-        //res.push(numi);
+        // Si la secuencia actual tiene solo dos elementos, entonces la mostramos en el formato "start,lastNumber"
+        result += `${start},${lastNumber}`;
     }
 
-    return res.join(",");
+    // Devolvemos el resultado
+    return result;
 }
 
 
