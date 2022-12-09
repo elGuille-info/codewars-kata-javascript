@@ -17,6 +17,57 @@ Courtesy of rosettacode.org
 ALGORITHMS
 */
 
+/*
+    Las soluciones
+*/
+
+//1- GerhardH, codenao, user3469798, Br3zzly, izzaannsama, Mac Santos, z332234, 15237565150, kovbasova16@gmail.com, hobiafk@gmail.com (+ 19)
+// https://www.codewars.com/kata/reviews/51ba7e87b08c1cd60f00004a/groups/55396a247d66252a73000019
+function solution_1(individualIntegers) {
+	return individualIntegers
+		.reduce(splitIntoRanges, [])
+		.map(convertToRange)
+		.join(",");
+}
+
+function splitIntoRanges(ranges, number) {
+	if (!ranges.length) {
+		ranges.push([number]);
+		return ranges;
+	}
+
+	var lastRange = ranges[ranges.length - 1];
+	var lastNumber = lastRange[lastRange.length - 1];
+
+	number === lastNumber + 1 ? lastRange.push(number) : ranges.push([number]);
+	return ranges;
+}
+
+function convertToRange(range) {
+	return range.length < 3 ? range.join(",") : range[0] + "-" + range[range.length - 1];
+}
+
+//2- vas3a, sicknick323, MinionKevin, jwong483, KellerTCS, AGT, CarlosLobato, hazzy_b_, Jerson_Paucar, meezo-taher (+ 55)
+// https://www.codewars.com/kata/reviews/51ba7e87b08c1cd60f00004a/groups/54ef355c7f914260e50016b6
+function solution_2(list){
+    for(var i = 0; i < list.length; i++){
+       var j = i;
+       while(list[j] - list[j+1] == -1) j++;
+       if(j != i && j-i>1) list.splice(i, j-i+1, list[i] +'-'+list[j]);
+   }
+   return list.join();
+}
+
+//3- rodrigoroma, Nasyat
+// https://www.codewars.com/kata/reviews/51ba7e87b08c1cd60f00004a/groups/5d628e602e273f00017ef230
+// solution_3 = (list)=>list.reduce((acc,curr,i) => {
+var solution_3 = (list)=>list.reduce((acc,curr,i) => {
+    if (i==0) return curr.toString();
+    if (list[i-1] == curr-1 && list[i+1] == curr+1) return acc;
+    if (list[i-2] == curr-2 && list[i-1] == curr-1) return acc+"-"+curr;
+    return acc+","+curr;
+  });
+
 
 // La presentada, una modificación de rangeString (ver 06-solution.js en la carpeta) OpenAI - ChatGPT
 function solution(list) {
