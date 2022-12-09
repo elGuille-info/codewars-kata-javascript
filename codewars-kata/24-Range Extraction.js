@@ -118,22 +118,20 @@ function solution1(list) {
     return res.join(",");
 }
 
-function solution(numbers) {
-    // Primero, ordenamos el array de números en orden ascendente
-    numbers.sort((a, b) => a - b);
-
+// La presentada, una modificación de rangeString (ver 06-solution.js en la carpeta) OpenAI - ChatGPT
+function solution(list) {
     // Creamos una variable para almacenar el resultado
     let result = "";
 
     // Creamos una variable para almacenar el último número que hemos visto
-    let lastNumber = numbers[0];
+    let lastNumber = list[0];
 
     // Creamos una variable para almacenar el primer número de la secuencia actual
-    let start = numbers[0];
+    let start = list[0];
 
     // Iteramos a través de cada número en el array
-    for (let i = 1; i < numbers.length; i++) {
-        let number = numbers[i];
+    for (let i = 1; i < list.length; i++) {
+        let number = list[i];
 
         // Si el número actual es uno más que el último número que hemos visto, entonces este número forma parte de la secuencia actual
         if (number === lastNumber + 1) {
@@ -148,7 +146,12 @@ function solution(numbers) {
                 result += `${start}-${lastNumber},`;
             } else {
                 // Si la secuencia actual tiene solo dos elementos, entonces la mostramos en el formato "start,lastNumber"
-                result += `${start},${lastNumber},`;
+                if (start != lastNumber) {
+                    result += `${start},${lastNumber},`;
+                }
+                else {
+                    result += `${start},`;
+                }
             }
 
             // Actualizamos el primer número de la secuencia actual y el último número que hemos visto
@@ -165,7 +168,12 @@ function solution(numbers) {
         result += `${start}-${lastNumber}`;
     } else {
         // Si la secuencia actual tiene solo dos elementos, entonces la mostramos en el formato "start,lastNumber"
-        result += `${start},${lastNumber}`;
+        if (start != lastNumber) {
+            result += `${start},${lastNumber}`;
+        }
+        else {
+            result += `${start}`;
+        }
     }
 
     // Devolvemos el resultado
@@ -204,15 +212,16 @@ function testArrNum(arr, resOK) {
 }
 
 // Pruebas
-// // testArrNum([
-// //     -6,
-// //     -3, -2, -1, 0, 1,
-// //     3, 4, 5,
-// //     7, 8, 9, 10, 11,
-// //     14, 15,
-// //     17, 18, 19, 20], "-6,-3-1,3-5,7-11,14,15,17-20");
-// // testArrNum([-5,-4,0,5,6,7,9,10], "-5,-4,0,5-7,9,10");
+testArrNum([
+    -6,
+    -3, -2, -1, 0, 1,
+    3, 4, 5,
+    7, 8, 9, 10, 11,
+    14, 15,
+    17, 18, 19, 20], "-6,-3-1,3-5,7-11,14,15,17-20");
+testArrNum([-5,-4,0,5,6,7,9,10], "-5,-4,0,5-7,9,10");
 testArrNum([1,2,3,5,6,8,9,10,11], "1-3,5,6,8-11");
+testArrNum([1,2,3,5,6,8,9,10,11,15], "1-3,5,6,8-11,15");
 
 /*
 Ejemplos de: https://www.sololearn.com/discuss/677451/challenge-range-extraction
