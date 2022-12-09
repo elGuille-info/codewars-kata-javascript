@@ -11,7 +11,13 @@ function secuencia(numeros) {
     // Variable para guardar el primer número de la secuencia
     let primerNumero = null;
 
+    let numeroi = null;
+    let numeroi_menos1 = null;
+
     for (let i = 0; i < numeros.length; i++) {
+      numeroi = numeros[i];
+      numeroi_menos1 = numeros[i - 1];
+
       // Si el contador es cero, significa que no hay una secuencia en curso
       if (contador === 0) {
         // El número actual es el primer número de la secuencia
@@ -30,7 +36,8 @@ function secuencia(numeros) {
           // Si el número actual no es igual al anterior más uno, entonces no es parte de una secuencia
         } else {
           // Agrega el número actual a la cadena resultante
-          resultado += numeros[i] + ",";
+          //resultado += numeros[i] + ",";
+          resultado += numeros[i - 1] + ",";
 
           // Reinicia el contador
           contador = 0;
@@ -53,6 +60,7 @@ function secuencia(numeros) {
 
           // Reinicia el contador
           contador = 0;
+          //i--;
         }
       }
     }
@@ -66,7 +74,7 @@ function secuencia(numeros) {
 }
 
 // con este falla:
-let numbers = [1, 2, 3, 5, 6, 8, 9, 10, 15]; // 1-3,5,8,9-10,15,
+let numbers = [1, 2, 3, 5, 6, 8, 9, 10, 15]; // 1-3,5,8,9-10,15, --> 1-3,5,6,9-10,15,
 let res = secuencia(numbers);
 console.log(res);
 // Este es correcto
