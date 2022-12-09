@@ -66,10 +66,10 @@ function secuencia(numeros) {
 }
 
 // con este falla:
-let numbers = [1, 2, 3, 5, 6, 8, 9, 10, 15];
+let numbers = [1, 2, 3, 5, 6, 8, 9, 10, 15]; // 1-3,5,8,9-10,15,
 let res = secuencia(numbers);
 console.log(res);
 // Este es correcto
-numbers = [1, 2, 3, 5, 7, 8, 9, 10, 15];
+numbers = [1, 2, 3, 5, 7, 8, 9, 10, 15]; // 1-3,5,7-10,15,
 res = secuencia(numbers);
 console.log(res);
