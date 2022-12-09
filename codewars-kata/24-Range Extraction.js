@@ -89,40 +89,87 @@ function solutionClever(arr) {
  * @param {*} list List of integers in increasing order.
  * @returns A correctly formatted string in the range format.
  */
-function solution(list) {
+function solution1(list) {
     /*
-    [1,2,3,5,6,8,9,10,11], "1-3,5,6,8-11"
+    Por ejemplo, este array [1,2,3,5,6,8,9,10,11], debe devolver este resultado "1-3,5,6,8-11"
     */
-    // TODO: complete solution
     let res = [];
 
     let num1 = list[0];
     let numi = 0;
     let numi_mas1 = 0;
-    let num4 = 0;
+    //let num4 = 0;
     for (let i = 0; i < list.length - 1; i++) {
         numi = list[i];
         numi_mas1 = list[i + 1];
-        num4 = numi_mas1 - numi;
+        //num4 = numi_mas1 - numi;
 
-        // Si no son consecutivos, añadir el número anterior
         if (numi_mas1 - numi != 1) {
             if (numi - num1 >= 2) {
                 res.push(num1 + "-" + numi);
-                // Asignar el último a comprobar
                 num1 = numi_mas1;
                 continue;
             }
             res.push(num1);
-            //num1 = num2;
             num1 = numi;
-            //continue;
         }
-        //num1 = num2;
     }
 
     return res.join(",");
 }
+
+// El código proporcionado por ChatGPT (OpenAI)
+
+/*
+Después de revisar el código, veo que hay algunos problemas en la función que pueden causar que no funcione correctamente.
+En primer lugar, la función no tiene ningún código para manejar el último número en la lista.
+Esto significa que si el último número en la lista es parte de un rango, ese rango no se agregará al resultado final.
+Además, en la línea 11, la variable num1 se establece en el segundo número en la lista en lugar del primer número.
+Esto significa que si el primer número en la lista es parte de un rango, ese rango no se agregará al resultado final.
+
+Para solucionar estos problemas, puedes agregar una comprobación adicional al final del bucle para manejar el último número en la lista.
+También puedes cambiar la línea 11 para establecer num1 en el primer número en la lista en lugar del segundo número.
+Aquí te muestro un ejemplo de cómo podrías hacerlo:
+
+*/
+
+function solution(list) {
+    /*
+    Por ejemplo, este array [1,2,3,5,6,8,9,10,11], debe devolver este resultado "1-3,5,6,8-11"
+    */
+    let res = [];
+
+    let num1 = list[0]; // Cambiamos esta línea para establecer num1 en el primer número en la lista
+    let numi = 0;
+    let numi_mas1 = 0;
+    //let num4 = 0;
+    for (let i = 0; i < list.length - 1; i++) {
+        numi = list[i];
+        numi_mas1 = list[i + 1];
+        //num4 = numi_mas1 - numi;
+
+        if (numi_mas1 - numi != 1) {
+            if (numi - num1 >= 2) {
+                res.push(num1 + "-" + numi);
+                num1 = numi_mas1;
+                continue;
+            }
+            res.push(num1);
+            num1 = numi;
+        }
+    }
+
+    // Agregamos este código para manejar el último número en la lista
+    if (numi - num1 >= 2) {
+        res.push(num1 + "-" + numi);
+    } else {
+        res.push(num1);
+        res.push(numi);
+    }
+
+    return res.join(",");
+}
+
 
 /**
  * Indicar aquí la función a usar dentro de
