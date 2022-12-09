@@ -122,7 +122,7 @@ function textToNumber(text) {
     return total;
 }
 
-function convertToNumber(text) {
+function convertToNumber1(text) {
     // Crea un diccionario con los números escritos como texto y su valor numérico correspondiente
     const numbers = {
       zero: 0,
@@ -180,4 +180,73 @@ function convertToNumber(text) {
       }
     }
     return result;
+}
+
+function convertToNumber(text) {
+  // Crea un diccionario con los números escritos como texto y su valor numérico correspondiente
+  const numbers = {
+    zero: 0,
+    one: 1,
+    two: 2,
+    three: 3,
+    four: 4,
+    five: 5,
+    six: 6,
+    seven: 7,
+    eight: 8,
+    nine: 9,
+    ten: 10,
+    eleven: 11,
+    twelve: 12,
+    thirteen: 13,
+    fourteen: 14,
+    fifteen: 15,
+    sixteen: 16,
+    seventeen: 17,
+    eighteen: 18,
+    nineteen: 19,
+    twenty: 20,
+    thirty: 30,
+    forty: 40,
+    fifty: 50,
+    sixty: 60,
+    seventy: 70,
+    eighty: 80,
+    ninety: 90,
+  };
+
+  // Divide la cadena en palabras y recorre cada palabra
+
+  const words = text.replaceAll("-", " ").split(" ");
+  let result = 0;
+  let current = 0;
+  //let last = "";
+  for (const word of words) {
+  // Si la palabra es "and", simplemente la ignoramos
+  if (word === "and") continue;
+
+    // Si la palabra está en el diccionario de números, actualizamos el valor actual
+    if (word in numbers) {
+      current += numbers[word];
+      result = current;
+      //result += numbers[word];
+    } else if (word === "hundred") {
+      // Si la palabra es "hundred", multiplicamos el valor actual por 100
+      current *= 100;
+      //result += current * 100;
+    } else if (word === "thousand") {
+      // Si la palabra es "thousand", multiplicamos el valor actual por 1000 y lo agregamos al resultado, y luego reseteamos el valor actual
+      //result += current * 1000;
+      result *= 1000;
+      current = result;
+      //current = 0;
+      //current *= 1000;
+      //result += current;
+    } else if (word === "million") {
+      // Si la palabra es "million", multiplicamos el valor actual por 1000000 y lo agregamos al resultado, y luego reseteamos el valor actual
+      //result += current * 1000000;
+      result *= 1000000;
+    }
+  }
+  return result;
 }

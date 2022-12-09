@@ -154,8 +154,9 @@ function convertToNumber(text) {
         //result += current * 100;
       } else if (word === "thousand") {
         // Si la palabra es "thousand", multiplicamos el valor actual por 1000 y lo agregamos al resultado, y luego reseteamos el valor actual
-        result += current * 1000;
-        //result *= 1000;
+        //result += current * 1000;
+        result *= 1000;
+        current = result;
         //current = 0;
         //current *= 1000;
         //result += current;
