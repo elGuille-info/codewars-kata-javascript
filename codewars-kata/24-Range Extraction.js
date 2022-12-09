@@ -97,25 +97,25 @@ function solution(list) {
     let res = [];
 
     let num1 = list[0];
-    let num2 = 0;
-    let num3 = 0;
+    let numi = 0;
+    let numi_mas1 = 0;
     let num4 = 0;
     for (let i = 0; i < list.length - 1; i++) {
-        num2 = list[i];
-        num3 = list[i + 1];
-        num4 = num3 - num2;
+        numi = list[i];
+        numi_mas1 = list[i + 1];
+        num4 = numi_mas1 - numi;
 
         // Si no son consecutivos, añadir el número anterior
-        if (num3 - num2 != 1) {
-            if (num2 - num1 >= 2) {
-                res.push(num1 + "-" + num2);
+        if (numi_mas1 - numi != 1) {
+            if (numi - num1 >= 2) {
+                res.push(num1 + "-" + numi);
                 // Asignar el último a comprobar
-                num1 = num3;
+                num1 = numi_mas1;
                 continue;
             }
             res.push(num1);
             //num1 = num2;
-            num1 = num2;
+            num1 = numi;
             //continue;
         }
         //num1 = num2;
