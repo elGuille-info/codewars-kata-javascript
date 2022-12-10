@@ -37,7 +37,8 @@ PUZZLES
 
 function rectangleRotation(a, b) {
     //coding and coding..
-
+    console.log("a: " + a + " b: "+b)
+    
 
 }
 
@@ -60,13 +61,14 @@ function rectanglePoints(a, b) {
             }
         }
     }
-    return area + sideLength;
+    //return area + sideLength;
+    return area + sideLength - 1;
 }
 
 
 /**
  * Indicar aquí la función a usar dentro de
- * @see compararTextNum
+ * @see prueba2Valores
  *
  * Poner arriba el método usado para las pruebas, aunque no es necesario.
  * Lo importante es asignar el valor a 'lafuncion', aunque eso se hace en el código a comprobar.
@@ -82,7 +84,7 @@ let laFuncion = rectanglePoints;
   * @param {*} noMostrarLog Si NO se debe mostrar lo que se comprueba.
   * @see laFuncion Para asignar la función a usar.
   */
-function compararTextNum(valor1, valor2, resOK, noMostrarLog) {
+function prueba2Valores(valor1, valor2, resOK, noMostrarLog) {
     if (!noMostrarLog)
         console.log(laFuncion.name.toString() + "(" + valor1 + ", " + valor2 + ") = " + resOK);
 
@@ -96,10 +98,10 @@ function compararTextNum(valor1, valor2, resOK, noMostrarLog) {
 }
 
 // Pruebas
-compararTextNum(6, 4, 23);
-compararTextNum(30, 2, 65);
-compararTextNum(8, 6, 49);
-compararTextNum(16, 20, 333);
+prueba2Valores(6, 4, 23);
+prueba2Valores(30, 2, 65);
+prueba2Valores(8, 6, 49);
+prueba2Valores(16, 20, 333);
 
 /*
 const Test = require('@codewars/test-compat');
