@@ -13,58 +13,116 @@ Note: 100 randomly generated tests!
 STRINGS, BIG INTEGERS, ALGORITHMS
 */
 
-function multiply(a, b)
-{
+function multiply(a, b) {
 }
 
-function multiplyStr(a, b) {
-    let mul = [];
-    let c = [];
-    let temp = [];
-    let la, lb;
-    let k = 0, x = 0;
-    let r = 0;
-    let sum = 0;
+function multiplyStrings(a, b) {
+  // Primero convertimos las cadenas en arreglos de dígitos
+  // y luego los invertimos para facilitar la multiplicación
+  let aDigits = a.split('').reverse();
+  let bDigits = b.split('').reverse();
 
-    la = a.length - 1;
-    lb = b.length - 1;
-    for (let i = lb; i >= 0; i--) {
-        r = 0;
-        for (let j = la; j >= 0; j--) {
-            let num1 = Number(b[i]);
-            let num2 = Number(a[j]);
-            temp[k++] = (num1 * num2 + r) % 10;
-            r = Math.floor((num1 * num2 + r) / 10);
-        }
-        temp[k++] = r;
-        x++;
-        for (let y = 0; y < x; y++) {
-            temp[k++] = 0;
-        }
+  // Creamos un arreglo para almacenar el resultado parcial
+  let result = [];
+
+  // Iteramos a través de los dígitos del primer número
+  for (let i = 0; i < aDigits.length; i++) {
+    // Obtenemos el dígito actual
+    let aDigit = parseInt(aDigits[i], 10);
+
+    // Iteramos a través de los dígitos del segundo número
+    for (let j = 0; j < bDigits.length; j++) {
+      // Obtenemos el dígito actual
+      let bDigit = parseInt(bDigits[j], 10);
+
+      // Realizamos la multiplicación de los dígitos actuales
+      let product = aDigit * bDigit;
+
+      // Si el resultado parcial en la posición actual es undefined,
+      // establecemos el resultado en el producto actual
+      if (result[i + j] === undefined) {
+        result[i + j] = product;
+      } else {
+        // Si el resultado parcial en la posición actual ya existe,
+        // lo sumamos al producto actual
+        result[i + j] += product;
+      }
     }
+  }
 
-    k = 0;
+  // Realizamos la corrección de la llevada
+  for (let i = 0; i < result.length; i++) {
+    // Si el resultado en la posición actual es mayor o igual a 10,
+    // entonces llevamos el dígito sobrante a la siguiente posición
+    if (result[i] >= 10) {
+      if (result[i + 1] === undefined) {
+        result[i + 1] = 0;
+      }
+      result[i + 1] += parseInt(result[i] / 10, 10);
+      result[i] %= 10;
+    }
+  }
+
+  let result2 = result.join('');
+  // Eliminamos cualquier cero delante de la cadena resultante
+  result2 = result2.replace(/^0+/, '');
+  if (result2 == "") result2 = "0";
+
+  return result2;
+}
+
+function multiplyStr0(a, b) {
+  let mul = [];
+  let c = [];
+  let temp = [];
+  let la, lb;
+  let k = 0, x = 0;
+  let r = 0;
+  let sum = 0;
+
+  la = a.length - 1;
+  lb = b.length - 1;
+  for (let i = lb; i >= 0; i--) {
     r = 0;
-    for (let i = 0; i < la + lb + 2; i++) {
-        sum = 0;
-        y = 0;
-        for (let j = 1; j <= lb + 1; j++) {
-            if (i <= la + j) {
-                sum = sum + temp[y + i];
-            }
-            y += j + la + 1;
-        }
-        c[k++] = (sum + r) % 10;
-        r = (sum + r) / 10;
+    for (let j = la; j >= 0; j--) {
+      let num1 = Number(b[i]);
+      let num2 = Number(a[j]);
+      temp[k++] = (num1 * num2 + r) % 10;
+      r = Math.floor((num1 * num2 + r) / 10);
     }
-    c[k] = r;
+    temp[k++] = r;
+    x++;
+    for (let y = 0; y < x; y++) {
+      temp[k++] = 0;
+    }
+  }
 
-    r = 0;
-    for (let i = k - 1; i >= 0; i--) {
-        mul[r++] = Math.floor(c[i]);
+  k = 0;
+  r = 0;
+  for (let i = 0; i < la + lb + 2; i++) {
+    sum = 0;
+    y = 0;
+    for (let j = 1; j <= lb + 1; j++) {
+      if (i <= la + j) {
+        sum = sum + temp[y + i];
+      }
+      y += j + la + 1;
     }
-    
-    return mul.join('');
+    c[k++] = (sum + r) % 10;
+    r = (sum + r) / 10;
+  }
+  c[k] = r;
+
+  r = 0;
+  for (let i = k - 1; i >= 0; i--) {
+    mul[r++] = Math.floor(c[i]);
+  }
+
+  let result = mul.join('');
+  result = result.toString().replace(/^0+/, '');
+  if (result == "") result = "0";
+  return result;
+  //return mul.join('');
 }
 
 /**
@@ -74,7 +132,7 @@ function multiplyStr(a, b) {
  * Poner arriba el método usado para las pruebas, aunque no es necesario.
  * Lo importante es asignar el valor a 'lafuncion', aunque eso se hace en el código a comprobar.
  */
-let laFuncion = multiplyStr;
+let laFuncion = multiplyStrings;
 
 /**
   * Para comprobar si el resultado de la función es válido.
@@ -86,23 +144,23 @@ let laFuncion = multiplyStr;
   * @see laFuncion Para asignar la función a usar.
   */
 function compararTextNum(valor1, valor2, resOK, noMostrarLog) {
-    if (!noMostrarLog)
-        console.log(valor1 + " =? " + valor2 + " = " + resOK);
+  if (!noMostrarLog)
+    console.log(valor1 + " =? " + valor2 + " = " + resOK);
 
-    let res = laFuncion(valor1, valor2);
-    if (res.toString() != resOK.toString()) {
-        console.log("\tNo es correcto. El resultado calculado es " + res + " debería ser " + resOK);
-    }
-    else {
-        console.log("\tCorrecto!");
-    }
+  let res = laFuncion(valor1, valor2);
+  if (res.toString() != resOK.toString()) {
+    console.log("\tNo es correcto. El resultado calculado es " + res + " debería ser " + resOK);
+  }
+  else {
+    console.log("\tCorrecto!");
+  }
 }
 
 // Pruebas
 compararTextNum("2", "3", "6");
 compararTextNum("30", "69", "2070");
 compararTextNum("11", "85", "935");
-compararTextNum("2" ,"0", "0");
+compararTextNum("2", "0", "0");
 compararTextNum("0", "30", "0");
 compararTextNum("0000001", "3", "3");
 compararTextNum("1009", "03", "3027");
