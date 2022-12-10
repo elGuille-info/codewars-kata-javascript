@@ -82,63 +82,31 @@ function justify(text, width) {
             if (conEspacios.length < width) {
                 //String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
                 let desde = 0;
-                // Extraer las palabras
+                let faltan = width - line.length; // los espacios que faltan
+                let line2 = "";
+                // Extraer las palabras y añadirle un espacio a cada palabra
                 const words2 = line.split(' ');
                 for (let i = 0; i < words2.length; i++) {
                     words2[i] = words2[i] + ' ';
+                    line2 += words2[i];
                 }
-                let cuantas = words2.length;
-                let lineLength = line.length; // la línea con un espacio de separación entre cada palabra
-                let line2 = "";
+                line2 = line2.trimEnd();
+                let lineLength = line2.length; // la línea con un espacio de separación entre cada palabra
+                let numGaps = words2.length - 1;
                 desde = 1;
-                
-                while (line2.length < width) {
+
+                while (line2.trimEnd().length < width) {
                     line2 = "";
                     for (let i = 0; i < words2.length; i++) {
-                        words2[i] = words2[i] + " ".repeat(desde);
+                        words2[i] = words2[i] + " ";
                         line2 += words2[i];
-                        if (line2.length >= width) {
-                            //line2 = line2.trimEnd();
+                        if (line2.trimEnd().length >= width) {
                             break;
                         }
                     }
                     desde++;
                 }
-
-                // while (line2.length < width) {
-                //     for (const word2 of words2) {
-                //         line2 += word2 + " ".repeat(desde);
-                //         if (line2.length >= width) {
-                //             break;
-                //         }
-                //     }
-                //     desde++;
-                // }
-
                 conEspacios = line2.trimEnd();
-
-                // while (line2.length < width) {
-                //     for (const word2 of words2) {
-                //         line2 += word2 + " ".repeat(desde);
-                //     }
-                //     desde++;
-                //     //line2 = "";
-                // }
-                // // while (conEspacios.length < width) {
-                // //     let i = conEspacios.indexOf(' ', desde);
-                // //     if (i > -1) {
-                // //         // let c1 = conEspacios.substring(0, i + 1);
-                // //         // let c2 = conEspacios.substring(i + 1);
-                // //         conEspacios = conEspacios.substring(0, i + 1) + ' ' + conEspacios.substring(i + 1);
-                // //         desde = i + 2;
-                // //         if (desde >= conEspacios.length) {
-                // //             desde = 0;
-                // //         }
-                // //     }
-                // //     else {
-                // //         break;
-                // //     }
-                // // }
             }
             result += conEspacios + '\n';
             //result += addSpaces(line, spaces) + '\n';
@@ -224,44 +192,18 @@ function compararTexos(valor1, valor2, resOK, mostrarLog) {
 const LIPSUM = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sagittis dolor mauris, at elementum ligula tempor eget. In quis rhoncus nunc, at aliquet orci. Fusce at dolor sit amet felis suscipit tristique. Nam a imperdiet tellus. Nulla eu vestibulum urna. Vivamus tincidunt suscipit enim, nec ultrices nisi volutpat ac. Maecenas sit amet lacinia arcu, non dictum justo. Donec sed quam vel risus faucibus euismod. Suspendisse rhoncus rhoncus felis at fermentum. Donec lorem magna, ultricies a nunc sit amet, blandit fringilla nunc. In vestibulum velit ac felis rhoncus pellentesque. Mauris at tellus enim. Aliquam eleifend tempus dapibus. Pellentesque commodo, nisi sit amet hendrerit fringilla, ante odio porta lacus, ut elementum justo nulla et dolor.';
 
 /*
-dapibus. Pellentesque commodo,
--->nisi------sit--amet--hendrerit
-fringilla,----ante--odio-porta
-lacus,----ut---elementum-justo
-nulla et dolor.
-
-    Debería ser:
-dapibus. Pellentesque commodo,
--->nisi----sit---amet---hendrerit
-fringilla,---ante--odio--porta
-lacus,---ut---elementum--justo
-nulla et dolor.
-
-dapibus. Pellentesque commodo, nisi sit amet hendrerit fringilla, ante odio porta lacus, ut elementum justo nulla et dolor.
-
-`dapibus. Pellentesque commodo,
-nisi    sit   amet   hendrerit
-fringilla,   ante  odio  porta
-lacus,   ut   elementum  justo
-nulla et dolor.`
-
-
 	No es correcto. El resultado calculado es
-dapibus. Pellentesque commodo,
-nisi    sit    amet    hendrerit
+nisi   sit   amet   hendrerit
 fringilla,  ante  odio  porta
 lacus,  ut  elementum  justo
 nulla et dolor.
-
 	debería ser
-dapibus. Pellentesque commodo,
 nisi    sit   amet   hendrerit
 fringilla,   ante  odio  porta
 lacus,   ut   elementum  justo
 nulla et dolor.
 */
-compararTexos("dapibus. Pellentesque commodo, nisi sit amet hendrerit fringilla, ante odio porta lacus, ut elementum justo nulla et dolor.", 30,`dapibus. Pellentesque commodo,
-nisi    sit   amet   hendrerit
+compararTexos("nisi sit amet hendrerit fringilla, ante odio porta lacus, ut elementum justo nulla et dolor.", 30,`nisi    sit   amet   hendrerit
 fringilla,   ante  odio  porta
 lacus,   ut   elementum  justo
 nulla et dolor.`
