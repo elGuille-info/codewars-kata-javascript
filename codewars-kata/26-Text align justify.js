@@ -82,6 +82,7 @@ function justify(text, width) {
         // Otherwise, add the word to the current line with a space
         else {
             line += " " + word;
+            line = line.trimStart();
         }
     }
 
