@@ -1,48 +1,45 @@
 ﻿/*
-    # parseInt() reloaded (4 kyu)
+    Las pruebas del kata en "Attemp"
 
-In this kata we want to convert a string into an integer. The strings simply represent the numbers in words.
-
-Examples:
-
-"one" => 1
-"twenty" => 20
-"two hundred forty-six" => 246
-"seven hundred eighty-three thousand nine hundred and nineteen" => 783919
-
-Additional Notes:
-
-The minimum number is "zero" (inclusively)
-The maximum number, which must be supported is 1 million (inclusively)
-The "and" in e.g. "one hundred and twenty-four" is optional, in some cases it's present and in others it's not
-All tested numbers are valid, you don't need to validate them
-
+zero
+one
+two
+three
+four
+five
+six
+seven
+eight
+nine
+ten
+twenty
+twenty one
+thirty seven
+forty six
+fifty nine
+sixty eight
+seventy two
+eighty three
+ninety four
+one hundred
+one hundred one
+one hundred and one
+one hundred sixty nine
+two hundred and ninety nine
+seven hundred thirty six
+two thousand
+one thousand three hundred and thirty seven
+twenty six thousand three hundred and fifty nine
+thirty five thousand
+ninety nine thousand nine hundred and ninety nine
+six hundred sixty six thousand six hundred sixty six
+seven hundred thousand
+two hundred thousand three
+two hundred thousand and three
+two hundred three thousand
+five hundred thousand three hundred
 */
 
-/*
-    Da error usando este código:
-    //const words = string.replaceAll("-", " ").split(" ");
-    // Y también con este otro:
-    //const words = string.toString().replaceAll("-", " ").split(" ");
-    // Esto también da error en la prueba y aquí funciona.
-    const words = string.split(" ").split("-");
-
-    En las pruebas dice: TypeError: string.replaceAll is not a function
-    const words = string.replaceAll("-", " ").split(" ");
-    Tampoco va haciendo esto:
-    const words = string.toString().replaceAll("-", " ").split(" ");
-
-    const words = string.split(" ").split("-");
-    TypeError: string.split(...).split is not a function
-
-    Con este truco de https://stackoverflow.com/a/63958411/14338047
-    String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
-    string = string.replaceAllTxt("-", " ");
-
-*/
-
-
-// La presentada
 function parseInt(string) {
     // TODO: it's your task now
 
@@ -164,14 +161,3 @@ function comparaResultado(valor, resOK) {
 // Esto falla en el kata
 comparaResultado('five hundred thousand three hundred', 500300);
 //expected 300 to equal 500300
-/*
-const Test = require('@codewars/test-compat');
-
-describe("Tests", () => {
-  it("test", () => {
-Test.assertEquals(parseInt('one'), 1);
-Test.assertEquals(parseInt('twenty'), 20);
-Test.assertEquals(parseInt('two hundred forty-six'), 246);
-  });
-});
-*/
