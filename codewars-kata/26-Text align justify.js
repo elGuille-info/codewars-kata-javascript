@@ -72,7 +72,11 @@ function justify(text, width) {
         // If adding the current word to the line would make it too long,
         // add a line break and reset the line to the current word
         if (line.length + word.length + 1 > width) {
-            result += line + '\n';
+            // Calculate the number of spaces to add to the line
+            const spaces = width - line.length;
+
+            // Add the spaces to the beginning of the line
+            result += " ".repeat(spaces) + line + '\n';
             line = word;
         }
         // Otherwise, add the word to the current line with a space
@@ -152,6 +156,10 @@ fringilla,   ante  odio  porta
 lacus,   ut   elementum  justo
 nulla et dolor.`);
 
+compararTexos("This is a test with more words in it.", 10, `This  is a
+test  with
+more words
+in it.`);
 
 /*
 const assert = require('chai').assert;
