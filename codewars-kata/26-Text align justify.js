@@ -75,8 +75,8 @@ function justify(text, width) {
             // Calculate the number of spaces to add to the line
             const spaces = width - line.length;
 
-            // Add the spaces to the beginning of the line
-            result += " ".repeat(spaces) + line + '\n';
+            // Add the spaces between the words on the line
+            result += addSpaces(line, spaces) + '\n';
             line = word;
         }
         // Otherwise, add the word to the current line with a space
@@ -89,6 +89,34 @@ function justify(text, width) {
     result += line;
 
     // Return the justified text
+    return result;
+}
+
+// This function adds a given number of spaces between the words in a line of text
+function addSpaces(line, numSpaces) {
+    // Split the line into an array of words
+    const words = line.split(' ');
+
+    // Calculate the number of gaps between words
+    const numGaps = words.length - 1;
+
+    // Calculate the number of spaces to add to each gap
+    const spacesPerGap = Math.floor(numSpaces / numGaps);
+
+    // Add the spaces to each gap, starting with the largest gaps first
+    let result = words[0];
+    for (let i = 1; i < words.length; i++) {
+        // Calculate the number of spaces to add to the current gap
+        let spaces = spacesPerGap;
+        if (i <= numSpaces % numGaps) {
+            spaces += 1;
+        }
+
+        // Add the spaces to the gap
+        result += " ".repeat(spaces) + words[i];
+    }
+
+    // Return the line with the added spaces
     return result;
 }
 
