@@ -77,23 +77,68 @@ function justify(text, width) {
 
             // Add the spaces between the words on the line
             //let conEspacios = addSpaces(line, spaces) + '\n';
-            let conEspacios = addSpaces(line, spaces);
+            let conEspacios = line; // = addSpaces(line, spaces);
             // Si tiene menos de width, añadir espacios entre cada palabra desde el principio
             if (conEspacios.length < width) {
                 //String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
                 let desde = 0;
-                while (conEspacios.length < width) {
-                    let i = conEspacios.indexOf(' ', desde);
-                    if (i > -1) {
-                        // let c1 = conEspacios.substring(0, i + 1);
-                        // let c2 = conEspacios.substring(i + 1);
-                        conEspacios = conEspacios.substring(0, i + 1) + ' ' + conEspacios.substring(i + 1);
-                        desde = i + 2;
-                    }
-                    else {
-                        break;
-                    }
+                // Extraer las palabras
+                const words2 = line.split(' ');
+                for (let i = 0; i < words2.length; i++) {
+                    words2[i] = words2[i] + ' ';
                 }
+                let cuantas = words2.length;
+                let lineLength = line.length; // la línea con un espacio de separación entre cada palabra
+                let line2 = "";
+                desde = 1;
+                
+                while (line2.length < width) {
+                    line2 = "";
+                    for (let i = 0; i < words2.length; i++) {
+                        words2[i] = words2[i] + " ".repeat(desde);
+                        line2 += words2[i];
+                        if (line2.length >= width) {
+                            //line2 = line2.trimEnd();
+                            break;
+                        }
+                    }
+                    desde++;
+                }
+
+                // while (line2.length < width) {
+                //     for (const word2 of words2) {
+                //         line2 += word2 + " ".repeat(desde);
+                //         if (line2.length >= width) {
+                //             break;
+                //         }
+                //     }
+                //     desde++;
+                // }
+
+                conEspacios = line2.trimEnd();
+
+                // while (line2.length < width) {
+                //     for (const word2 of words2) {
+                //         line2 += word2 + " ".repeat(desde);
+                //     }
+                //     desde++;
+                //     //line2 = "";
+                // }
+                // // while (conEspacios.length < width) {
+                // //     let i = conEspacios.indexOf(' ', desde);
+                // //     if (i > -1) {
+                // //         // let c1 = conEspacios.substring(0, i + 1);
+                // //         // let c2 = conEspacios.substring(i + 1);
+                // //         conEspacios = conEspacios.substring(0, i + 1) + ' ' + conEspacios.substring(i + 1);
+                // //         desde = i + 2;
+                // //         if (desde >= conEspacios.length) {
+                // //             desde = 0;
+                // //         }
+                // //     }
+                // //     else {
+                // //         break;
+                // //     }
+                // // }
             }
             result += conEspacios + '\n';
             //result += addSpaces(line, spaces) + '\n';
@@ -179,64 +224,82 @@ function compararTexos(valor1, valor2, resOK, mostrarLog) {
 const LIPSUM = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sagittis dolor mauris, at elementum ligula tempor eget. In quis rhoncus nunc, at aliquet orci. Fusce at dolor sit amet felis suscipit tristique. Nam a imperdiet tellus. Nulla eu vestibulum urna. Vivamus tincidunt suscipit enim, nec ultrices nisi volutpat ac. Maecenas sit amet lacinia arcu, non dictum justo. Donec sed quam vel risus faucibus euismod. Suspendisse rhoncus rhoncus felis at fermentum. Donec lorem magna, ultricies a nunc sit amet, blandit fringilla nunc. In vestibulum velit ac felis rhoncus pellentesque. Mauris at tellus enim. Aliquam eleifend tempus dapibus. Pellentesque commodo, nisi sit amet hendrerit fringilla, ante odio porta lacus, ut elementum justo nulla et dolor.';
 
 /*
-'Lorem    ipsum dolor sit amet,
-consectetur   adipiscing elit.
-Vestibulum     sagittis  dolor
-mauris,    at elementum ligula
-tempor   eget. In quis rhoncus
-nunc,   at aliquet orci. Fusce
-at      dolor  sit  amet felis
-suscipit     tristique.  Nam a
-imperdiet     tellus. Nulla eu\nvestibulum     urna.   Vivamus\ntincidunt   suscipit enim, nec\nultrices     nisi volutpat ac.\nMaecenas     sit  amet lacinia\narcu,  non dictum justo. Donec\nsed    quam vel risus faucibus\neuismod.   Suspendisse rhoncus\nrhoncus    felis at fermentum.\nDonec lorem magna, ultricies a\nnunc      sit   amet,  blandit\nfringilla  nunc. In vestibulum\nvelit      ac   felis  rhoncus\npellentesque. Mauris at tellus\nenim.  Aliquam eleifend tempus\ndapibus. Pellentesque commodo,\nnisi      sit  amet  hendrerit\nfringilla,     ante odio porta\nlacus,     ut  elementum justo\nnulla et dolor.' to equal 'Lorem  ipsum  dolor  sit amet,\nconsectetur  adipiscing  elit.\nVestibulum    sagittis   dolor\nmauris,  at  elementum  ligula\ntempor  eget.  In quis rhoncus\nnunc,  at  aliquet orci. Fusce\nat   dolor   sit   amet  felis\nsuscipit   tristique.   Nam  a\nimperdiet   tellus.  Nulla  eu\nvestibulum    urna.    Vivamus\ntincidunt  suscipit  enim, nec\nultrices   nisi  volutpat  ac.\nMaecenas   sit   amet  lacinia\narcu,  non dictum justo. Donec\nsed  quam  vel  risus faucibus\neuismod.  Suspendisse  rhoncus\nrhoncus  felis  at  fermentum.\nDonec lorem magna, ultricies a\nnunc    sit    amet,   blandit\nfringilla  nunc. In vestibulum\nvelit    ac    felis   rhoncus\npellentesque. Mauris at tellus\nenim.  Aliquam eleifend tempus\ndapibus. Pellentesque commodo,\nnisi    sit   amet   hendrerit\nfringilla,   ante  odio  porta\nlacus,   ut   elementum  justo\nnulla et dolor.'
-*/
-/*
 dapibus. Pellentesque commodo,
 -->nisi------sit--amet--hendrerit
 fringilla,----ante--odio-porta
-lacus,    ut   elementum justo
+lacus,----ut---elementum-justo
 nulla et dolor.
 
     Debería ser:
 dapibus. Pellentesque commodo,
 -->nisi----sit---amet---hendrerit
 fringilla,---ante--odio--porta
-lacus,   ut   elementum  justo
+lacus,---ut---elementum--justo
 nulla et dolor.
 
-*/
-compararTexos(LIPSUM, 30, `Lorem  ipsum  dolor  sit amet,
-consectetur  adipiscing  elit.
-Vestibulum    sagittis   dolor
-mauris,  at  elementum  ligula
-tempor  eget.  In quis rhoncus
-nunc,  at  aliquet orci. Fusce
-at   dolor   sit   amet  felis
-suscipit   tristique.   Nam  a
-imperdiet   tellus.  Nulla  eu
-vestibulum    urna.    Vivamus
-tincidunt  suscipit  enim, nec
-ultrices   nisi  volutpat  ac.
-Maecenas   sit   amet  lacinia
-arcu,  non dictum justo. Donec
-sed  quam  vel  risus faucibus
-euismod.  Suspendisse  rhoncus
-rhoncus  felis  at  fermentum.
-Donec lorem magna, ultricies a
-nunc    sit    amet,   blandit
-fringilla  nunc. In vestibulum
-velit    ac    felis   rhoncus
-pellentesque. Mauris at tellus
-enim.  Aliquam eleifend tempus
+dapibus. Pellentesque commodo, nisi sit amet hendrerit fringilla, ante odio porta lacus, ut elementum justo nulla et dolor.
+
+`dapibus. Pellentesque commodo,
+nisi    sit   amet   hendrerit
+fringilla,   ante  odio  porta
+lacus,   ut   elementum  justo
+nulla et dolor.`
+
+
+	No es correcto. El resultado calculado es
+dapibus. Pellentesque commodo,
+nisi    sit    amet    hendrerit
+fringilla,  ante  odio  porta
+lacus,  ut  elementum  justo
+nulla et dolor.
+
+	debería ser
 dapibus. Pellentesque commodo,
 nisi    sit   amet   hendrerit
 fringilla,   ante  odio  porta
 lacus,   ut   elementum  justo
-nulla et dolor.`);
+nulla et dolor.
+*/
+compararTexos("dapibus. Pellentesque commodo, nisi sit amet hendrerit fringilla, ante odio porta lacus, ut elementum justo nulla et dolor.", 30,`dapibus. Pellentesque commodo,
+nisi    sit   amet   hendrerit
+fringilla,   ante  odio  porta
+lacus,   ut   elementum  justo
+nulla et dolor.`
+);
 
-compararTexos("This is a test with more words in it.", 10, `This  is a
-test  with
-more words
-in it.`);
+// compararTexos(LIPSUM, 30, `Lorem  ipsum  dolor  sit amet,
+// consectetur  adipiscing  elit.
+// Vestibulum    sagittis   dolor
+// mauris,  at  elementum  ligula
+// tempor  eget.  In quis rhoncus
+// nunc,  at  aliquet orci. Fusce
+// at   dolor   sit   amet  felis
+// suscipit   tristique.   Nam  a
+// imperdiet   tellus.  Nulla  eu
+// vestibulum    urna.    Vivamus
+// tincidunt  suscipit  enim, nec
+// ultrices   nisi  volutpat  ac.
+// Maecenas   sit   amet  lacinia
+// arcu,  non dictum justo. Donec
+// sed  quam  vel  risus faucibus
+// euismod.  Suspendisse  rhoncus
+// rhoncus  felis  at  fermentum.
+// Donec lorem magna, ultricies a
+// nunc    sit    amet,   blandit
+// fringilla  nunc. In vestibulum
+// velit    ac    felis   rhoncus
+// pellentesque. Mauris at tellus
+// enim.  Aliquam eleifend tempus
+// dapibus. Pellentesque commodo,
+// nisi    sit   amet   hendrerit
+// fringilla,   ante  odio  porta
+// lacus,   ut   elementum  justo
+// nulla et dolor.`);
+
+// compararTexos("This is a test with more words in it.", 10, `This  is a
+// test  with
+// more words
+// in it.`);
 
 /*
 const assert = require('chai').assert;
