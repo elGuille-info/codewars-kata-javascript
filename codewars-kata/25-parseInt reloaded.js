@@ -138,15 +138,23 @@ function convertToNumber(text) {
     const words = text.replaceAll("-", " ").split(" ");
     let result = 0;
     let current = 0;
-    let last = "";
+    let last = 0;
     for (const word of words) {
         // Si la palabra es "and", simplemente la ignoramos
         if (word === "and") continue;
 
         // Si la palabra está en el diccionario de números, actualizamos el valor actual
         if (word in numbers) {
-            current += numbers[word];
-            result = current;
+            if (last == 0) {
+                last = current;
+                current = numbers[word];
+                result += current;
+            }
+            else {
+                current += numbers[word];
+                //result = current;
+                result = last + current;
+            }
             //result += numbers[word];
         } else if (word === "hundred") {
             // Si la palabra es "hundred", multiplicamos el valor actual por 100
@@ -157,11 +165,12 @@ function convertToNumber(text) {
             //result += current * 1000;
             result *= 1000;
             current = result;
-            last = current;
+            last = 0;
         } else if (word === "million") {
             // Si la palabra es "million", multiplicamos el valor actual por 1000000 y lo agregamos al resultado, y luego reseteamos el valor actual
             //result += current * 1000000;
             result *= 1000000;
+            last = 0;
         }
     }
     return result;
@@ -175,7 +184,7 @@ function convertToNumber(text) {
  * Poner arriba el método usado para las pruebas, aunque no es necesario.
  * Lo importante es asignar el valor a 'lafuncion', aunque eso se hace en el código a comprobar.
  */
-let laFuncion = textToNumber;
+let laFuncion = convertToNumber;
 
 /**
  * Para comprobar si el resultado de la función es válido.
