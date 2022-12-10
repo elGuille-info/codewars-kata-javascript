@@ -63,9 +63,10 @@ function rectanglePoints(a, b) {
     // sum of the lengths of the sides, and then dividing
     // by 2 to remove the points that were counted twice.
     // We need to add the points at the corners back in
-    // to avoid undercounting.
+    // to avoid undercounting, but we need to divide by 2
+    // to avoid overcounting.
     let area = a * b;
-    let sideLength = (2 * (a + b) - 8 + 4) / 2;
+    let sideLength = (2 * (a + b) - 8 + 4 / 2) / 2;
     return area + sideLength;
 }
 
