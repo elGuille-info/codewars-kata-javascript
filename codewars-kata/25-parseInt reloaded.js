@@ -42,7 +42,7 @@ All tested numbers are valid, you don't need to validate them
 */
 
 
-// La presentada
+// La presentada (ha pasado la prueba)
 function parseInt(string) {
     // TODO: it's your task now
 
