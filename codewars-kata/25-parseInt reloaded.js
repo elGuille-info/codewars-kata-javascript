@@ -19,7 +19,30 @@ All tested numbers are valid, you don't need to validate them
 
 */
 
-// Probar si pasa los tests
+/*
+    Da error usando este código:
+    //const words = string.replaceAll("-", " ").split(" ");
+    // Y también con este otro:
+    //const words = string.toString().replaceAll("-", " ").split(" ");
+    // Esto también da error en la prueba y aquí funciona.
+    const words = string.split(" ").split("-");
+
+    En las pruebas dice: TypeError: string.replaceAll is not a function
+    const words = string.replaceAll("-", " ").split(" ");
+    Tampoco va haciendo esto:
+    const words = string.toString().replaceAll("-", " ").split(" ");
+
+    const words = string.split(" ").split("-");
+    TypeError: string.split(...).split is not a function
+
+    Con este truco de https://stackoverflow.com/a/63958411/14338047
+    String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
+    string = string.replaceAllTxt("-", " ");
+
+*/
+
+
+// La presentada
 function parseInt(string) {
     // TODO: it's your task now
 
@@ -57,10 +80,13 @@ function parseInt(string) {
 
     // Divide la cadena en palabras y recorre cada palabra (entre espacios)
     // Cambiamos el "dash" por un espacio y después dividimos en palabras separadas por espacios
-    /*
-        En las pruebas dice: TypeError: string.replaceAll is not a function
-    */
-    const words = string.replaceAll("-", " ").split(" ");
+
+    //const words = string.toString().replaceAll("-", " ").split(" ");
+    // Para que funcione en el kata, usar esto:
+    String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
+    string = string.replaceAllTxt("-", " ");
+    const words = string.split(' ');
+
     let result = 0;
     let current = 0;
     let last = 0;
