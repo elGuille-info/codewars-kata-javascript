@@ -1,8 +1,8 @@
 /*
     # Text align justify (4 kyu)
 
-Your task in this Kata is to emulate text justification in monospace font. 
-You will be given a single-lined text and the expected justification width. 
+Your task in this Kata is to emulate text justification in monospace font.
+You will be given a single-lined text and the expected justification width.
 The longest word will never be greater than this width.
 
 Here are the rules:
@@ -145,7 +145,7 @@ function compararTexos(valor1, valor2, resOK, mostrarLog) {
 
     let res = laFuncion(valor1, valor2);
     if (res.toString() != resOK.toString()) {
-        console.log("\tNo es correcto. El resultado calculado es " + res + " debería ser " + resOK);
+        console.log("\tNo es correcto. El resultado calculado es\n" + res + "\n\tdebería ser\n" + resOK);
     }
     else {
         console.log("\tCorrecto!");
@@ -155,34 +155,34 @@ function compararTexos(valor1, valor2, resOK, mostrarLog) {
 // Pruebas
 const LIPSUM = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sagittis dolor mauris, at elementum ligula tempor eget. In quis rhoncus nunc, at aliquet orci. Fusce at dolor sit amet felis suscipit tristique. Nam a imperdiet tellus. Nulla eu vestibulum urna. Vivamus tincidunt suscipit enim, nec ultrices nisi volutpat ac. Maecenas sit amet lacinia arcu, non dictum justo. Donec sed quam vel risus faucibus euismod. Suspendisse rhoncus rhoncus felis at fermentum. Donec lorem magna, ultricies a nunc sit amet, blandit fringilla nunc. In vestibulum velit ac felis rhoncus pellentesque. Mauris at tellus enim. Aliquam eleifend tempus dapibus. Pellentesque commodo, nisi sit amet hendrerit fringilla, ante odio porta lacus, ut elementum justo nulla et dolor.';
 
-compararTexos(LIPSUM, 30, `Lorem  ipsum  dolor  sit amet,
-consectetur  adipiscing  elit.
-Vestibulum    sagittis   dolor
-mauris,  at  elementum  ligula
-tempor  eget.  In quis rhoncus
-nunc,  at  aliquet orci. Fusce
-at   dolor   sit   amet  felis
-suscipit   tristique.   Nam  a
-imperdiet   tellus.  Nulla  eu
-vestibulum    urna.    Vivamus
-tincidunt  suscipit  enim, nec
-ultrices   nisi  volutpat  ac.
-Maecenas   sit   amet  lacinia
-arcu,  non dictum justo. Donec
-sed  quam  vel  risus faucibus
-euismod.  Suspendisse  rhoncus
-rhoncus  felis  at  fermentum.
-Donec lorem magna, ultricies a
-nunc    sit    amet,   blandit
-fringilla  nunc. In vestibulum
-velit    ac    felis   rhoncus
-pellentesque. Mauris at tellus
-enim.  Aliquam eleifend tempus
-dapibus. Pellentesque commodo,
-nisi    sit   amet   hendrerit
-fringilla,   ante  odio  porta
-lacus,   ut   elementum  justo
-nulla et dolor.`);
+// compararTexos(LIPSUM, 30, `Lorem  ipsum  dolor  sit amet,
+// consectetur  adipiscing  elit.
+// Vestibulum    sagittis   dolor
+// mauris,  at  elementum  ligula
+// tempor  eget.  In quis rhoncus
+// nunc,  at  aliquet orci. Fusce
+// at   dolor   sit   amet  felis
+// suscipit   tristique.   Nam  a
+// imperdiet   tellus.  Nulla  eu
+// vestibulum    urna.    Vivamus
+// tincidunt  suscipit  enim, nec
+// ultrices   nisi  volutpat  ac.
+// Maecenas   sit   amet  lacinia
+// arcu,  non dictum justo. Donec
+// sed  quam  vel  risus faucibus
+// euismod.  Suspendisse  rhoncus
+// rhoncus  felis  at  fermentum.
+// Donec lorem magna, ultricies a
+// nunc    sit    amet,   blandit
+// fringilla  nunc. In vestibulum
+// velit    ac    felis   rhoncus
+// pellentesque. Mauris at tellus
+// enim.  Aliquam eleifend tempus
+// dapibus. Pellentesque commodo,
+// nisi    sit   amet   hendrerit
+// fringilla,   ante  odio  porta
+// lacus,   ut   elementum  justo
+// nulla et dolor.`);
 
 compararTexos("This is a test with more words in it.", 10, `This  is a
 test  with
@@ -198,7 +198,7 @@ describe("Sample tests", () => {
     assert.strictEqual(justify('123', 7), '123');
     assert.strictEqual(justify('', 10), '');
   });
-  
+
   const LIPSUM = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sagittis dolor mauris, at elementum ligula tempor eget. In quis rhoncus nunc, at aliquet orci. Fusce at dolor sit amet felis suscipit tristique. Nam a imperdiet tellus. Nulla eu vestibulum urna. Vivamus tincidunt suscipit enim, nec ultrices nisi volutpat ac. Maecenas sit amet lacinia arcu, non dictum justo. Donec sed quam vel risus faucibus euismod. Suspendisse rhoncus rhoncus felis at fermentum. Donec lorem magna, ultricies a nunc sit amet, blandit fringilla nunc. In vestibulum velit ac felis rhoncus pellentesque. Mauris at tellus enim. Aliquam eleifend tempus dapibus. Pellentesque commodo, nisi sit amet hendrerit fringilla, ante odio porta lacus, ut elementum justo nulla et dolor.';
 
   it("should work for the example of the description", () => {
