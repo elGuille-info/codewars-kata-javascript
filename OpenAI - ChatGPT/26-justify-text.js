@@ -346,7 +346,7 @@ function justify2(text, width) {
     return result;
 }
 
-function justify(text, width) {
+function justify3(text, width) {
     // Split the text into an array of words
     const words = text.split(' ');
 
@@ -405,6 +405,81 @@ function addSpaces(line, numSpaces) {
 
     // Return the line with the added spaces
     return result;
+}
+
+// El presentado en el kata (más o menos)
+function justify(text, width) {
+  // Split the text into an array of words
+  const words = text.split(' ');
+
+  // Initialize the current line and the result string
+  let line = "";
+  let result = "";
+
+  // Loop through each word in the array
+  for (const word of words) {
+      // If adding the current word to the line would make it too long,
+      // add a line break and reset the line to the current word
+      if (line.length + word.length + 1 > width) {
+          // Calculate the number of spaces to add to the line
+          //const spaces = width - line.length;
+
+          // Add the spaces between the words on the line
+          let conEspacios = line;
+          // Si tiene menos de width, añadir espacios entre cada palabra desde el principio
+          if (conEspacios.length < width) {
+              //String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
+              let desde = 0;
+              let faltan = width - line.length; // los espacios que faltan
+              let line2 = "";
+              // Extraer las palabras y añadirle un espacio a cada palabra
+              const words2 = line.split(' ');
+              // Si solo hay una palabra, no hacer nada más.
+              if (words2.length > 1) {
+                  for (let i = 0; i < words2.length; i++) {
+                      if (i < words2.length - 1) {
+                          words2[i] = words2[i] + ' ';
+                      }
+                      line2 += words2[i];
+                  }
+                  line2 = line2.trimEnd();
+                  desde = 1;
+
+                  while (line2.trimEnd().length < width) {
+                      // No añadir espacios a la última palabra
+                      for (let i = 0; i < words2.length - 1; i++) {
+                          words2[i] = words2[i] + " ";
+                          faltan--;
+                          if (faltan < 1) {
+                              break;
+                          }
+                      }
+                      line2 = "";
+                      for (let i = 0; i < words2.length; i++) {
+                          line2 += words2[i];
+                      }
+                  }
+                  conEspacios = line2.trimEnd();
+              }
+              else {
+                  line2 = conEspacios;
+              }
+          }
+          result += conEspacios + '\n';
+          line = word;
+      }
+      // Otherwise, add the word to the current line with a space
+      else {
+          line += " " + word;
+          line = line.trimStart();
+      }
+  }
+
+  // Add the last line to the result
+  result += line;
+
+  // Return the justified text
+  return result;
 }
 
 console.log(justify("This is a test", 10));

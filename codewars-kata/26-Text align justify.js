@@ -59,7 +59,10 @@ function justify0(text, width) {
     return text
 }
 
+// El presentado en el kata
 function justify(text, width) {
+    console.log("width= " + width);
+
     // Split the text into an array of words
     const words = text.split(' ');
 
@@ -72,14 +75,10 @@ function justify(text, width) {
         // If adding the current word to the line would make it too long,
         // add a line break and reset the line to the current word
         if (line.length + word.length + 1 > width) {
-            // Calculate the number of spaces to add to the line
-            //const spaces = width - line.length;
-
             // Add the spaces between the words on the line
             let conEspacios = line;
             // Si tiene menos de width, añadir espacios entre cada palabra desde el principio
             if (conEspacios.length < width) {
-                //String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
                 let desde = 0;
                 let faltan = width - line.length; // los espacios que faltan
                 let line2 = "";
@@ -181,7 +180,7 @@ elementum    ligula
 tempor eget.
 
 
-	No es correcto. El resultado calculado es
+    No es correcto. El resultado calculado es
 ------------------
 `Lorem  ipsum dolor
 sit          amet,
@@ -193,7 +192,7 @@ mauris,         at
 elementum   ligula
 tempor eget.`
 
-	debería ser
+    debería ser
 ------------------
 Lorem  ipsum  dolor
 sit           amet,
@@ -214,7 +213,7 @@ tempor eget.
 
 console.log("con 18");
 compararTexos("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sagittis dolor mauris, at elementum ligula tempor eget.", 18,
-`Lorem  ipsum dolor
+    `Lorem  ipsum dolor
 sit          amet,
 consectetur
 adipiscing   elit.
