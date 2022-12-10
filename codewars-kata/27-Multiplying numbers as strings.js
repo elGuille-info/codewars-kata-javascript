@@ -1555,6 +1555,15 @@ function solocion3() {
     multiply_3 = (a, b) => bigInt(a).multiply(b).toArray(10).value.join('')
 }
 
+// Usando phyton!!! :-D
+//4- Artoria
+// https://www.codewars.com/kata/reviews/55913f013d9dfee890000049/groups/5934b196de5e450a710000e2
+function multiply_4(a, b){
+    return require('child_process')
+           .execSync(`python -c "print(${a.replace(/^0+/, "") || 0}*${b.replace(/^0+/, "") || 0})"`)
+           .toString()
+           .replace("\n", "");
+}
 
 // El presentado
 function multiply(a, b) {
@@ -1586,16 +1595,6 @@ function multiply(a, b) {
     if (result == "") result = "0";
 
     return result;
-}
-
-// Usando phyton!!! :-D
-//4- Artoria
-// https://www.codewars.com/kata/reviews/55913f013d9dfee890000049/groups/5934b196de5e450a710000e2
-function multiply(a, b){
-    return require('child_process')
-           .execSync(`python -c "print(${a.replace(/^0+/, "") || 0}*${b.replace(/^0+/, "") || 0})"`)
-           .toString()
-           .replace("\n", "");
 }
 
 // La presentada
@@ -1637,7 +1636,7 @@ function multiplyStrings(a, b) {
  * Poner arriba el método usado para las pruebas, aunque no es necesario.
  * Lo importante es asignar el valor a 'lafuncion', aunque eso se hace en el código a comprobar.
  */
-let laFuncion = multiplyStrings;
+let laFuncion = multiply;
 
 /**
   * Para comprobar si el resultado de la función es válido.
