@@ -193,6 +193,23 @@ function justify0(text, width) {
     return text
 }
 
+// No exactamente la 5, pero la comentada por r0g en la primera
+//5- dwyanelin
+// https://www.codewars.com/kata/reviews/537e31ab8402c453a7000099/groups/589d99edea51afb4ca000194
+
+function justify_5(str, len) {
+    var result = "";
+    var lastLine = str.split(' ').reduce((line, word) => {
+        if (line.length + word.length < len)
+            return line + ' ' + word;
+        for (var lineLen = line.length; lineLen < len && line.indexOf(' ') >= 0;)
+            line = line.replace(/ +/g, spaces => spaces + (lineLen++ < len ? ' ' : ''));
+        result += line + "\n";
+        return word;
+    });
+    return result + lastLine;
+}
+
 // El presentado en el kata
 function justify(text, width) {
     console.log("width= " + width);
