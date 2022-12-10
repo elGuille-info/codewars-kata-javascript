@@ -91,21 +91,36 @@ function justify(text, width) {
                     line2 += words2[i];
                 }
                 line2 = line2.trimEnd();
-                let lineLength = line2.length; // la línea con un espacio de separación entre cada palabra
-                let numGaps = words2.length - 1;
+                // let lineLength = line2.length; // la línea con un espacio de separación entre cada palabra
+                // let numGaps = words2.length - 1;
                 desde = 1;
 
                 while (line2.trimEnd().length < width) {
-                    line2 = "";
-                    for (let i = 0; i < words2.length; i++) {
+                    // No añadir espacios a la última palabra
+                    for (let i = 0; i < words2.length - 1; i++) {
                         words2[i] = words2[i] + " ";
-                        line2 += words2[i];
-                        if (line2.trimEnd().length >= width) {
+                        faltan--;
+                        if (faltan < 1) {
                             break;
                         }
                     }
-                    desde++;
+                    line2 = "";
+                    for (let i = 0; i < words2.length; i++) {
+                        line2 += words2[i];
+                    }
                 }
+
+                // while (line2.trimEnd().length < width) {
+                //     line2 = "";
+                //     for (let i = 0; i < words2.length; i++) {
+                //         words2[i] = words2[i] + " ";
+                //         line2 += words2[i];
+                //         if (line2.trimEnd().length >= width) {
+                //             break;
+                //         }
+                //     }
+                //     desde++;
+                // }
                 conEspacios = line2.trimEnd();
             }
             result += conEspacios + '\n';
@@ -193,9 +208,9 @@ const LIPSUM = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibu
 
 /*
 	No es correcto. El resultado calculado es
-nisi   sit   amet   hendrerit
-fringilla,  ante  odio  porta
-lacus,  ut  elementum  justo
+nisi    sit   amet   hendrerit
+fringilla,   ante  odio  porta
+lacus,   +ut  -elementum  justo
 nulla et dolor.
 	debería ser
 nisi    sit   amet   hendrerit
