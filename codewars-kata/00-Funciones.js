@@ -141,3 +141,25 @@ function compararTextNum(valor1, valor2, resOK, mostrarLog) {
         console.log("\tCorrecto!");
     }
 }
+
+/**
+  * Para comprobar si el resultado de la función es válido.
+  *
+  * @param {*} valor1 Primer parámetro a pasar a la función.
+  * @param {*} valor2 Segundo parámetro a pasar a la función.
+  * @param {*} resOK El resultado que debe dar.
+  * @param {*} noMostrarLog Si NO se debe mostrar lo que se comprueba.
+  * @see laFuncion Para asignar la función a usar.
+  */
+function prueba2Valores(valor1, valor2, resOK, noMostrarLog) {
+    if (!noMostrarLog)
+        console.log(laFuncion.name.toString() + "(" + valor1 + ", " + valor2 + ") = " + resOK);
+
+    let res = laFuncion(valor1, valor2);
+    if (res.toString() != resOK.toString()) {
+        console.log("\tNo es correcto. El resultado calculado es " + res + " debería ser " + resOK);
+    }
+    else {
+        console.log("\tCorrecto!");
+    }
+}

@@ -42,33 +42,27 @@ function rectangleRotation(a, b) {
 }
 
 function rectanglePoints(a, b) {
-    // The center of the rectangle is at (0, 0).
-    // The length of the sides of the rectangle are a and b.
-    // The rectangle is rotated 45 degrees, so the x and y
-    // coordinates of the vertices of the rectangle are
-    // related by x = y * sqrt(2) and y = x * sqrt(2).
-
-    // We can find the coordinates of the vertices of the
-    // rectangle by setting x and y equal to a / 2 and b / 2
-    // respectively, and then applying the transformation above.
     let x1 = (a / 2) * Math.sqrt(2);
     let y1 = (b / 2) * Math.sqrt(2);
     let x2 = -x1;
     let y2 = -y1;
 
-    // The number of points inside the rectangle is equal to
-    // the area of the rectangle, plus the number of points
-    // on the sides of the rectangle. We can find the number
-    // of points on the sides of the rectangle by taking the
-    // sum of the lengths of the sides, and then dividing
-    // by 2 to remove the points that were counted twice.
-    // We need to add the points at the corners back in
-    // to avoid undercounting, but we need to divide by 2
-    // to avoid overcounting.
     let area = a * b;
-    let sideLength = (2 * (a + b) - 8 + 4 / 2) / 2;
+    let sideLength = 0;
+    for (let x = Math.ceil(x1); x >= x2; x--) {
+        for (let y = Math.ceil(y1); y >= y2; y--) {
+            // Check if the point is on the sides of the rectangle.
+            if (x * x + y * y == (x1 * x1 + y1 * y1)) {
+                // Check if the point is not at a corner of the rectangle.
+                if (x != x1 && x != x2 && y != y1 && y != y2) {
+                    sideLength++;
+                }
+            }
+        }
+    }
     return area + sideLength;
 }
+
 
 /**
  * Indicar aquí la función a usar dentro de
@@ -90,7 +84,7 @@ let laFuncion = rectanglePoints;
   */
 function compararTextNum(valor1, valor2, resOK, noMostrarLog) {
     if (!noMostrarLog)
-        console.log(valor1 + " =? " + valor2 + " = " + resOK);
+        console.log(laFuncion.name.toString() + "(" + valor1 + ", " + valor2 + ") = " + resOK);
 
     let res = laFuncion(valor1, valor2);
     if (res.toString() != resOK.toString()) {
