@@ -102,14 +102,20 @@ function parseInt(string) {
                 result += current;
             }
             else {
-                current += numbers[word];
+                current = numbers[word];
                 result = last + current;
+                last = result;
             }
         } else if (word === "hundred") {
             // Si la palabra es "hundred", multiplicamos el valor actual por 100
             current *= 100;
-            // Para solucionar 'one hundred'
-            result = current;
+            // Para solucionar 'five hundred thousand three hundred', 500300
+            //  También funciona con 'one hundred'
+            // Pero falla con: two hundred forty-six = 246 y seven hundred eighty-three thousand nine hundred and nineteen = 783919
+            last += current;
+            result = last;
+            // Para solucionar 'one hundred', pero falla con 'five hundred thousand three hundred', 500300
+            //result = current;
         } else if (word === "thousand") {
             // Si la palabra es "thousand", multiplicamos el valor actual por 1000 y lo agregamos al resultado, y luego reseteamos el valor actual
             result *= 1000;
@@ -155,15 +161,14 @@ function comparaResultado(valor, resOK) {
 }
 
 // Pruebas
-// comparaResultado('one', 1);
-// comparaResultado('twenty', 20);
-// comparaResultado('two hundred forty-six', 246);
-// comparaResultado('seven hundred eighty-three thousand nine hundred and nineteen', 783919);
-// // Esta fallaba en el kata
-// comparaResultado('one hundred', 100);
-// Esto falla en el kata
+comparaResultado('one', 1);
+comparaResultado('twenty', 20);
+comparaResultado('two hundred forty-six', 246);
+comparaResultado('seven hundred eighty-three thousand nine hundred and nineteen', 783919);
+// Esta fallaba en el kata
+comparaResultado('one hundred', 100);
+// Esto fallaba en el kata
 comparaResultado('five hundred thousand three hundred', 500300);
-//expected 300 to equal 500300
 /*
 const Test = require('@codewars/test-compat');
 
