@@ -57,6 +57,9 @@ function parseInt(string) {
 
     // Divide la cadena en palabras y recorre cada palabra (entre espacios)
     // Cambiamos el "dash" por un espacio y después dividimos en palabras separadas por espacios
+    /*
+        En las pruebas dice: TypeError: string.replaceAll is not a function
+    */
     const words = string.replaceAll("-", " ").split(" ");
     let result = 0;
     let current = 0;
