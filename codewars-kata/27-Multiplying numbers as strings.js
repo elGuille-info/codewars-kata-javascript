@@ -1597,7 +1597,7 @@ function multiply(a, b) {
     return result;
 }
 
-// La presentada
+// La presentada, pero con otro nombre
 function multiplyStrings(a, b) {
     // Primero, calculamos el tamaño de cada número
     let sizeA = a.length;
