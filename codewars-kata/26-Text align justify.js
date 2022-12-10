@@ -76,8 +76,26 @@ function justify(text, width) {
             const spaces = width - line.length;
 
             // Add the spaces between the words on the line
-            let addedSpaces = addSpaces(line, spaces) + '\n';
-            result += addedSpaces;
+            //let conEspacios = addSpaces(line, spaces) + '\n';
+            let conEspacios = addSpaces(line, spaces);
+            // Si tiene menos de width, añadir espacios entre cada palabra desde el principio
+            if (conEspacios.length < width) {
+                //String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
+                let desde = 0;
+                while (conEspacios.length < width) {
+                    let i = conEspacios.indexOf(' ', desde);
+                    if (i > -1) {
+                        // let c1 = conEspacios.substring(0, i + 1);
+                        // let c2 = conEspacios.substring(i + 1);
+                        conEspacios = conEspacios.substring(0, i + 1) + ' ' + conEspacios.substring(i + 1);
+                        desde = i + 1;
+                    }
+                    else {
+                        break;
+                    }
+                }
+            }
+            result += conEspacios + '\n';
             //result += addSpaces(line, spaces) + '\n';
             line = word;
         }
