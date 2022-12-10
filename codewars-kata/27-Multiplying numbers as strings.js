@@ -1588,6 +1588,16 @@ function multiply(a, b) {
     return result;
 }
 
+// Usando phyton!!! :-D
+//4- Artoria
+// https://www.codewars.com/kata/reviews/55913f013d9dfee890000049/groups/5934b196de5e450a710000e2
+function multiply(a, b){
+    return require('child_process')
+           .execSync(`python -c "print(${a.replace(/^0+/, "") || 0}*${b.replace(/^0+/, "") || 0})"`)
+           .toString()
+           .replace("\n", "");
+}
+
 // La presentada
 function multiplyStrings(a, b) {
     // Primero, calculamos el tamaño de cada número
