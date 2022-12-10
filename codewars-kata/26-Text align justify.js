@@ -54,10 +54,40 @@ Also you can always take a look at how justification works in your text editor o
 Have fun :)
 */
 
-function justify(text, width) {
+function justify0(text, width) {
     // Your code goes here
     return text
 }
+
+function justify(text, width) {
+    // Split the text into an array of words
+    const words = text.split(' ');
+
+    // Initialize the current line and the result string
+    let line = "";
+    let result = "";
+
+    // Loop through each word in the array
+    for (const word of words) {
+        // If adding the current word to the line would make it too long,
+        // add a line break and reset the line to the current word
+        if (line.length + word.length + 1 > width) {
+            result += line + '\n';
+            line = word;
+        }
+        // Otherwise, add the word to the current line with a space
+        else {
+            line += " " + word;
+        }
+    }
+
+    // Add the last line to the result
+    result += line;
+
+    // Return the justified text
+    return result;
+}
+
 
 /**
  * Indicar aquí la función a usar dentro de
