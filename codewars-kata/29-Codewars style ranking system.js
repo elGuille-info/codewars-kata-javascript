@@ -52,25 +52,56 @@ class User {
     constructor() {
         this.rank = -8;
         this.progress = 0;
-        this.HUNDRED = 100;
-        this.HIGHEST = 8;
+        this.PROGESS_MAX = 100;
+        this.RANK8 = 8;
     }
 }
+User.prototype.incProgress = function (rank) {
+    // The only acceptable range of rank values is -8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8. Any other value should raise an error.
+    if (rank == 0 || rank > this.RANK8 || rank < -this.RANK8) throw new RangeError("rank input out of range");
+    // A user starts at rank -8 and can progress all the way to 8.
+    if (this.rank == this.RANK8) return;
+
+    var diff = (rank > 0 && this.rank < 0) || (rank < 0 && this.rank > 0) ? Math.abs(this.rank) + Math.abs(rank) : rank - this.rank;
+    if (rank > 0 && this.rank < 0) diff--;
+    if (rank < 0 && this.rank > 0) diff = -diff;
+    if (diff > 0) {
+        this.progress += (rank == 1 && this.rank == -1) ? 10 : (10 * diff * diff);
+    } else {
+        this.progress += diff == 0 ? 3 : 1;
+    }
+
+    // A user's rank progress starts off at zero, each time the progress reaches 100 the user's rank is upgraded to the next level
+    if (this.progress > this.PROGESS_MAX && this.rank < this.RANK8) {
+        this.rank += Math.floor(this.progress / this.PROGESS_MAX);
+        if (this.rank == 0) this.rank++;
+        this.progress %= this.PROGESS_MAX;
+    }
+    if (this.rank == this.RANK8) this.progress = 0;
+
+    //console.log("current rank = " + this.rank + "; progress = " + this.progress);
+    return diff;
+};
+
 
 // Pruebas 
 
 function userRank() {
     var user = new User()
-    console.log(user.rank + " => -8"); // => -8
-    console.log(user.progress + " => 0"); // => 0
+    console.log(user.rank + " rank => -8"); // => -8
+    console.log(user.progress + " progress => 0"); // => 0
+    console.log("user.incProgress(-7)");
     user.incProgress(-7)
-    console.log(user.progress + " => 10"); // => 10
+    console.log(user.progress + " progress => 10"); // => 10
+    console.log("user.incProgress(-5)");
     user.incProgress(-5) // will add 90 progress
-    console.log(user.progress + " => 100");
+    console.log(user.progress + " progress => 100");
+    console.log("user.progress = 0");
     user.progress = 0; // progress is now zero
-    console.log(user.progress + " => 0");
+    console.log(user.progress + " progress => 0");
+    console.log("user.rank = -7");
     user.rank = -7; // rank was upgraded to -7
-    console.log(user.rank + " => -7");
+    console.log(user.rank + " rank => -7");
 }
 
 userRank();
