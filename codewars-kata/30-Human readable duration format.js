@@ -58,14 +58,6 @@ function formatDuration(seconds) {
 }
 
 
-// Pruebas
-comparaResultado(1, "1 second");
-comparaResultado(62, "1 minute and 2 seconds");
-comparaResultado(120, "2 minutes");
-comparaResultado(3600, "1 hour");
-comparaResultado(3662, "1 hour, 1 minute and 2 seconds");
-
-
 /**
  * Indicar aquí la función a usar dentro de
  * @see comparaResultado
@@ -94,6 +86,13 @@ function comparaResultado(valor, resOK) {
         console.log("\tCorrecto!");
     }
 }
+
+// Pruebas
+comparaResultado(1, "1 second");
+comparaResultado(62, "1 minute and 2 seconds");
+comparaResultado(120, "2 minutes");
+comparaResultado(3600, "1 hour");
+comparaResultado(3662, "1 hour, 1 minute and 2 seconds");
 
 /*
 const { assert } = require('chai');
