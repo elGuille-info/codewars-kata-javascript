@@ -38,7 +38,7 @@ PUZZLES
 /*
     La solución de gtfo (https://velog.io/@gtfo/Simple-Fun-27-Rectangle-Rotation)
 */
-function rectangleRotation(a, b) {
+function rectangleRotation_gtfo(a, b) {
     const c = Math.ceil(Math.sqrt(Math.pow(a / 2, 2) + Math.pow(b / 2, 2)));
     let counter = 0;
     for (i = -c; i < c; i++) {
@@ -57,6 +57,43 @@ function rectangleRotation(a, b) {
     return counter;
 }
 
+/*
+    De un código en python de: Patxi91
+    https://github.com/Patxi91/CodeWars_Cloud/blob/master/4kyu-Simple%20Fun%20%2327%20Rectangle%20Rotation-Stathis.py
+
+def rectangle_rotation(a, b):
+    a = a / 2 ** 0.5
+    b = b / 2 ** 0.5
+    a = int(a) + 1
+    b = int(b) + 1
+    sum = 0
+    sum = sum + a * b + (b - 1) * (a - 1)
+    if sum % 2 == 0:
+        sum = sum - 1
+    return sum    
+*/
+
+// La presentada
+function rectangleRotation(a, b) {
+    let a1 = Math.floor(a / Math.sqrt(2)) + 1;
+    let b1 = Math.floor(b / Math.sqrt(2)) + 1;
+    let res = a1 * b1 + (b1 - 1) * (a1 - 1);
+    if (res % 2 == 0) 
+        res--;
+    return res;
+}
+
+function rectangleRotation1(a, b) {
+    let a2 = a / Math.sqrt(2);
+    let b2 = b / Math.sqrt(2);
+    let a3 = Math.floor(a2) + 1;
+    let b3 = Math.floor(b2) + 1;
+    let res = a3 * b3 + (b3 - 1) * (a3 - 1);
+    if (res % 2 == 0) 
+        res--;
+    return res;
+}
+
 function rectangleRotation0(a, b) {
     //coding and coding..
     //console.log("a: " + a + " b: "+b)
@@ -69,26 +106,37 @@ function rectangleRotation0(a, b) {
 }
 
 function rectanglePoints(a, b) {
+    const c = Math.ceil(Math.sqrt(Math.pow(a / 2, 2) + Math.pow(b / 2, 2)));
     let x1 = (a / 2) * Math.sqrt(2);
     let y1 = (b / 2) * Math.sqrt(2);
     let x2 = -x1;
     let y2 = -y1;
 
     let area = a * b;
+    //console.log("\tarea = " + area);
     let sideLength = 0;
-    for (let x = Math.ceil(x1); x >= x2; x--) {
-        for (let y = Math.ceil(y1); y >= y2; y--) {
-            // Check if the point is on the sides of the rectangle.
-            if (x * x + y * y == (x1 * x1 + y1 * y1)) {
-                // Check if the point is not at a corner of the rectangle.
-                if (x != x1 && x != x2 && y != y1 && y != y2) {
-                    sideLength++;
-                }
-            }
-        }
-    }
-    //return area + sideLength;
-    return area + sideLength - 1;
+    // for (let x = Math.ceil(x1); x >= x2; x--) {
+    //     for (let y = Math.ceil(y1); y >= y2; y--) {
+    //         // Check if the point is on the sides of the rectangle.
+    //         if (x * x + y * y == (x1 * x1 + y1 * y1)) {
+    //             // Check if the point is not at a corner of the rectangle.
+    //             if (x != x1 && x != x2 && y != y1 && y != y2) {
+    //                 sideLength++;
+    //             }
+    //         }
+    //     }
+    // }
+    //sideLength = 2 * (a + b) - 4;
+    //sideLength = 2 * (a + b) - 8;
+    //sideLength = (2 * (a + b) - 8) / 2;
+    //sideLength = (2 * (a + b) - 8 + 4) / 2;
+    //sideLength = (2 * (a + b) - 8 + 4 / 2) / 2;
+    //sideLength = (2 * (a + b) - 8 + (4 / 2)) / 2;
+    //sideLength   = (2.0 * (a + b) - 8) / 2.0 + 1;
+    sideLength = 2 * c - 4;
+    let res = (a-1) * (b-1) + (a-2) * (b-2);
+    sideLength = res;
+    return area * c - sideLength;
 }
 
 
