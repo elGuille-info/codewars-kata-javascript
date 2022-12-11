@@ -68,7 +68,8 @@ Then, we define an array of units of time, in decreasing order of significance.
     For example, to convert seconds to minutes, we divide the number of seconds by the number of seconds in a minute (60).
 
 Next, we map the units array to an array of strings, each representing the number of units of time in the input duration. 
-    If a unit of time has a non-zero value in the duration, we include it in the resulting array. Otherwise, we return null to filter it out.
+    If a unit of time has a non-zero value in the duration, we include it in the resulting array. 
+    Otherwise, we return null to filter it out.
 
 Finally, we join the resulting array into a single string, using commas and the word "and" where appropriate. 
     If the array has only one element, we return it directly. 
