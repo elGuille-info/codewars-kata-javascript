@@ -57,7 +57,11 @@ class User {
         this.RANK8 = 8;
     }
 
-    //completeActivity(rank) { this.incProgress(rank); }
+    reset() {
+        this.rank = -8;
+        this.progress = 0;
+    }
+
     // Falla en las pruebas del kata
     incProgress(rank) {
         // The only acceptable range of rank values is -8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8. Any other value should raise an error.
@@ -66,38 +70,40 @@ class User {
         if (this.rank == this.RANK8) return;
 
         var diff = (rank > 0 && this.rank < 0) || (rank < 0 && this.rank > 0) ? Math.abs(this.rank) + Math.abs(rank) : rank - this.rank;
-        if (rank > 0 && this.rank < 0) diff--;
-        if (rank < 0 && this.rank > 0) diff = -diff;
+        if (rank > 0 && this.rank < 0) 
+            diff--;
+        if (rank < 0 && this.rank > 0) 
+            diff = -diff;
         if (diff > 0) {
-          this.progress += (rank == 1 && this.rank == -1) ? 10 : (10 * diff * diff);
+            this.progress += (rank == 1 && this.rank == -1) ? 10 : (10 * diff * diff);
         } else {
-          this.progress += diff == 0 ? 3 : 1;
+            this.progress += diff == 0 ? 3 : 1;
         }
-      
+
         if (this.progress > this.PROGESS_MAX && this.rank < this.PROGESS_MAX) {
-          this.rank += Math.floor(this.progress / this.PROGESS_MAX);
-          if (this.rank == 0) this.rank++;
-          this.progress %= this.PROGESS_MAX;
+            this.rank += Math.floor(this.progress / this.PROGESS_MAX);
+            if (this.rank == 0) this.rank++;
+            this.progress %= this.PROGESS_MAX;
         }
         if (this.rank == this.RANK8) this.progress = 0;
-      
+
         return diff;
-      
-        // let res = 0;
+
+        // let diff = 0;
         // // Completing an activity that is ranked the same as that of the user's will be worth 3 points
         // if (rank == this.rank) {
         //     this.progress += 3;
-        //     res = 3;
+        //     diff = 3;
         // }
         // // Completing an activity that is ranked one ranking lower than the user's will be worth 1 point
         // else if (rank == this.rank - 1) {
         //     this.progress += 1;
-        //     res = 1;
+        //     diff = 1;
         // }
         // // Any activities completed that are ranking 2 levels or more lower than the user's ranking will be ignored
         // else if (rank <= this.rank - 2) {
         //     // ignorarlo
-        //     res = 0;
+        //     diff = 0;
         // }
         // /*
         //   Completing an activity ranked higher than the current user's rank will accelerate the rank progression. 
@@ -105,8 +111,20 @@ class User {
         //     The formula is 10 * d * d where d equals the difference in ranking between the activity and the user.
         // */
         // else if (rank > this.rank) {
-        //     let d = rank - this.rank;
-        //     res = 10 * d * d;
+        //     let d = 0;
+        //     if ((rank > 0 && this.rank < 0) || (rank < 0 && this.rank > 0)) {
+        //         d = Math.abs(this.rank) + Math.abs(rank);
+        //     }
+        //     else {
+        //         d = rank - this.rank;
+        //     }
+        //     if (rank > 0 && this.rank < 0) {
+        //         d--;
+        //     }
+        //     if (rank < 0 && this.rank > 0) {
+        //         d = -d;
+        //     }
+        //     diff = 10 * d * d;
         //     this.progress += 10 * d * d;
         // }
 
@@ -118,32 +136,72 @@ class User {
         // }
         // if (this.rank == this.RANK8) this.progress = 0;
 
-        // return res;
+        // return diff;
     }
 }
 
 // Pruebas 
 
 function userRank() {
+
     var user = new User()
-    console.log(user.rank + " rank => -8"); // => -8
-    console.log(user.progress + " progress => 0"); // => 0
-    // console.log("user.completeActivity(-8)");
-    // user.completeActivity(-8);
-    // console.log(user.progress + " progress => 3");
-    console.log("user.incProgress(-7)");
+    //user.rank // => -8
+    console.log("  rank => " + user.rank + " => -8");
+    //user.progress // => 0
+    console.log("  progress => " + user.progress + " => 0"); // 40
     user.incProgress(-7)
-    console.log(user.progress + " progress => 10"); // => 10
-    console.log("user.incProgress(-5)");
+    //user.progress // => 10
+    console.log("  progress => " + user.progress + " => 10");
+    console.log("  rank => " + user.rank + " => -8");
     user.incProgress(-5) // will add 90 progress
-    console.log(user.progress + " progress => 100"); //3
-    console.log("rank => " + user.rank); // -7
-    console.log("user.progress = 0");
-    user.progress = 0; // progress is now zero
-    console.log(user.progress + " progress => 0");
-    console.log("user.rank = -7");
-    user.rank = -7; // rank was upgraded to -7
-    console.log(user.rank + " rank => -7");
+    console.log("  progress => " + user.progress + " => 100");
+    console.log("  rank => " + user.rank + " => -8");
+    // user.progress = 0 // progress is now zero
+    // user.rank = -7 // rank was upgraded to -7
+    
+    // var user = new User()
+    // console.log(user.rank + " rank => -8"); // => -8
+    // console.log(user.progress + " progress => 0"); // => 0
+    
+    // //console.log("user.reset()");
+    // user.reset();
+    // console.log("user.incProgress(-1)")
+    // user.incProgress(-1);
+    // console.log("  progress => " + user.progress + " => 90");
+    // console.log("  rank => " + user.rank + " => -4");
+
+    // // //console.log("user.reset()");
+    // // user.reset();
+    // // console.log("user.incProgress(1)")
+    // // user.incProgress(1);
+    // // console.log("  progress => " + user.progress + " => 40"); // 40
+    // // console.log("  rank => " + user.rank + " => -2"); // -2
+
+    // // user.reset();
+    // // console.log("user.incProgress(-8)");
+    // // user.incProgress(-8);
+    // // //console.log(user.progress + " progress => 3");
+    // // console.log("  progress => " + user.progress + " => 3");
+    // // console.log("  rank => " + user.rank + " => -8");
+
+    // // user.reset();
+    // console.log("user.incProgress(-7)");
+    // user.incProgress(-7)
+    // console.log("  progress => " + user.progress + " => 10");
+    // console.log("  rank => " + user.rank + " => -8");
+
+    // console.log("user.incProgress(-5)");
+    // user.incProgress(-5) // will add 90 progress
+    // //console.log(user.progress + " progress => 100"); //3
+    // console.log("  progress => " + user.progress + " => 100");
+    // console.log("  rank => " + user.rank + " => -8");
+    // // console.log("rank => " + user.rank); // -7
+    // // console.log("user.progress = 0");
+    // // user.progress = 0; // progress is now zero
+    // // console.log(user.progress + " progress => 0");
+    // // console.log("user.rank = -7");
+    // // user.rank = -7; // rank was upgraded to -7
+    // // console.log(user.rank + " rank => -7");
 }
 
 userRank();
