@@ -35,6 +35,7 @@ function formatDuration0(seconds) {
     // Complete this function
 }
 
+// La presentada, respuesta de ChatGPT
 function formatDuration(seconds) {
     if (seconds === 0) return "now";
 
