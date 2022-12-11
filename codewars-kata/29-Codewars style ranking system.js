@@ -56,7 +56,24 @@ class User {
         this.HIGHEST = 8;
     }
 }
-  
+
+// Pruebas 
+
+function userRank() {
+    var user = new User()
+    console.log(user.rank + " => -8"); // => -8
+    console.log(user.progress + " => 0"); // => 0
+    user.incProgress(-7)
+    console.log(user.progress + " => 10"); // => 10
+    user.incProgress(-5) // will add 90 progress
+    console.log(user.progress + " => 100");
+    user.progress = 0; // progress is now zero
+    console.log(user.progress + " => 0");
+    user.rank = -7; // rank was upgraded to -7
+    console.log(user.rank + " => -7");
+}
+
+userRank();
 
 
 /*
