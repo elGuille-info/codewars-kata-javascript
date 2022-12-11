@@ -35,12 +35,37 @@ The number of inner points with integer coordinates.
 PUZZLES
 */
 
+/*
+    La solución de gtfo (https://velog.io/@gtfo/Simple-Fun-27-Rectangle-Rotation)
+*/
 function rectangleRotation(a, b) {
+    const c = Math.ceil(Math.sqrt(Math.pow(a / 2, 2) + Math.pow(b / 2, 2)));
+    let counter = 0;
+    for (i = -c; i < c; i++) {
+        for (j = -c; j < c; j++) {
+            if (check(i, j, a, -1) && check(i, j, b, +1)) {
+                counter++;
+            }
+        }
+    }
+    function check(x, y, z, sign) {
+        const one = sign * x - (z / 2) * Math.sqrt(2) < y;
+        const two = sign * x + (z / 2) * Math.sqrt(2) > y;
+        return one && two;
+    }
+
+    return counter;
+}
+
+function rectangleRotation0(a, b) {
     //coding and coding..
     //console.log("a: " + a + " b: "+b)
 
-    let res = (b-1) * (a-1) + (b-2) * (a-2);
+    //let res = (b-1) * (a-1) + (b-2) * (a-2);
+    let res = (a-1) * (b-1) + (a-2) * (b-2);
+
     return res;
+
 }
 
 function rectanglePoints(a, b) {
