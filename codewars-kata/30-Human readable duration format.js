@@ -31,9 +31,32 @@ A unit of time must be used "as much as possible". It means that the function sh
 STRINGS, DATE TIME, ALGORITHMS
 */
 
-function formatDuration (seconds) {
+function formatDuration0(seconds) {
     // Complete this function
 }
+
+function formatDuration(seconds) {
+    if (seconds === 0) return "now";
+
+    const units = [
+        { unit: "year", divisor: 365 * 24 * 60 * 60 },
+        { unit: "day", divisor: 24 * 60 * 60 },
+        { unit: "hour", divisor: 60 * 60 },
+        { unit: "minute", divisor: 60 },
+        { unit: "second", divisor: 1 }
+    ];
+
+    const parts = units.map(({ unit, divisor }) => {
+        const value = Math.floor(seconds / divisor);
+        seconds -= value * divisor;
+        return value > 0 ? `${value} ${unit}${value > 1 ? "s" : ""}` : null;
+    }).filter(Boolean);
+
+    return parts.length > 1
+        ? `${parts.slice(0, -1).join(", ")} and ${parts.slice(-1)}`
+        : parts[0];
+}
+
 
 // Pruebas
 comparaResultado(1, "1 second");
