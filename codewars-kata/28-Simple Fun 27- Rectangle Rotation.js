@@ -37,9 +37,10 @@ PUZZLES
 
 function rectangleRotation(a, b) {
     //coding and coding..
-    console.log("a: " + a + " b: "+b)
-    
+    //console.log("a: " + a + " b: "+b)
 
+    let res = (b-1) * (a-1) + (b-2) * (a-2);
+    return res;
 }
 
 function rectanglePoints(a, b) {
@@ -73,7 +74,7 @@ function rectanglePoints(a, b) {
  * Poner arriba el método usado para las pruebas, aunque no es necesario.
  * Lo importante es asignar el valor a 'lafuncion', aunque eso se hace en el código a comprobar.
  */
-let laFuncion = rectanglePoints;
+let laFuncion = rectangleRotation;
 
 /**
   * Para comprobar si el resultado de la función es válido.
