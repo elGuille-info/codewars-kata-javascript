@@ -63,11 +63,17 @@ Let me explain how the function works:
 
 First, we check if the input is zero. If it is, we return "now".
 
-Then, we define an array of units of time, in decreasing order of significance. Each unit has a name and a divisor that is used to convert seconds to the unit. For example, to convert seconds to minutes, we divide the number of seconds by the number of seconds in a minute (60).
+Then, we define an array of units of time, in decreasing order of significance. 
+    Each unit has a name and a divisor that is used to convert seconds to the unit. 
+    For example, to convert seconds to minutes, we divide the number of seconds by the number of seconds in a minute (60).
 
-Next, we map the units array to an array of strings, each representing the number of units of time in the input duration. If a unit of time has a non-zero value in the duration, we include it in the resulting array. Otherwise, we return null to filter it out.
+Next, we map the units array to an array of strings, each representing the number of units of time in the input duration. 
+    If a unit of time has a non-zero value in the duration, we include it in the resulting array. Otherwise, we return null to filter it out.
 
-Finally, we join the resulting array into a single string, using commas and the word "and" where appropriate. If the array has only one element, we return it directly. Otherwise, we use slice() to split the array into two parts: the last element, and the rest. We then join the rest with commas, and the last element with "and" to form the final string.
+Finally, we join the resulting array into a single string, using commas and the word "and" where appropriate. 
+    If the array has only one element, we return it directly. 
+    Otherwise, we use slice() to split the array into two parts: the last element, and the rest. 
+    We then join the rest with commas, and the last element with "and" to form the final string.
 
 */
 function formatDuration(seconds) {
