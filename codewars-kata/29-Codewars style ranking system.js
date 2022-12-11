@@ -55,33 +55,59 @@ class User {
         this.PROGESS_MAX = 100;
         this.RANK8 = 8;
     }
+    incProgress(rank) {
+        // The only acceptable range of rank values is -8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8. Any other value should raise an error.
+        if (rank == 0 || rank > this.RANK8 || rank < -this.RANK8) throw new RangeError("rank input out of range");
+        // A user starts at rank -8 and can progress all the way to 8.
+        if (this.rank == this.RANK8) return;
+    
+        var diff = (rank > 0 && this.rank < 0) || (rank < 0 && this.rank > 0) ? Math.abs(this.rank) + Math.abs(rank) : rank - this.rank;
+        if (rank > 0 && this.rank < 0) diff--;
+        if (rank < 0 && this.rank > 0) diff = -diff;
+        if (diff > 0) {
+            this.progress += (rank == 1 && this.rank == -1) ? 10 : (10 * diff * diff);
+        } else {
+            this.progress += diff == 0 ? 3 : 1;
+        }
+    
+        // A user's rank progress starts off at zero, each time the progress reaches 100 the user's rank is upgraded to the next level
+        if (this.progress > this.PROGESS_MAX && this.rank < this.RANK8) {
+            this.rank += Math.floor(this.progress / this.PROGESS_MAX);
+            if (this.rank == 0) this.rank++;
+            this.progress %= this.PROGESS_MAX;
+        }
+        if (this.rank == this.RANK8) this.progress = 0;
+    
+        //console.log("current rank = " + this.rank + "; progress = " + this.progress);
+        return diff;
+    }    
 }
-User.prototype.incProgress = function (rank) {
-    // The only acceptable range of rank values is -8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8. Any other value should raise an error.
-    if (rank == 0 || rank > this.RANK8 || rank < -this.RANK8) throw new RangeError("rank input out of range");
-    // A user starts at rank -8 and can progress all the way to 8.
-    if (this.rank == this.RANK8) return;
+// User.prototype.incProgress = function (rank) {
+//     // The only acceptable range of rank values is -8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8. Any other value should raise an error.
+//     if (rank == 0 || rank > this.RANK8 || rank < -this.RANK8) throw new RangeError("rank input out of range");
+//     // A user starts at rank -8 and can progress all the way to 8.
+//     if (this.rank == this.RANK8) return;
 
-    var diff = (rank > 0 && this.rank < 0) || (rank < 0 && this.rank > 0) ? Math.abs(this.rank) + Math.abs(rank) : rank - this.rank;
-    if (rank > 0 && this.rank < 0) diff--;
-    if (rank < 0 && this.rank > 0) diff = -diff;
-    if (diff > 0) {
-        this.progress += (rank == 1 && this.rank == -1) ? 10 : (10 * diff * diff);
-    } else {
-        this.progress += diff == 0 ? 3 : 1;
-    }
+//     var diff = (rank > 0 && this.rank < 0) || (rank < 0 && this.rank > 0) ? Math.abs(this.rank) + Math.abs(rank) : rank - this.rank;
+//     if (rank > 0 && this.rank < 0) diff--;
+//     if (rank < 0 && this.rank > 0) diff = -diff;
+//     if (diff > 0) {
+//         this.progress += (rank == 1 && this.rank == -1) ? 10 : (10 * diff * diff);
+//     } else {
+//         this.progress += diff == 0 ? 3 : 1;
+//     }
 
-    // A user's rank progress starts off at zero, each time the progress reaches 100 the user's rank is upgraded to the next level
-    if (this.progress > this.PROGESS_MAX && this.rank < this.RANK8) {
-        this.rank += Math.floor(this.progress / this.PROGESS_MAX);
-        if (this.rank == 0) this.rank++;
-        this.progress %= this.PROGESS_MAX;
-    }
-    if (this.rank == this.RANK8) this.progress = 0;
+//     // A user's rank progress starts off at zero, each time the progress reaches 100 the user's rank is upgraded to the next level
+//     if (this.progress > this.PROGESS_MAX && this.rank < this.RANK8) {
+//         this.rank += Math.floor(this.progress / this.PROGESS_MAX);
+//         if (this.rank == 0) this.rank++;
+//         this.progress %= this.PROGESS_MAX;
+//     }
+//     if (this.rank == this.RANK8) this.progress = 0;
 
-    //console.log("current rank = " + this.rank + "; progress = " + this.progress);
-    return diff;
-};
+//     //console.log("current rank = " + this.rank + "; progress = " + this.progress);
+//     return diff;
+// };
 
 
 // Pruebas 
