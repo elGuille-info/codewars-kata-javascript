@@ -56,6 +56,87 @@ ALGORITHMS
 */
 
 /*
+    Soluciones
+
+//1- ooflorent, dubdjon!, adnankmh, user2630808, PinkyKiwi, White_Alina1, cristhian.mesta, Vlinder, user7394232, attallah89 (+ 2)
+// https://www.codewars.com/kata/reviews/54d3b1b1c7f988a3f400017c/groups/54f70692c71eebe5590002d6
+function decodeBits(bits) {
+  // Trim zeros
+  bits = bits.replace(/(^0+|0+$)/g, '')
+  
+  // Find transmission rate
+  var rate = Math.min.apply(null, bits.match(/0+|1+/g).map(function(b) { return b.length }))
+  
+  // Convert to morse code
+  bits = bits
+    .replace(new RegExp('(?:111){' + rate + '}(?:0{' + rate + '}|$)', 'g'), '-')
+    .replace(new RegExp('1{' + rate + '}(?:0{' + rate + '}|$)', 'g'), '.')
+    .replace(new RegExp('(?:000000){' + rate + '}', 'g'), '   ')
+    .replace(new RegExp('(?:00){' + rate + '}', 'g'), ' ')
+  
+  return bits
+}
+
+function decodeMorse(message) {
+  return message
+    .replace(/   /g, ' _ ')
+    .split(' ')
+    .map(function(letter) { return letter === '_' ? ' ' : MORSE_CODE[letter] })
+    .join('')
+}
+
+
+//2- Dekree, 15237565150, unnamed_army, mazsola39
+// https://www.codewars.com/kata/reviews/54d3b1b1c7f988a3f400017c/groups/5a55b110ada60c649a001790
+var decodeBits = function( bits ) {
+  bits = bits.replace( /(^0+|0+$)/g, '' );
+  let timeUnit = Math.min.apply( null, bits.match( /0+|1+/g ).map( item => item.length ) );
+  
+  return bits
+    .replace( new RegExp( '0'.repeat( 7 * timeUnit ), 'g' ), '   ' )
+    .replace( new RegExp( '0'.repeat( 3 * timeUnit ), 'g' ), ' ' )
+    .replace( new RegExp( '1'.repeat( 3 * timeUnit ), 'g' ), '-' )
+    .replace( new RegExp( '1'.repeat( 1 * timeUnit ), 'g' ), '.' )
+    .replace( new RegExp( '0'.repeat( 1 * timeUnit ), 'g' ), '' );
+};
+
+var decodeMorse = function(morseCode){
+    return morseCode.trim().split( '   ' )
+      .reduce( ( res, word ) => res + ' ' + word.split( ' ' ).reduce( ( word, letter ) => word + MORSE_CODE[ letter ], '' ), '' )
+      .trim();
+};
+
+//3- mayavera
+// https://www.codewars.com/kata/reviews/54d3b1b1c7f988a3f400017c/groups/57d6eed78462e1c21d000cd7
+function decodeBits (bits) {
+  let codes = bits
+    .replace(/^0+/, '')
+    .replace(/0+$/, '')
+    .match(/(0+|1+)/g)
+  
+  let counts = codes.map((e) => { return e.length })
+  let min = Math.min(...counts)
+  
+  return codes
+    .map((code) => {
+      switch (code.slice(0, code.length / min)) {
+        case '0'      : return ''
+        case '1'      : return '.'
+        case '111'    : return '-'
+        case '000'    : return ' '
+        case '0000000': return '   '
+      }
+    }).join('')
+}
+
+function decodeMorse (morse) {
+  return morse.replace(/ ?[.-]+ ?/g, (e) => {
+    return MORSE_CODE[e.trim()]
+  }).trim()
+}
+*/
+
+/*
     El código presentado
 
 String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
