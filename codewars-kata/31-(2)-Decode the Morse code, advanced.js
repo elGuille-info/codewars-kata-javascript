@@ -176,7 +176,8 @@ function detectBitRate(bits) {
 function decodeMorse(morseCode) {
     // ToDo: Accept dots, dashes and spaces, return human-readable message
     //return morseCode.replace('.', MORSE_CODE['.']).replace('-', MORSE_CODE['-']).replace(' ', '');
-    let palabras = morseCode.trimStart().trimEnd();
+    //let palabras = morseCode.trimStart().trimEnd();
+    let palabras = morseCode.replace(/(^ +| +$)/g, '');
     let otrasPalabras = palabras.split('   ');
     let res = "";
     for (const palabra of otrasPalabras) {
@@ -192,7 +193,8 @@ function decodeMorse(morseCode) {
         res += ' ';
     }
 
-    return res.trimEnd();
+    //return res.trimEnd();
+    return res.replace(/(^ +| +$)/g, '');
 }
 
 function decodeMorseBits(bits) {
