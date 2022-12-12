@@ -55,42 +55,60 @@ function interpreter(code, tape) {
     var storage = tape.split("").map(b => +b); // Actual Tape / Data Storage
     var pointer = 0; // Pointer
     for (var i = 0; i < code.length; i++) {
-      switch (code[i]) {
-        case "*":
-        // Flip the bit at the current cell
-        storage[pointer] = +!storage[pointer];
-        break;
-        case ">":
-        // Move the pointer to the right.  If pointer goes out-of-bounds then return final state of tape
-        pointer++;
-        if (pointer >= storage.length) return storage.join("");
-        break;
-        case "<":
-        // Move the pointer to the left.  If pointer goes out-of-bounds then return final state of tape
-        pointer--;
-        if (pointer < 0) return storage.join("");
-        break;
-        case "[":
-        // Jumps to matching "]" if current bit is 0
-        if (storage[pointer] === 0) {
-          var unmatched = 1;
-          while (unmatched) {
-            if (code[++i] === "]") unmatched--;
-            if (code[i] === "[") unmatched++;
-          }
+        switch (code[i]) {
+            case "*":
+                // Flip the bit at the current cell
+                storage[pointer] = +!storage[pointer];
+                break;
+            case ">":
+                // Move the pointer to the right.  If pointer goes out-of-bounds then return final state of tape
+                pointer++;
+                if (pointer >= storage.length) return storage.join("");
+                break;
+            case "<":
+                // Move the pointer to the left.  If pointer goes out-of-bounds then return final state of tape
+                pointer--;
+                if (pointer < 0) return storage.join("");
+                break;
+            case "[":
+                // Jumps to matching "]" if current bit is 0
+                if (storage[pointer] === 0) {
+                    var unmatched = 1;
+                    while (unmatched) {
+                        if (code[++i] === "]") unmatched--;
+                        if (code[i] === "[") unmatched++;
+                    }
+                }
+                break;
+            case "]":
+                // Jumps back to matching "[" if current bit is 1
+                if (storage[pointer] === 1) {
+                    var unmatched = 1;
+                    while (unmatched) {
+                        if (code[--i] === "[") unmatched--;
+                        if (code[i] === "]") unmatched++;
+                    }
+                }
+                break;
         }
-        break;
-        case "]":
-        // Jumps back to matching "[" if current bit is 1
-        if (storage[pointer] === 1) {
-          var unmatched = 1;
-          while (unmatched) {
-            if (code[--i] === "[") unmatched--;
-            if (code[i] === "]") unmatched++;
-          }
-        }
-        break;
-      }
     }
     return storage.join("");
-  }
+}
+
+//2- ooflorent, solnce2, udayyyy, user2630808, ElW3ll, andsjoel
+// https://www.codewars.com/kata/reviews/5867aa274d69387b150000e2/groups/5874b0d669c166e8b00008bf
+
+function interpreter_2(code, tape) {
+    const instr = [`let cp = 0`]
+    for (let c of code) {
+        switch (c) {
+            case ">": instr.push(`if (++cp >= cells.length) return cells`); break
+            case "<": instr.push(`if (--cp < 0) return cells`); break
+            case "*": instr.push(`cells[cp] ^= 1`); break
+            case "[": instr.push(`while (cells[cp]) {`); break
+            case "]": instr.push(`}`); break
+        }
+    }
+    instr.push(`return cells`)
+    return (new Function("cells", instr.join("\n")))(tape.split("").map(Number)).join("")
+}

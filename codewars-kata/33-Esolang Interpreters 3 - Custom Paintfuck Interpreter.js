@@ -1,5 +1,5 @@
 /*
-    # Esolang Interpreters #3 - Custom Paintf**k Interpreter (4 kyu)
+    # Esolang Interpreters #3 - Custom Paintfuck Interpreter (4 kyu)
 
 Esolang Interpreters #3 - Custom Paintfuck Interpreter
 About this Kata Series
@@ -21,9 +21,11 @@ w - Move data pointer west (left)
 ] - Jump back to the matching [ (if bit under current pointer is nonzero) (same as in Smallfuck)
 The specification states that any non-command character (i.e. any character other than those mentioned above) should simply be ignored. The output of the interpreter is the two-dimensional data grid itself, best as animation as the interpreter is running, but at least a representation of the data grid itself after a certain number of iterations (explained later in task).
 
-In current implementations, the 2D datagrid is finite in size with toroidal (wrapping) behaviour. This is one of the few major differences of Paintfuck from Smallfuck as Smallfuck terminates (normally) whenever the pointer exceeds the bounds of the tape.
+In current implementations, the 2D datagrid is finite in size with toroidal (wrapping) behaviour. 
+    This is one of the few major differences of Paintfuck from Smallfuck as Smallfuck terminates (normally) whenever the pointer exceeds the bounds of the tape.
 
-Similar to Smallfuck, Paintfuck is Turing-complete if and only if the 2D data grid/canvas were unlimited in size. However, since the size of the data grid is defined to be finite, it acts like a finite state machine.
+Similar to Smallfuck, Paintfuck is Turing-complete if and only if the 2D data grid/canvas were unlimited in size. 
+    However, since the size of the data grid is defined to be finite, it acts like a finite state machine.
 
 More info on this Esolang can be found here (http://esolangs.org/wiki/Paintfuck).
 
@@ -80,8 +82,91 @@ ESOTERIC LANGUAGES, INTERPRETERS, ALGORITHMS, TUTORIALS
 
 function interpreter(code, iterations, width, height) {
     // Implement your interpreter here
+
+    for (var i = 0; i < code.length; i++) {
+        switch (code[i]) {
+            case "*":
+                // Flip the bit at the current cell
+                storage[pointer] = +!storage[pointer];
+                break;
+            case ">":
+                // Move the pointer to the right.  If pointer goes out-of-bounds then return final state of tape
+                pointer++;
+                if (pointer >= storage.length) return storage.join("");
+                break;
+            case "<":
+                // Move the pointer to the left.  If pointer goes out-of-bounds then return final state of tape
+                pointer--;
+                if (pointer < 0) return storage.join("");
+                break;
+            case "[":
+                // Jumps to matching "]" if current bit is 0
+                if (storage[pointer] === 0) {
+                    var unmatched = 1;
+                    while (unmatched) {
+                        if (code[++i] === "]") unmatched--;
+                        if (code[i] === "[") unmatched++;
+                    }
+                }
+                break;
+            case "]":
+                // Jumps back to matching "[" if current bit is 1
+                if (storage[pointer] === 1) {
+                    var unmatched = 1;
+                    while (unmatched) {
+                        if (code[--i] === "[") unmatched--;
+                        if (code[i] === "]") unmatched++;
+                    }
+                }
+                break;
+        }
+    }
+
 }
 
+function interpreter_Smallfuck(code, tape) {
+    var storage = tape.split("").map(b => +b); // Actual Tape / Data Storage
+    var pointer = 0; // Pointer
+    for (var i = 0; i < code.length; i++) {
+        switch (code[i]) {
+            case "*":
+                // Flip the bit at the current cell
+                storage[pointer] = +!storage[pointer];
+                break;
+            case ">":
+                // Move the pointer to the right.  If pointer goes out-of-bounds then return final state of tape
+                pointer++;
+                if (pointer >= storage.length) return storage.join("");
+                break;
+            case "<":
+                // Move the pointer to the left.  If pointer goes out-of-bounds then return final state of tape
+                pointer--;
+                if (pointer < 0) return storage.join("");
+                break;
+            case "[":
+                // Jumps to matching "]" if current bit is 0
+                if (storage[pointer] === 0) {
+                    var unmatched = 1;
+                    while (unmatched) {
+                        if (code[++i] === "]") unmatched--;
+                        if (code[i] === "[") unmatched++;
+                    }
+                }
+                break;
+            case "]":
+                // Jumps back to matching "[" if current bit is 1
+                if (storage[pointer] === 1) {
+                    var unmatched = 1;
+                    while (unmatched) {
+                        if (code[--i] === "[") unmatched--;
+                        if (code[i] === "]") unmatched++;
+                    }
+                }
+                break;
+        }
+    }
+    return storage.join("");
+}
 
 /**
  * Indicar aquí la función a usar dentro de
