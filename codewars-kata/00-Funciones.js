@@ -164,4 +164,11 @@ function prueba2Valores(valor1, valor2, resOK, noMostrarLog) {
     }
 }
 
+/**
+ * Prototipo por si no está definida replaceAll.
+ * 
+ * @param {*} search 
+ * @param {*} replace 
+ * @returns 
+ */
 String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
