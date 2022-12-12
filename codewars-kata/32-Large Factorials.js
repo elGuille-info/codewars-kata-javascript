@@ -77,7 +77,6 @@ function multiplyStrings(a, b) {
     return result;
 }
 
-
 /**
  * Indicar aquí la función a usar dentro de
  * @see testArrNum

@@ -45,3 +45,5 @@ function multiplyStrings(a, b) {
 
     return result;
 }
+
+console.log(multiplyStrings('15', '25')) // 15x25 = 375
