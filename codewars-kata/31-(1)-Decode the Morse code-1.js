@@ -58,9 +58,36 @@ After you complete this kata, you may try yourself at Decode the Morse code, adv
 ALGORITHMS
 */
 
+/*
+    Soluciones
+*/
+
+//1- czyzykowski, dimochakarov, RJackson88, lukaluka, nickv2, idojs420, I__K__A, nini18, Array.length, dgregory (+ 258)
+// https://www.codewars.com/kata/reviews/54be2a15518b8dcff90001f2/groups/54c8476b7ccdf528f30012a1
+decodeMorse_1 = function (morseCode) {
+    function decodeMorseLetter(letter) {
+        return MORSE_CODE[letter];
+    }
+    function decodeMorseWord(word) {
+        return word.split(' ').map(decodeMorseLetter).join('');
+    }
+    return morseCode.trim().split('   ').map(decodeMorseWord).join(' ');
+}
+
+//2- hencethus, nrkroeker, karimation, Al-aiz A Hashim, N4roqt, aspervae, timurkaev, mstrilec, murzadaniyar@gmail.com
+// https://www.codewars.com/kata/reviews/54be2a15518b8dcff90001f2/groups/57b13b068491f986e800019a
+decodeMorse_2 = function (morseCode) {
+    return morseCode
+        .trim()
+        .split(/  | /)
+        .map((code) => MORSE_CODE[code] || ' ')
+        .join('');
+}
+
 // De: https://stackoverflow.com/a/43726671/14338047
 // Las letras estaban en minúsculas y se asignaban a 'ref'
-const MORSE_CODE = { '···−−−···': 'SOS',
+const MORSE_CODE = {
+    '···−−−···': 'SOS',
     '.-': 'A',
     '-...': 'B',
     '-.-.': 'C',
