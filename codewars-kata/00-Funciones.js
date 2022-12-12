@@ -163,3 +163,5 @@ function prueba2Valores(valor1, valor2, resOK, noMostrarLog) {
         console.log("\tCorrecto!");
     }
 }
+
+String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
