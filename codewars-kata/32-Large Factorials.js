@@ -23,7 +23,15 @@ ALGORITHMS, BIG INTEGERS
 */
 function factorial(n) {
     // Add some code
-    
+
+    // Calcularlo multiplicando el número hasta el 2.
+    for (let i = n - 1; i > 1; i--)
+    {
+        //number *= i;
+        n = multiplyStrings(n, i);
+    }
+    return n;
+
 }
 
 function multiplyStrings(a, b) {
