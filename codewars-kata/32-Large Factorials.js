@@ -21,17 +21,29 @@ I have removed the use of require in the javascript language.
 
 ALGORITHMS, BIG INTEGERS
 */
+
 function factorial(n) {
     // Add some code
+    let res = fact(n);
+    return res.toString();
+}
 
-    // Calcularlo multiplicando el número hasta el 2.
-    for (let i = n - 1; i > 1; i--)
-    {
-        //number *= i;
-        n = multiplyStrings(n, i);
+function fact(n) {
+    if (n > 18) {
+        return factorialStr(n);
     }
-    return n;
+    return (n != 1) ? n * fact(n - 1) : 1;
+}
 
+function factorialStr(n) {
+    return multiplyStrings(n, factorialStr(n - 1));
+}
+
+function factorial0(n) {
+    // Add some code
+
+    //return (n != 1) ? n * factorial(n - 1) : 1;
+    return multiplyStrings(n, factorial(n - 1));
 }
 
 function multiplyStrings(a, b) {
@@ -97,10 +109,14 @@ function comparaResultado(valor, resOK, noMostrarLog) {
 }
 
 // Pruebas
+comparaResultado(18, '6402373705728000');
+comparaResultado(23, '25852016738884976640000');
+comparaResultado(100, '93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000');
 comparaResultado(1, '1');
 comparaResultado(5, '120');
 comparaResultado(9, '362880');
 comparaResultado(15, '1307674368000');
+
 
 /*
 describe("Tests", () => {
