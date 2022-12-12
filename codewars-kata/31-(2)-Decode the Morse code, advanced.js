@@ -55,6 +55,106 @@ After you master this kata, you may try to Decode the Morse code, for real.
 ALGORITHMS
 */
 
+/*
+    El código presentado
+
+String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
+
+var decodeBits = function(bits){
+    // ToDo: Accept 0's and 1's, return dots, dashes and spaces
+    //return bits.replace('111', '-').replace('000', ' ').replace('1', '.').replace('0', '');
+    // Quitar los 0 de elante y detrás
+    bits = bits.replace(/(^0+|0+$)/g, ''); //.split('');
+
+    // Buscar la frecuencia ('time unit')
+    const freq = detectBitRate(bits);
+
+    let dot = "1".repeat(freq);
+    let dash = "111".repeat(freq);
+    let ceros = "0"; //.repeat(freq);
+    let espacios = "000".repeat(freq);
+    let entrePalabra = "000000".repeat(freq);
+
+    // ToDo: Accept 0's and 1's, return dots, dashes and spaces
+    //return bits.replace('111', '-').replace('000', ' ').replace('1', '.').replace('0', '');
+    let enMorse = bits.replaceAllTxt(dash, '-').replaceAllTxt(dot, '.').replaceAllTxt(entrePalabra, '   ').replaceAllTxt(espacios, ' ').replaceAllTxt(ceros, ''); 
+    return enMorse;
+  
+}
+
+function detectBitRate(bits) {
+    let start = 0, end = bits.length - 1;
+    while (start < bits.length && bits.charAt(start) == '0') start++;
+    while (end >= 0 && bits.charAt(end) == '0') end--;
+
+    if (bits.length <= 1) {
+        return 1;
+    }
+
+    let minOnesLength = Number.MAX_VALUE;
+    let minZerosLength = Number.MAX_VALUE;
+
+    for (let i = start; i <= end; i++) {
+        if (i > 0 && bits.charAt(i) == '1' && bits.charAt(i - 1) == '0') {
+            let count = 0;
+            while (i <= end && bits.charAt(i) == '1') {
+                count++;
+                i++;
+            }
+
+            if (count < minOnesLength) {
+                minOnesLength = count;
+            }
+        }
+    }
+
+    for (let i = start; i <= end; i++) {
+        if (i > 0 && bits.charAt(i) == '0' && bits.charAt(i - 1) == '1') {
+            let count = 0;
+            while (i <= end && bits.charAt(i) == '0') {
+                count++;
+                i++;
+            }
+
+            if (count < minZerosLength) {
+                minZerosLength = count;
+            }
+        }
+    }
+
+    if (minOnesLength == Number.MAX_VALUE && minZerosLength == Number.MAX_VALUE) {
+        return bits.length;
+    }
+
+    return Math.min(minOnesLength, minZerosLength);
+
+}
+
+var decodeMorse = function(morseCode){
+    // ToDo: Accept dots, dashes and spaces, return human-readable message
+    //return morseCode.replace('.', MORSE_CODE['.']).replace('-', MORSE_CODE['-']).replace(' ', '');
+    //let palabras = morseCode.trimStart().trimEnd();
+    let palabras = morseCode.replace(/(^ +| +$)/g, '');
+    let otrasPalabras = palabras.split('   ');
+    let res = "";
+    for (const palabra of otrasPalabras) {
+        // Palabra tiene las letras separadas por comas
+        let letras = palabra.split(' ');
+        for (const letra of letras) {
+            let word = MORSE_CODE[letra];
+            // if (letra == '') {
+            //     word = ' ';
+            // }
+            res += word;
+        }
+        res += ' ';
+    }
+
+    //return res.trimEnd();
+    return res.replace(/(^ +| +$)/g, '');
+ }    
+*/
+
 const MORSE_CODE = {
     '···−−−···': 'SOS',
     '.-': 'A',
