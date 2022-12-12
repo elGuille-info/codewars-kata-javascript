@@ -185,4 +185,5 @@ String.prototype.replaceAllTxt = function replaceAll(search, replace) { return t
  */
 function trimStartEnd(search) { return search.replace(/(^ +| +$)/g, ''); }
 
-String.prototype.trimAll = function trimStartEnd(search) { return search.replace(/(^ +| +$)/g, ''); }
+
+String.prototype.trimAll = function trimStartEnd() { return this.replace(/(^ +| +$)/g, ''); }
