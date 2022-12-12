@@ -172,3 +172,14 @@ function prueba2Valores(valor1, valor2, resOK, noMostrarLog) {
  * @returns 
  */
 String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
+
+// Quitar todos los espacios de delante y detrás:
+//.replace(/(^ +| +$)/g, '');
+/**
+ * Quita todos los espacios del principio y del final.
+ * Como si se hiciera cadena.trimStart().trimEnd()
+ * 
+ * @param {*} search La cadena a la que le queremos quitar los espacios del principio y del final.
+ * @returns Una nueva cadena sin los espacios.
+ */
+function trimStartEnd(search) { return search.replace(/(^ +| +$)/g, ''); }
