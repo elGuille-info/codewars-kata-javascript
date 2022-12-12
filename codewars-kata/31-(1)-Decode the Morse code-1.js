@@ -58,55 +58,83 @@ After you complete this kata, you may try yourself at Decode the Morse code, adv
 ALGORITHMS
 */
 
-const MORSE_CODE =   { 
-    '.-':     'a',
-    '-...':   'b',
-    '-.-.':   'c',
-    '-..':    'd',
-    '.':      'e',
-    '..-.':   'f',
-    '--.':    'g',
-    '....':   'h',
-    '..':     'i',
-    '.---':   'j',
-    '-.-':    'k',
-    '.-..':   'l',
-    '--':     'm',
-    '-.':     'n',
-    '---':    'o',
-    '.--.':   'p',
-    '--.-':   'q',
-    '.-.':    'r',
-    '...':    's',
-    '-':      't',
-    '..-':    'u',
-    '...-':   'v',
-    '.--':    'w',
-    '-..-':   'x',
-    '-.--':   'y',
-    '--..':   'z',
-    '.----':  '1',
-    '..---':  '2',
-    '...--':  '3',
-    '....-':  '4',
-    '.....':  '5',
-    '-....':  '6',
-    '--...':  '7',
-    '---..':  '8',
-    '----.':  '9',
-    '-----':  '0',
-  };
+// De: https://stackoverflow.com/a/43726671/14338047
+// Las letras estaban en minúsculas y se asignaban a 'ref'
+const MORSE_CODE = { '···−−−···': 'SOS',
+    '.-': 'A',
+    '-...': 'B',
+    '-.-.': 'C',
+    '-..': 'D',
+    '.': 'E',
+    '..-.': 'F',
+    '--.': 'G',
+    '....': 'H',
+    '..': 'I',
+    '.---': 'J',
+    '-.-': 'K',
+    '.-..': 'L',
+    '--': 'M',
+    '-.': 'N',
+    '---': 'O',
+    '.--.': 'P',
+    '--.-': 'Q',
+    '.-.': 'R',
+    '...': 'S',
+    '-': 'T',
+    '..-': 'U',
+    '...-': 'V',
+    '.--': 'W',
+    '-..-': 'X',
+    '-.--': 'Y',
+    '--..': 'Z',
+    '.----': '1',
+    '..---': '2',
+    '...--': '3',
+    '....-': '4',
+    '.....': '5',
+    '-....': '6',
+    '--...': '7',
+    '---..': '8',
+    '----.': '9',
+    '-----': '0',
+};
 
+// La presentada
 //decodeMorse = function(morseCode){
 function decodeMorse(morseCode) {
     // Your code here
     // You can use MORSE_CODE[morse]
 
-    //var res = MORSE_CODE['.--']
-    var res = MORSE_CODE[morseCode].toUpperCase();
+    let palabras = morseCode.trimStart().trimEnd();
+    let otrasPalabras = palabras.split('   ');
+    let res = "";
+    for (const palabra of otrasPalabras) {
+        // Palabra tiene las letras separadas por comas
+        let letras = palabra.split(' ');
+        for (const letra of letras) {
+            let word = MORSE_CODE[letra];
+            res += word;
+        }
+        res += ' ';
+    }
+
+    return res.trimEnd();
+}
+
+// De: https://stackoverflow.com/a/43726671/14338047
+function decodeMorse0(morseCode) {
+    // Your code here
+    // You can use MORSE_CODE[morse]
+
+    let res = morseCode.split('   ')
+        .map(a => a.split(' ').map(b => MORSE_CODE[b]).join('')
+        ).join(' ');
 
     return res;
 }
+
+// var decoded = decodeMorse0(".-- --- .-. -..   .-- --- .-. -..");
+// console.log(decoded);
 
 /**
 * Indicar aquí la función a usar dentro de
@@ -129,7 +157,7 @@ function comparaResultado(valor, resOK) {
 
     let res = laFuncion(valor);
     if (res.toString() != resOK.toString()) {
-        console.log("\tNo es correcto. El resultado calculado es " + res + " debería ser " + resOK);
+        console.log("\tNo es correcto. El resultado calculado es '" + res + "' debería ser '" + resOK + "'");
     }
     else {
         console.log("\tCorrecto!");
@@ -138,10 +166,11 @@ function comparaResultado(valor, resOK) {
 
 // Pruebas
 
-comparaResultado('....', 'H');
-// comparaResultado('.... . -.--   .--- ..- -.. .', 'HEY JUDE');
-// // Leading and trailing spaces
-// comparaResultado('   .... . -.--   ', 'HEY');
+comparaResultado('···−−−···', 'SOS');
+//comparaResultado('....', 'H');
+comparaResultado('.... . -.--   .--- ..- -.. .', 'HEY JUDE');
+// Leading and trailing spaces
+comparaResultado('   .... . -.--   ', 'HEY');
 
 /*
 const { assert } = require('chai');
