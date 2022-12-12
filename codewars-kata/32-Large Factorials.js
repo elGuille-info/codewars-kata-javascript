@@ -22,7 +22,7 @@ I have removed the use of require in the javascript language.
 ALGORITHMS, BIG INTEGERS
 */
 
-// Para presentar
+// La presentada
 function factorial(number) {
     if (number == 0) return '1';
     if (number == 2) return '2';
