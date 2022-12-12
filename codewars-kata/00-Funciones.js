@@ -175,6 +175,7 @@ String.prototype.replaceAllTxt = function replaceAll(search, replace) { return t
 
 // Quitar todos los espacios de delante y detrás:
 //.replace(/(^ +| +$)/g, '');
+
 /**
  * Quita todos los espacios del principio y del final.
  * Como si se hiciera cadena.trimStart().trimEnd()
@@ -183,3 +184,5 @@ String.prototype.replaceAllTxt = function replaceAll(search, replace) { return t
  * @returns Una nueva cadena sin los espacios.
  */
 function trimStartEnd(search) { return search.replace(/(^ +| +$)/g, ''); }
+
+String.prototype.trimAll = function trimStartEnd(search) { return search.replace(/(^ +| +$)/g, ''); }
