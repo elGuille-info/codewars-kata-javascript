@@ -195,6 +195,7 @@ const MORSE_CODE = {
     '-----': '0',
 };
 
+String.prototype.trimAll = function trimStartEnd() { return this.replace(/(^ +| +$)/g, ''); }
 String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
 
 // Espero que sea válida
@@ -277,7 +278,8 @@ function decodeMorse(morseCode) {
     // ToDo: Accept dots, dashes and spaces, return human-readable message
     //return morseCode.replace('.', MORSE_CODE['.']).replace('-', MORSE_CODE['-']).replace(' ', '');
     //let palabras = morseCode.trimStart().trimEnd();
-    let palabras = morseCode.replace(/(^ +| +$)/g, '');
+    //let palabras = morseCode.replace(/(^ +| +$)/g, '');
+    let palabras = morseCode.trimAll();
     let otrasPalabras = palabras.split('   ');
     let res = "";
     for (const palabra of otrasPalabras) {
