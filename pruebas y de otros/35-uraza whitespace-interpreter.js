@@ -234,3 +234,126 @@ function whitespace(code, input) {
     return output.join("");
 };
 
+/**
+ * Indicar aquí la función a usar dentro de
+ * @see comparaResultado
+ *
+ * Poner arriba el método usado para las pruebas, aunque no es necesario.
+ * Lo importante es asignar el valor a 'lafuncion', aunque eso se hace en el código a comprobar.
+ */
+let laFuncion = whitespace;
+
+/**
+ * Para comprobar si el resultado de la función es válido.
+ *
+ * @param {*} valor El número a evaluar por la función.
+ * @param {*} resOK El resultado que debe dar.
+ * @param {*} noMostrarLog Si NO se debe mostrar lo que se comprueba.
+ * @see laFuncion Para asignar la función a usar.
+ */
+function comparaResultado(valor, resOK, noMostrarLog) {
+    if (!noMostrarLog)
+        console.log(unbleach(valor) + " = " + resOK);
+
+    let res = "";
+    try {
+        res = laFuncion(valor);
+    }
+    catch (e) {
+        res = "Error";
+        console.error(e);
+    }
+
+    if (res.toString() != resOK.toString()) {
+        console.log("\tNo es correcto. El resultado calculado es '" + res + "' debería ser '" + resOK + "'");
+    }
+    else {
+        console.log("\tCorrecto!");
+    }
+}
+
+// Pruebas
+
+function prueba1() {
+    console.log("Prueba 1");
+    var output1 = "   \t\n\t\n \t\n\n\n";
+    var output2 = "   \t \n\t\n \t\n\n\n";
+    var output3 = "   \t\t\n\t\n \t\n\n\n";
+    var output0 = "    \n\t\n \t\n\n\n";
+
+    comparaResultado(output1, "1");
+    comparaResultado(output2, "2");
+    comparaResultado(output3, "3");
+    comparaResultado(output0, "0");
+}
+
+function prueba2() {
+    console.log("Prueba 2");
+    var outputNegative1 = "  \t\t\n\t\n \t\n\n\n";
+    var outputNegative2 = "  \t\t \n\t\n \t\n\n\n";
+    var outputNegative3 = "  \t\t\t\n\t\n \t\n\n\n";
+
+    comparaResultado(outputNegative1, "-1");
+    comparaResultado(outputNegative2, "-2");
+    comparaResultado(outputNegative3, "-3");
+
+}
+
+function prueba3() {
+    console.log("Prueba 3");
+    comparaResultado("", "Error");
+}
+
+function prueba4() {
+    console.log("Prueba 4");
+    var outputA = "   \t     \t\n\t\n  \n\n\n";
+    var outputB = "   \t    \t \n\t\n  \n\n\n";
+    var outputC = "   \t    \t\t\n\t\n  \n\n\n";
+
+    comparaResultado(outputA, "A");
+    comparaResultado(outputB, "B");
+    comparaResultado(outputC, "C");
+
+}
+
+function prueba5() {
+    console.log("Prueba 5");
+    var outputA = "blahhhh   \targgggghhh     \t\n\t\n  \n\n\n";
+    var outputB = " I heart \t  cats  \t \n\t\n  \n\n\n";
+    var outputC = "   \t  welcome  \t\t\n\t\n to the\nnew\nworld\n";
+
+    comparaResultado(outputA, "A");
+    comparaResultado((outputB), "B");
+    comparaResultado((outputC), "C");
+
+}
+
+function prueba6() {
+    console.log("Prueba 6");
+
+    var pushTwice = "   \t\t\n   \t\t\n\t\n \t\t\n \t\n\n\n";
+    var duplicate = "   \t\t\n \n \t\n \t\t\n \t\n\n\n";
+    var duplicateN1 = "   \t\n   \t \n   \t\t\n \t  \t \n\t\n \t\n\n\n";
+    var duplicateN2 = "   \t\n   \t \n   \t\t\n \t  \t\n\t\n \t\n\n\n";
+    var duplicateN3 = "   \t\n   \t \n   \t\t\n \t   \n\t\n \t\n\n\n";
+    var swap = "   \t\t\n   \t \n \n\t\t\n \t\t\n \t\n\n\n";
+    var discard = "   \t\t\n   \t \n \n\t \n\n\t\n \t\n\n\n";
+    var slide = "   \t\t\n   \t \n   \t\n   \t  \n   \t\t \n   \t \t\n   \t\t\t\n \n\t \t\n \t\t\n\t\n \t\t\n \t\t\n \t\t\n \t\n\n\n";
+
+    comparaResultado((pushTwice), "33");
+    comparaResultado((duplicate), "33");
+    comparaResultado((duplicateN1), "1");
+    comparaResultado((duplicateN2), "2");
+    comparaResultado((duplicateN3), "3");
+    comparaResultado((swap), "32");
+    comparaResultado((discard), "2");
+    comparaResultado((slide), "5123");
+
+}
+
+prueba1();
+prueba2();
+prueba3();
+prueba4();
+prueba5();
+prueba6();
