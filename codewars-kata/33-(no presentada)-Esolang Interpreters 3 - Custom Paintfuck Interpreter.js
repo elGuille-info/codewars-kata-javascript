@@ -74,6 +74,7 @@ Esolang Interpreters #2 - Custom Smallfuck Interpreter
     Las soluciones: https://www.codewars.com/kata/58678d29dbca9a68d80000d7/solutions/javascript
 Esolang Interpreters #3 - Custom Paintfuck Interpreter
     http://codewars.com/kata/esolang-interpreters-number-3-custom-paintf-star-star-k-interpreter
+    Las soluciones: https://www.codewars.com/kata/5868a68ba44cfc763e00008d/solutions
 Esolang Interpreters #4 - Boolfuck Interpreter
     http://codewars.com/kata/esolang-interpreters-number-4-boolfuck-interpreter
 
