@@ -47,7 +47,7 @@ PUZZLES
 // https://www.codewars.com/kata/52cf02cd825aef67070008fa/
 
 let device = {}
-device.decode = function (w) {
+device.decode1 = function (w) {
     let key = 'abdhpF,82QsLirJejtNmzZKgnB3SwTyXG ?.6YIcflxVC5WE94UA1OoD70MkvRuPqH'.split("")
     //        'abdhpF,82QsLirJejtNmzZKgnB3SwTyXG ?.6YIcflxVC5WE94UA1OoD70MkvRuPqH'
     return w.split("").map((c, i) => key.indexOf(c) > -1 ? key[(key.indexOf(c) + 65 - i) % 66] : c).join("")
@@ -55,32 +55,53 @@ device.decode = function (w) {
 
 // console.log(device.decode("-FNYhdmEdViBbxc40,ROYNxwfwvjg5CHUYUhiIkp2CMIvZ.1qPz"))
 
+// La presentada
+device.decode = function (w) {
+    let al = 'abdhpF,82QsLirJejtNmzZKgnB3SwTyXG ?.6YIcflxVC5WE94UA1OoD70MkvRuPqH';
+    w = w.split("")
+    for (var i = 0; i < w.length; i++) {
+        // Comprobar si el caracter está en la lista
+        var c = al.indexOf(w[i])
+        // Si no está, se usa ese mismo caracter
+        if (c != -1) {
+            // La posición a tomar es la encontrada menos la posición en la cadena menos uno
+            let p = c - (i + 1);
+            // si es menor de cero, añadir los caracteres de la lista (66)
+            if (p < 0) {
+                p += al.length;
+            }
+            w[i] = al[p];
+        }
+    }
+    return w.join("")
+}
 
 /*
     De: https://gitter.im/Codewars/codewars.com/kata-solving-help/archives/2016/09/22
 */
 device.decode3 = function (w) {
     //console.log(w)
-    //const alphabet = "bdhpF,82QsLirJejtNmzZKgnB3SwTyXG ?.6YIcflxVC5WE94UA1OoD70MkvRuPqHabdhpF,82QsLirJejtNmzZKgnB3SwTyXG ?.6YIcflxVC5WE94UA1OoD70MkvRuPqHa"
-    const alphabet = "abdhpF,82QsLirJejtNmzZKgnB3SwTyXG ?.6YIcflxVC5WE94UA1OoD70MkvRuPqH"
+    const alphabet = "bdhpF,82QsLirJejtNmzZKgnB3SwTyXG ?.6YIcflxVC5WE94UA1OoD70MkvRuPqHabdhpF,82QsLirJejtNmzZKgnB3SwTyXG ?.6YIcflxVC5WE94UA1OoD70MkvRuPqHa"
     w = w.split("")
     for (var i = 0; i < w.length; i++) {
         var b = alphabet.lastIndexOf(w[i])
-        w[i] = alphabet[b - i - 1];
+        if (b != -1) {
+            w[i] = alphabet[b - i - 1];
+        }
     }
     return w.join("")
 
 }
 
-device.encode = function (what) {
-    //return encode (what,init) ; 
-    return rot13_1(what);
-}
-function rot13_1(message) {
-    var a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    var b = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"
-    return message.replace(/[a-z]/gi, c => b[a.indexOf(c)])
-}
+//for educational purposes, the encode function
+// https://www.codewars.com/kata/reviews/52cf02cd825aef67070008fd/groups/53addadfebdbf83723000186
+device.encode = function(string){
+    var substitutions = "abdhpF,82QsLirJejtNmzZKgnB3SwTyXG ?.6YIcflxVC5WE94UA1OoD70MkvRuPqH"; // length = 66
+    return [].map.call(string, function(chr, idx){
+       var pos = substitutions.indexOf(chr);
+       return pos == -1 ? chr : substitutions[ (pos + 1 + idx) % 66 ];
+    }).join('');
+ };
 
 /*
 var chrs = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.0123456789? '
@@ -195,11 +216,18 @@ function comparaResultado(valor, resOK, noMostrarLog) {
 // Pruebas
 
 //console.log(device.decode.toString());
-console.log (device.encode ('What is this ?')) ; //EFhZINtl3rgKW9
-console.log(device.encode('EFhZINtl3rgKW9'));
+//console.log (device.encode ('What is this ?')) ; //EFhZINtl3rgKW9
+//console.log(device.encode('EFhZINtl3rgKW9'));
+console.log('EFhZINtl3rgKW9');
+console.log(device.decode('EFhZINtl3rgKW9'));
 console.log(device.decode3('EFhZINtl3rgKW9'));
-console.log(device.decode3('FEhZINtl3rgKW9'));
-//console.log(device.encode('What is this ?'));
+console.log('!@#$%^&*()_+-');
+console.log(device.decode('!@#$%^&*()_+-'));
+console.log(device.decode3('!@#$%^&*()_+-'));
+console.log('yFNYhdmEdViBbxc40,ROYNxwfwvjg5CHUYUhiIkp2CMIvZ.1qPz')
+console.log(device.decode('yFNYhdmEdViBbxc40,ROYNxwfwvjg5CHUYUhiIkp2CMIvZ.1qPz'))
+console.log(device.decode3('yFNYhdmEdViBbxc40,ROYNxwfwvjg5CHUYUhiIkp2CMIvZ.1qPz'))
+console.log(device.encode('What is this ?'));
 // console.log(device.decode('Jung vf guvf ?'));
 // console.log(device.decode('What is this ?'));
 
