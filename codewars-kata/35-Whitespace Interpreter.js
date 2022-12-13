@@ -180,6 +180,39 @@ function whitespace(code, input) {
     return output;
 };
 
+/**
+ * Indicar aquí la función a usar dentro de
+ * @see comparaResultado
+ *
+ * Poner arriba el método usado para las pruebas, aunque no es necesario.
+ * Lo importante es asignar el valor a 'lafuncion', aunque eso se hace en el código a comprobar.
+ */
+let laFuncion = whitespace;
+
+/**
+ * Para comprobar si el resultado de la función es válido.
+ *
+ * @param {*} valor El número a evaluar por la función.
+ * @param {*} resOK El resultado que debe dar.
+ * @param {*} noMostrarLog Si NO se debe mostrar lo que se comprueba.
+ * @see laFuncion Para asignar la función a usar.
+ */
+function comparaResultado(valor, resOK, noMostrarLog) {
+    if (!noMostrarLog)
+        console.log(valor + " = " + resOK);
+
+    let res = laFuncion(valor);
+    if (res.toString() != resOK.toString()) {
+        console.log("\tNo es correcto. El resultado calculado es '" + res + "' debería ser '" + resOK + "'");
+    }
+    else {
+        console.log("\tCorrecto!");
+    }
+}
+
+// Pruebas
+
+
 /*
 var desc = "Testing push, output of numbers 0 through 3";
 describe(desc, function () {
