@@ -81,47 +81,27 @@ ESOTERIC LANGUAGES, INTERPRETERS, ALGORITHMS, TUTORIALS
 */
 
 function interpreter(code, iterations, width, height) {
-    // Implement your interpreter here
-
-    for (var i = 0; i < code.length; i++) {
+    code = code.replace(/[^nesw*\[\]]/g, '');
+    const n = code.length;
+    const J = {};
+    for (let i = 0, p = 0, S = []; i < n; ++i)
         switch (code[i]) {
-            case "*":
-                // Flip the bit at the current cell
-                storage[pointer] = +!storage[pointer];
-                break;
-            case ">":
-                // Move the pointer to the right.  If pointer goes out-of-bounds then return final state of tape
-                pointer++;
-                if (pointer >= storage.length) return storage.join("");
-                break;
-            case "<":
-                // Move the pointer to the left.  If pointer goes out-of-bounds then return final state of tape
-                pointer--;
-                if (pointer < 0) return storage.join("");
-                break;
-            case "[":
-                // Jumps to matching "]" if current bit is 0
-                if (storage[pointer] === 0) {
-                    var unmatched = 1;
-                    while (unmatched) {
-                        if (code[++i] === "]") unmatched--;
-                        if (code[i] === "[") unmatched++;
-                    }
-                }
-                break;
-            case "]":
-                // Jumps back to matching "[" if current bit is 1
-                if (storage[pointer] === 1) {
-                    var unmatched = 1;
-                    while (unmatched) {
-                        if (code[--i] === "[") unmatched--;
-                        if (code[i] === "]") unmatched++;
-                    }
-                }
-                break;
+            case '[': S.push(i); break;
+            case ']': p = S.pop(), J[i] = p, J[p] = i; break;
         }
-    }
 
+    const M = Array.from({ length: height }, _ => Array.from({ length: width }, _ => 0));
+    for (let i = 0, j = 0, y = 0, x = 0; i < n && j < iterations; ++i, ++j)
+        switch (code[i]) {
+            case 'n': if (--y == -1) y += height; break;
+            case 'w': if (--x == -1) x += width; break;
+            case 's': if (++y == height) y = 0; break;
+            case 'e': if (++x == width) x = 0; break;
+            case '*': M[y][x] ^= 1; break;
+            case '[': if (M[y][x] == 0) i = J[i]; break;
+            case ']': if (M[y][x] != 0) i = J[i]; break;
+        }
+    return M.map(r => r.join('')).join('\r\n');
 }
 
 function interpreter_Smallfuck(code, tape) {
