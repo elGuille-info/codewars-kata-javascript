@@ -85,6 +85,7 @@ device.decode3 = function (w) {
     w = w.split("")
     for (var i = 0; i < w.length; i++) {
         var b = alphabet.lastIndexOf(w[i])
+        // Le faltaba esta comprobación
         if (b != -1) {
             w[i] = alphabet[b - i - 1];
         }
