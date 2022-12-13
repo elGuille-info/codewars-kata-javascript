@@ -128,6 +128,54 @@ There is no preloaded code to help you. This is not about coding skills; think b
 
 PUZZLES, STRINGS, NUMBER THEORY, MATHEMATICS
 */
+
+/*
+    Las soluciones, siempre devuelve "apple".
+
+*/
+
+//1- 
+// https://www.codewars.com/kata/reviews/57531de80c2e9dcc4e00000c/groups/57541e3cc86e70bd5f0006aa
+const SubtractSum_1 = () => "apple";
+
+/*
+I don't get why this works?
+
+because always n - sumOfDigits(n) divisible by 9. 
+    so just look at the numbers divisible by 9. 
+    in the given list all numbers divisible by 9 has apple value e.g. 9 apple, 18 apple and so on. 
+    so no matter what just return "apple"
+*/
+
+//2- 
+// https://www.codewars.com/kata/reviews/57531de80c2e9dcc4e00000c/groups/5a467d4ee7f2250d9f0012fc
+let fruits_2 = {
+    1: 'kiwi',
+    2: 'pear', // etc.
+};
+const SubtractSum_2 = n => {
+    let number = n - String(n).split('').reduce((sum, item) => sum += +item, 0);
+    if (number > 100) return SubtractSum(number);
+    else return fruits[number];
+}
+
+//3- 
+// https://www.codewars.com/kata/reviews/57531de80c2e9dcc4e00000c/groups/57531de80c2e9dcc4e000010
+function SubtractSum_3(n) {
+    return "apple"
+}
+
+//4- 
+// https://www.codewars.com/kata/reviews/57531de80c2e9dcc4e00000c/groups/5ef867f76dbb3500011e3966
+function SubtractSum_4(n) {
+    if (n === "IsAJoke") {
+        return 'Bull Shit';
+    }
+    else {
+        return "apple";
+    }
+}
+
 // Las frutas del 1 al 100 ambos inclusive, el 0 es una cadena vacía.
 const fruits = ["",
     "kiwi", "pear", "kiwi", "banana", "melon", "banana", "melon", "pineapple", "apple", "pineapple",
