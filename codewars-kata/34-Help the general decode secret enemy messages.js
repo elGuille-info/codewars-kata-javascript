@@ -46,6 +46,7 @@ PUZZLES
 // }
 
 
+let device = {}
 
 // La presentada
 device.decode = function (w) {
@@ -86,7 +87,7 @@ device.encode = function (string) {
  * Poner arriba el método usado para las pruebas, aunque no es necesario.
  * Lo importante es asignar el valor a 'lafuncion', aunque eso se hace en el código a comprobar.
  */
-let laFuncion = device.decode3;
+let laFuncion = device.decode;
 
 /**
  * Para comprobar si el resultado de la función es válido.
@@ -116,13 +117,13 @@ function comparaResultado(valor, resOK, noMostrarLog) {
 //console.log(device.encode('EFhZINtl3rgKW9'));
 console.log('EFhZINtl3rgKW9');
 console.log(device.decode('EFhZINtl3rgKW9'));
-console.log(device.decode3('EFhZINtl3rgKW9'));
+//console.log(device.decode3('EFhZINtl3rgKW9'));
 console.log('!@#$%^&*()_+-');
 console.log(device.decode('!@#$%^&*()_+-'));
-console.log(device.decode3('!@#$%^&*()_+-'));
+//console.log(device.decode3('!@#$%^&*()_+-'));
 console.log('yFNYhdmEdViBbxc40,ROYNxwfwvjg5CHUYUhiIkp2CMIvZ.1qPz')
 console.log(device.decode('yFNYhdmEdViBbxc40,ROYNxwfwvjg5CHUYUhiIkp2CMIvZ.1qPz'))
-console.log(device.decode3('yFNYhdmEdViBbxc40,ROYNxwfwvjg5CHUYUhiIkp2CMIvZ.1qPz'))
+//console.log(device.decode3('yFNYhdmEdViBbxc40,ROYNxwfwvjg5CHUYUhiIkp2CMIvZ.1qPz'))
 console.log(device.encode('What is this ?'));
 // console.log(device.decode('Jung vf guvf ?'));
 // console.log(device.decode('What is this ?'));
