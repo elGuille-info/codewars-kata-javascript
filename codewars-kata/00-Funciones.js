@@ -194,6 +194,15 @@ function prueba2Valores(valor1, valor2, resOK, noMostrarLog) {
  */
 String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
 
+/**
+ * Quita todos los caracteres indicados de la cadena.
+ * 
+ * @param {*} search El caracter a quitar.
+ * @returns Una nueva cadena sin el caracter indicados.
+ */
+String.prototype.removeAllTxt = function removeAll(search) { return this.split(search).join(''); }
+
+
 // Quitar todos los espacios de delante y detrás:
 //.replace(/(^ +| +$)/g, '');
 
@@ -207,4 +216,4 @@ String.prototype.replaceAllTxt = function replaceAll(search, replace) { return t
 function trimStartEnd(search) { return search.replace(/(^ +| +$)/g, ''); }
 
 
-String.prototype.trimAll = function trimStartEnd() { return this.replace(/(^ +| +$)/g, ''); }
+String.prototype.trimTxt = function trimStartEnd() { return this.replace(/(^ +| +$)/g, ''); }

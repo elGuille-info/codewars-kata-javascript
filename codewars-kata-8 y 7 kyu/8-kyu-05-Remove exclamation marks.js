@@ -6,8 +6,13 @@ Write function RemoveExclamationMarks which removes all exclamation marks from a
 FUNDAMENTALS, STRINGS
 */
 
+//String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
+String.prototype.removeAllTxt = function removeAll(search) { return this.split(search).join(''); }
+
 function removeExclamationMarks(s) {
-    return '';
+    //return '';
+    //return s.removeAllTxt('!');
+    return removeAll(s, '!');
 }
 
 /**
@@ -49,7 +54,7 @@ function comparaResultado(valor, resOK, noMostrarLog) {
 }
 
 // Pruebas
-comparaResultado(("Hello World!"), "Hello World");
+comparaResultado("Hello World!", "Hello World");
 
 /*
 const chai = require("chai");
