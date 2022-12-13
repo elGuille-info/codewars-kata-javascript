@@ -128,8 +128,57 @@ There is no preloaded code to help you. This is not about coding skills; think b
 
 PUZZLES, STRINGS, NUMBER THEORY, MATHEMATICS
 */
+// Las frutas del 1 al 100 ambos inclusive, el 0 es una cadena vacía.
+const fruits = ["",
+    "kiwi", "pear", "kiwi", "banana", "melon", "banana", "melon", "pineapple", "apple", "pineapple",
+    "cucumber", "pineapple", "cucumber", "orange", "grape", "orange", "grape", "apple", "grape", "cherry",
+    "pear", "cherry", "pear", "kiwi", "banana", "kiwi", "apple", "melon", "banana", "melon",
+    "pineapple", "melon", "pineapple", "cucumber", "orange", "apple", "orange", "grape", "orange",
+    "grape", "cherry", "pear", "cherry", "pear", "apple", "pear", "kiwi", "banana", "kiwi",
+    "banana", "melon", "pineapple", "melon", "apple", "cucumber", "pineapple", "cucumber", "orange", "cucumber",
+    "orange", "grape", "cherry", "apple", "cherry", "pear", "cherry", "pear", "kiwi", "pear",
+    "kiwi", "banana", "apple", "banana", "melon", "pineapple", "melon", "pineapple", "cucumber", "pineapple",
+    "cucumber", "apple", "grape", "orange", "grape", "cherry", "grape", "cherry", "pear", "cherry",
+    "apple", "kiwi", "banana", "kiwi", "banana", "melon", "banana", "melon", "pineapple", "apple",
+    "pineapple"];
+
+/*
+n = 10
+sum = 1+0 = 1
+n = 10 - 1 = 9 (apple)
+
+n = 325
+sum = 3+2+5 = 10
+n = 325-10 = 315 (not in the list)
+sum = 3+1+5 = 9
+n = 315-9 = 306 (not in the list)
+sum = 3+0+6 = 9
+n =306-9 = 297 (not in the list)
+
+sum = 2+9+7 = 18
+n = 297-18 = 279  (not in the list), etc.
+...
+n = 99
+*/
+
+// La presentada
 function SubtractSum(n) {
-    return // fruit name like "apple"
+    //return // fruit name like "apple"
+    let n1 = n;
+    let cifras; // = n.split('');
+    let sum; // = 0;
+    while (true) {
+        cifras = String(n).split('');
+        sum = 0;
+        for (let i = 0; i < cifras.length; i++) {
+            sum += Number(cifras[i]);
+        }
+        n = n - sum;
+        if (n <= 100) {
+            break;
+        }
+    }
+    return fruits[n];
 }
 
 
@@ -152,7 +201,7 @@ let laFuncion = SubtractSum;
  */
 function comparaResultado(valor, resOK, noMostrarLog) {
     if (!noMostrarLog)
-        console.log(unbleach(valor) + " = " + resOK);
+        console.log(valor + " = " + resOK);
 
     let res = "";
     try {
@@ -172,7 +221,7 @@ function comparaResultado(valor, resOK, noMostrarLog) {
 }
 
 // Pruebas
-comparaResultado(10, "apple");
+//comparaResultado(10, "apple");
 comparaResultado(325, "apple");
 
 /*
@@ -191,6 +240,23 @@ n =306-9 = 297 (not in the list)
 
 sum = 2+9+7 = 18
 n = 297-18 = 279  (not in the list), etc.
+
+sum = 2+7+9 = 18
+n = 279 -18 = 261
+
+sum = 2+6+1= 9
+n = 261 - 9 = 252
+
+sum = 2+5+2= 9
+n = 252-9 = 243
+
+sum = 2+4+3 =9
+n = 243-9 = 234
+
+n = 234 - 9 = 225 -9 = 216 -9 = 207-9= 198
+sum = 1+9+8 = 18
+n = 198-18 = 180 -9= 171 - 9= 162 -9= 153 -9 = 144-9= 135-9= 126-9= 117-9= 108-9 = 99
+n = 99
 
 const Test = require('@codewars/test-compat');
 
