@@ -13,6 +13,13 @@ Para estos nuevos kata usaré directorios para el nivel, no sé si los seguiré 
 
 <br>
 
+> 
+> Como decía Felipito Takatún (Joe Ríggoli)... ¡yo sigo! :-D
+>
+
+
+<br>
+
 **Nota 05-dic-22:** <br>
 He añadido la numeración en el orden que me fueron apareciendo y tengo que poner los enlaces a mis soluciones.
 
