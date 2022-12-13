@@ -34,10 +34,17 @@ Good luck ! General Patron is counting on you!
 PUZZLES
 */
 
+/*
+    Soluciones
+
+    https://www.codewars.com/kata/52cf02cd825aef67070008fa/solutions/javascript
+*/
+
 // console.log(device.encode('What is this ?'));
 // device.decode = function (w) {
 //     return w;
 // }
+
 
 
 // La presentada
