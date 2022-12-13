@@ -19,6 +19,7 @@ IMPs
 [tab][tab]: Heap Access
 [tab][line-feed]: Input/Output
 [line-feed]: Flow Control
+
 There are two types of data a command may be passed: numbers and labels.
 
 Parsing Numbers
@@ -68,12 +69,15 @@ For a number, append the output string with the number's string value.
 
 For a character, simply append the output string with the character.
 
-The Java implementations will support an optional OutputStream for output. If an OutputStream is provided, it should be flushed before and after code execution and filled as code is executed. The output string should be returned in any case.
+The Java implementations will support an optional OutputStream for output. 
+  If an OutputStream is provided, it should be flushed before and after code execution and filled as code is executed. 
+  The output string should be returned in any case.
 
 Commands
 Notation: n specifies the parameter, [number] or [label].
 
-Errors should be thrown for invalid numbers, labels, and heap addresses, or if there are not enough items on the stack to complete an operation (unless otherwise specified). In addition, an error should be thrown for unclean termination.
+Errors should be thrown for invalid numbers, labels, and heap addresses, or if there are not enough items on the stack to complete an operation (unless otherwise specified). 
+  In addition, an error should be thrown for unclean termination.
 
 IMP [space] - Stack Manipulation
 [space] (number): Push n onto the stack.
