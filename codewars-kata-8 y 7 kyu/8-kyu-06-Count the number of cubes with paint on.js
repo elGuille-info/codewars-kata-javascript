@@ -18,7 +18,9 @@ PUZZLES
 */
 
 /*
-Just an explanation for those as perplexed as I was, it isn't cutting the large cube into 8 smaller cubes then cutting the smaller cubes into even smaller cubes, which was how I initially read the instructions since It's poorly worded.
+Just an explanation for those as perplexed as I was, 
+    it isn't cutting the large cube into 8 smaller cubes then cutting the smaller cubes into even smaller cubes, 
+    which was how I initially read the instructions since It's poorly worded.
 
 What you're actually being asked to do is take the initial large cube then equally space the specified number of cuts along the outside edge. 
     ie, If it specified two cuts for each dimension, then if you looked at each face it would be divided into a 9 square grid pattern, and would fall apart into 27 little cubes.
@@ -37,13 +39,25 @@ Good luck ! :)
 
 */
 
+/*
+ellismckenzielee - codewars-python
+
+def count_squares(cuts):
+    '''Count the number of cubes with paint on kata. If a cube is cut in 3 dimensions multiple times
+    return the number of cubes which have atleast one red face'''
+    return (cuts+1)**(3)-(cuts-1)**3
+*/
+
 // 2 -> 26
 // 4 -> 98
 // 5 -> 152
 // 16 -> 1538
 // 23 -> 3176
-var countSquares = function (cuts) {
 
+// La presentada
+var countSquares = function (cuts) {
+    if (cuts == 0) return 1;
+    return (cuts + 1) ** 3 - (cuts - 1) ** 3;
 }
 
 /**
@@ -85,9 +99,12 @@ function comparaResultado(valor, resOK, noMostrarLog) {
 }
 
 // Pruebas
-Test.assertSimilar(countSquares(5), 152)
-Test.assertSimilar(countSquares(16), 1538)
-Test.assertSimilar(countSquares(23), 3176)
+comparaResultado(1, 8)
+comparaResultado(2, 26)
+comparaResultado(4, 98)
+comparaResultado(5, 152)
+comparaResultado(16, 1538)
+comparaResultado(23, 3176)
 
 
 /*
