@@ -6,13 +6,25 @@ Write function RemoveExclamationMarks which removes all exclamation marks from a
 FUNDAMENTALS, STRINGS
 */
 
-//String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
-String.prototype.removeAllTxt = function removeAll(search) { return this.split(search).join(''); }
+/*
+    Soluciones
+*/
 
+//1- y 2-
+// https://www.codewars.com/kata/reviews/57f74e99c2128af9130000d8/groups/57f94b0a2faf02e74c000557
+function removeExclamationMarks_1(s) {
+    return s.replace(/!/gi, '');
+}
+
+//3-
+// https://www.codewars.com/kata/reviews/57f74e99c2128af9130000d8/groups/57f95791e2cb69bda7000a66
+function removeExclamationMarks_3(s) {
+    return s.split('!').join('');
+}
+
+// La presentada
 function removeExclamationMarks(s) {
-    //return '';
-    //return s.removeAllTxt('!');
-    return removeAll(s, '!');
+    return s.split('!').join('');
 }
 
 /**
