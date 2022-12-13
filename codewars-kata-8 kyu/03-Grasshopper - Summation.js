@@ -13,11 +13,36 @@ For example (Input -> Output):
 FUNDAMENTALS, MATHEMATICS
 */
 
+/*
+    Soluciones
+*/
+//1- 
+// https://www.codewars.com/kata/reviews/55e88d9ca371ce85e0000006/groups/55fc269b2db3bdf56c000045
+var summation_1 = function (num) {
+    let result = 0;
+    for (var i = 1; i <= num; i++) {
+        result += i;
+    }
+
+    return result;
+}
+
+//2- 
+// https://www.codewars.com/kata/reviews/55e88d9ca371ce85e0000006/groups/55e95c9b45e6f329d600000b
+const summation_2 = n => n * (n + 1) / 2;
+
+//3- 
+// https://www.codewars.com/kata/reviews/55e88d9ca371ce85e0000006/groups/55ede17cdf719f51900000ac
+function summation_3(num) {
+    return num * (num + 1) / 2
+}
+
+// La presentada
 var summation = function (num) {
     // Code here
 
     let res = 0;
-    for(let i = 1; i <= num; i++) {
+    for (let i = 1; i <= num; i++) {
         res += i;
     }
     return res;
