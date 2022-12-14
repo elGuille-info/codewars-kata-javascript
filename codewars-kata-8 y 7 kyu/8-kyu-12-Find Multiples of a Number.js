@@ -15,6 +15,35 @@ function findMultiples(integer, limit) {
     //your code here
 }
 
+/**
+ * Indicar aquí la función a usar dentro de
+ * @see test2NumArray
+ *
+ * Poner arriba el método usado para las pruebas, aunque no es necesario.
+ * Lo importante es asignar el valor a 'laFuncion', aunque eso se hace en el código a comprobar.
+ */
+let laFuncion = findMultiples;
+
+/**
+  * Para comparar un array con el resultado devuelto por laFuncion con los dos parámetros.
+  *
+  * @param {*} num1 El valor del primer valor.
+  * @param {*} num2 El valor del segundo valor.
+  * @param {*} arrOK El resultado que debe dar.
+  * @see laFuncion Para asignar la función a usar.
+  */
+function test2NumArray(num1, num2, arrOK) {
+    console.log(laFuncion.toString() + "(" + num1 + ", " + num2 + ") --> [" + arrOK?.toString() + "]");
+
+    let res = laFuncion(num1, num2);
+    if (res.toString() != arrOK.toString()) {
+        console.log("\tNo es correcto. El resultado calculado es [" + res + "] debería ser [" + arrOK + "]");
+    }
+    else {
+        console.log("\tCorrecto!");
+    }
+}
+
 /*
 const { assert } = require('chai');
 it("Basic Tests", () => {

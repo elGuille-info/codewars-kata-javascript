@@ -20,7 +20,7 @@ function nombre_de_la_funcion(parametro) {
  * @see testArrNum
  *
  * Poner arriba el método usado para las pruebas, aunque no es necesario.
- * Lo importante es asignar el valor a 'lafuncion', aunque eso se hace en el código a comprobar.
+ * Lo importante es asignar el valor a 'laFuncion', aunque eso se hace en el código a comprobar.
  */
 let laFuncion = nombre_de_la_funcion;
 
@@ -165,6 +165,25 @@ function compararArrays(valor1, valor2, resOK) {
 }
 
 /**
+  * Para comparar dos arrays, el primero evaluado por la función (LaFuncion).
+  *
+  * @param {*} arr El valor del primer array.
+  * @param {*} arrOK El resultado que debe dar.
+  * @see laFuncion Para asignar la función a usar.
+  */
+function compararArrays(arr, arrOK) {
+    console.log("[" + arr?.toString() + "] --> [" + arrOK?.toString() + "]");
+
+    let res = laFuncion(arr);
+    if (res.toString() != arrOK.toString()) {
+        console.log("\tNo es correcto. El resultado calculado es [" + res + "] debería ser [" + arrOK + "]");
+    }
+    else {
+        console.log("\tCorrecto!");
+    }
+}
+
+/**
   * Para comprobar si el resultado de la función es válido.
   *
   * @param {*} valor1 Primer parámetro a pasar a la función.
@@ -239,6 +258,25 @@ function assertEquals(res, resOK) {
     }
 }
 
+/**
+  * Para comparar un array con el resultado devuelto por laFuncion con los dos parámetros.
+  *
+  * @param {*} num1 El valor del primer valor.
+  * @param {*} num2 El valor del segundo valor.
+  * @param {*} arrOK El resultado que debe dar.
+  * @see laFuncion Para asignar la función a usar.
+  */
+function test2NumArray(num1, num2, arrOK) {
+    console.log(laFuncion.toString() + "(" + num1 + ", " + num2 + ") --> [" + arrOK?.toString() + "]");
+
+    let res = laFuncion(num1, num2);
+    if (res.toString() != arrOK.toString()) {
+        console.log("\tNo es correcto. El resultado calculado es [" + res + "] debería ser [" + arrOK + "]");
+    }
+    else {
+        console.log("\tCorrecto!");
+    }
+}
 
 /**
  * Prototipo por si no está definida replaceAll.

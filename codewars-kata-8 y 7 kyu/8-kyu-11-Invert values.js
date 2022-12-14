@@ -43,7 +43,7 @@ function invert(array) {
 
 /**
  * Indicar aquí la función a usar dentro de
- * @see testArrNum
+ * @see compararArrays
  *
  * Poner arriba el método usado para las pruebas, aunque no es necesario.
  * Lo importante es asignar el valor a 'lafuncion', aunque eso se hace en el código a comprobar.
@@ -51,19 +51,18 @@ function invert(array) {
 let laFuncion = invert;
 
 /**
-  * Para comprobar si el resultado de la función es válido.
+  * Para comparar dos arrays, el primero evaluado por la función (LaFuncion).
   *
-  * @param {*} arr1 El valor del primer array.
-  * @param {*} arr2 El valor del segundo array.
-  * @param {*} resOK El resultado que debe dar.
+  * @param {*} arr El valor del primer array.
+  * @param {*} arrOK El resultado que debe dar.
   * @see laFuncion Para asignar la función a usar.
   */
-function compararArrays(arr1, resOK) {
-    console.log("[" + arr1?.toString() + "] --> [" + resOK?.toString() + "]");
+function compararArrays(arr, arrOK) {
+    console.log("[" + arr?.toString() + "] --> [" + arrOK?.toString() + "]");
 
-    let res = laFuncion(arr1);
-    if (res.toString() != resOK.toString()) {
-        console.log("\tNo es correcto. El resultado calculado es [" + res + "] debería ser [" + resOK + "]");
+    let res = laFuncion(arr);
+    if (res.toString() != arrOK.toString()) {
+        console.log("\tNo es correcto. El resultado calculado es [" + res + "] debería ser [" + arrOK + "]");
     }
     else {
         console.log("\tCorrecto!");
