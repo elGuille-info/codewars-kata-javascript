@@ -15,6 +15,9 @@ FUNDAMENTALS, MATHEMATICS
 
 /*
     Soluciones
+
+    La opción más simple (1- y 3-) Se resuelve con la fórmula de Gauss: https://nrich.maths.org/2478
+    
 */
 //1- 
 // https://www.codewars.com/kata/reviews/55e88d9ca371ce85e0000006/groups/55fc269b2db3bdf56c000045

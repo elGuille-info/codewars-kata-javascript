@@ -41,6 +41,8 @@ Good luck ! :)
 
 /*
     Soluciones
+
+    Ver explicación (de 1-) en: https://math.stackexchange.com/questions/1874787/puzzle-find-number-of-cubes-with-1-red-face
 */
 
 //1- 
