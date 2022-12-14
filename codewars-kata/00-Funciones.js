@@ -105,6 +105,29 @@ function testArrNum(arr, resOK) {
 }
 
 /**
+ * Comprueba los cálculos a realizar sobre un array que devuelven un valor.
+ *
+ * @param {*} arr El array a procesar.
+ * @param {*} resOK La respuesta correcta.
+ * @param {*} noMostrarLog Si NO se debe mostrar lo que se comprueba.
+ */
+function testArrNum(arr, resOK, noMostrarLog) {
+    if (!noMostrarLog) {
+        console.log("[" + arr.toString() + "] = " + resOK);  
+    }
+
+    // El resultado de la función
+    var res = laFuncion(arr);
+
+    if (resOK != res) {
+        console.log("\tEl valor devuelto es '" + res + "' y debe ser '" + resOK + "'");
+    }
+    else {
+        console.log("\tCorrecto!");
+    }
+}
+
+/**
   * Comprueba los cálculos a realizar sobre un array que devuelven un valor de tipo array.
   *
   * @param {*} arr El array a analizar.
@@ -179,6 +202,28 @@ function prueba2Valores(valor1, valor2, resOK, noMostrarLog) {
     let res = laFuncion(valor1, valor2);
     if (res.toString() != resOK.toString()) {
         console.log("\tNo es correcto. El resultado calculado es " + res + " debería ser " + resOK);
+    }
+    else {
+        console.log("\tCorrecto!");
+    }
+}
+
+/**
+ * Para comprobar si el resultado de la función es válido.
+ * 
+ * @param {*} valor1 
+ * @param {*} valor2 
+ * @param {*} valor3 
+ * @param {*} resOK 
+ * @param {*} noMostrarLog 
+ */
+function prueba3Valores(valor1, valor2, valor3, resOK, noMostrarLog) {
+    if (!noMostrarLog)
+        console.log(laFuncion.name.toString() + "(" + valor1 + ", " + valor2 + ", " + valor3 + ") = " + resOK);
+
+    let res = laFuncion(valor1, valor2, valor3);
+    if (res != resOK) {
+        console.log("\tNo es correcto. El resultado calculado es '" + res + "' debería ser '" + resOK + "'");
     }
     else {
         console.log("\tCorrecto!");
