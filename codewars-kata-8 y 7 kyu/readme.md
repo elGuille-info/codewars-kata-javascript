@@ -17,6 +17,12 @@ Y finalizando por los niveles 2 y 1 que serían los más difíciles.<br>
 
 <br>
 
+Aquí tienes las respuestas a muchos de los katas de 8 kyu: <br>
+[Automedon - CodeWars-8-kyu-Soluitions](https://github.com/Automedon/CodeWars-8-kyu-Soluitions) <br>
+
+
+<br>
+
 Iniciado el 13-dic-22 16.21.
 
 

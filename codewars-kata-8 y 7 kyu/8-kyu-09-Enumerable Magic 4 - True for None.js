@@ -28,15 +28,17 @@ FUNDAMENTALS
 
 function none(arr, fun) {
     // ...
-    return !arr.some(fun);
+    // La forma abrevida usando el método some()
+    //return !arr.some(fun);
 
-    // if (arr === []) return true;
-    // for (const n of arr) {
-    //     if (fun(n) == true) {
-    //         return false;
-    //     }
-    // }
-    // return true;
+    // La forma larga, comprobando uno por uno
+    //if (arr === []) return true;
+    for (const n of arr) {
+        if (fun(n) == true) {
+            return false;
+        }
+    }
+    return true;
 }
 
 // /**
