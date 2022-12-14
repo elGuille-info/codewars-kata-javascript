@@ -1,5 +1,8 @@
-# pruebas-javascript
-Pruebas de código de JavaScript para [los Kata de Codewards](https://www.codewars.com/kata/)
+# codewars-kata-javascript
+(antes: pruebas-javascript) <br>
+Pruebas de código de JavaScript para [los Kata de Codewards](https://www.codewars.com/kata/) <br>
+
+<br>
 
 En algunos de los ficheros se incluyen las primeras soluciones que apararecen.
 
@@ -13,8 +16,8 @@ Para estos nuevos kata usaré directorios para el nivel, no sé si los seguiré 
 
 <br>
 
-> 
-> Como decía Felipito Takatún (Joe Ríggoli)... ¡yo sigo! :-D
+> 13-dic-22: <br>
+> Como decía Felipito Takatún (Joe Ríggoli)... ¡yo sigo! :-D <br>
 >
 
 
