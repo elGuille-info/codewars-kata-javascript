@@ -4,6 +4,11 @@ Las pruebas para JavaScript.
 
 <br>
 
+> **NOTA:** <br>
+> Es recomendable probar los del nivel 8, ya que algunos de ellos te enseñan algunas funciones de JS. <br>
+
+<br>
+
 El nivel 8 es el más básico, seguido del nivel 7.<br>
 Después estarían los niveles 6 y 5.<br>
 Seguidos de los niveles 4 y 3.<br>
