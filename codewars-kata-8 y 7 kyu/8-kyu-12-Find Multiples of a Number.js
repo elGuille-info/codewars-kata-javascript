@@ -11,7 +11,32 @@ For example, if the parameters passed are (2, 6), the function should return [2,
 FUNDAMENTALS, ARRAYS
 */
 
-// La correcta
+/*
+    Soluciones
+*/
+
+//1- 
+// https://www.codewars.com/kata/reviews/591ad33de5e7871cac0009be/groups/591b1a94670c8905d3000687
+function findMultiples_1(int, limit) {
+    let result = []
+
+    for (let i = int; i <= limit; i += int)
+        result.push(i)
+
+    return result
+}
+
+//2- 
+// https://www.codewars.com/kata/reviews/591ad33de5e7871cac0009be/groups/5953c1c3d2416119050012e8
+function findMultiples_2(int, limit) {
+    return Array(Math.floor(limit / int)).fill(1).map((x, i) => int * (i + 1));
+}
+
+//3- 
+// 
+
+
+// La presentada
 function findMultiples(integer, limit) {
     //your code here
     let res = [];
@@ -80,7 +105,7 @@ test2NumArray(1, 2, [1, 2]);
 test2NumArray(5, 7, [5]);
 test2NumArray(4, 27, [4, 8, 12, 16, 20, 24]);
 test2NumArray(11, 54, [11, 22, 33, 44]);
-test2NumArray(2, 6,[2, 4, 6]);
+test2NumArray(2, 6, [2, 4, 6]);
 
 /*
 const { assert } = require('chai');
