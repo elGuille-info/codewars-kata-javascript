@@ -40,6 +40,46 @@ Good luck ! :)
 */
 
 /*
+    Soluciones
+*/
+
+//1- 
+// https://www.codewars.com/kata/reviews/5763d2d852e9fede99000be7/groups/579b41bc91d413ebea0000d5
+
+/**
+ * Given a cube painted in red and sliced `N` times in the XYZ axis, this function (that should be named countCubes instead of countSquares) counts the number
+ * of small cubes with at least one red face.
+ *
+ * This function avoids the use of `pow` on purpose. See references for more info. 
+ *
+ * Special thanks to the people in math.exchange, they were kind and awesome.
+ *
+ * @param    {number}    cuts    The number of 3D cuts done to the painted cube.
+ * @returns  {number}    The number of cubes with at least one red face.
+ * @see      {@link http://math.stackexchange.com/questions/1874787/puzzle-find-number-of-cubes-with-1-red-face} for the mathematical algorithm behind the scenes. 
+ * @see      {@link https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions} for information about Arrow functions in ECMA6
+ * @see      {@link http://stackoverflow.com/questions/18382967/is-math-pow-more-expensive-than-multiplication-using-temporary-assignments} Comparison of multiply VS `pow`
+ */
+const countSquares_1 = cuts => cuts === 0 ? 1 : (6 * cuts * cuts) + 2;
+
+//2-
+// https://www.codewars.com/kata/reviews/5763d2d852e9fede99000be7/groups/577e6d8a0a8eb2bf5c000449
+let countSquares_2 = c => c ? 6 * c * c + 2 : 1;
+
+//3- 
+// https://www.codewars.com/kata/reviews/5763d2d852e9fede99000be7/groups/57b8d40856449d38a000021e
+var countSquares_3 = function(cuts){
+    if (!cuts) {
+      return 1;
+    }
+  
+    const totalCubes = Math.pow(cuts + 1, 3);
+    const innerCubes = Math.pow(cuts - 1, 3);
+    
+    return totalCubes - innerCubes;
+  }
+
+/*
 ellismckenzielee - codewars-python
 
 def count_squares(cuts):
@@ -47,12 +87,6 @@ def count_squares(cuts):
     return the number of cubes which have atleast one red face'''
     return (cuts+1)**(3)-(cuts-1)**3
 */
-
-// 2 -> 26
-// 4 -> 98
-// 5 -> 152
-// 16 -> 1538
-// 23 -> 3176
 
 // La presentada
 var countSquares = function (cuts) {
