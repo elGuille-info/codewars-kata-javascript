@@ -14,16 +14,18 @@ ball2.ballType     //=> "super"
 FUNDAMENTALS
 */
 
+// class Ball {
+//     constructor(ballType) {
+//         if (ballType == undefined) {
+//             this.ballType = "regular"
+//         }
+//         this.ballType = ballTYpe
+//     }
+//     ballTYpe = "regular";
+// }
 
 var Ball = function (ballType) {
     // your code goes here
-    constructor(ballType) {
-        if (ballType == undefined) {
-            return "regular"
-        }
-        return ballType
-    }
-    let ballTYpe;
 };
 
 // Pruebas
