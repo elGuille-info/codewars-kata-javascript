@@ -1,7 +1,8 @@
 /*
     # Invert values
 
-Given a set of numbers, return the additive inverse of each. Each positive becomes negatives, and the negatives become positives.
+Given a set of numbers, return the additive inverse of each. 
+    Each positive becomes negatives, and the negatives become positives.
 
 invert([1,2,3,4,5]) == [-1,-2,-3,-4,-5]
 invert([1,-2,3,-4,5]) == [-1,2,-3,4,-5]
@@ -11,9 +12,49 @@ You can assume that all values are integers. Do not mutate the input array/list.
 LISTS, FUNDAMENTALS, ARRAYS
 */
 
+// array.map: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+
+// La presentada
 function invert(array) {
-    return;
+    return array.map(x => -x);
 }
+
+/**
+ * Indicar aquí la función a usar dentro de
+ * @see testArrNum
+ *
+ * Poner arriba el método usado para las pruebas, aunque no es necesario.
+ * Lo importante es asignar el valor a 'lafuncion', aunque eso se hace en el código a comprobar.
+ */
+let laFuncion = invert;
+
+/**
+  * Para comprobar si el resultado de la función es válido.
+  *
+  * @param {*} arr1 El valor del primer array.
+  * @param {*} arr2 El valor del segundo array.
+  * @param {*} resOK El resultado que debe dar.
+  * @see laFuncion Para asignar la función a usar.
+  */
+function compararArrays(arr1, resOK) {
+    console.log("[" + arr1?.toString() + "] --> [" + resOK?.toString() + "]");
+
+    let res = laFuncion(arr1);
+    if (res.toString() != resOK.toString()) {
+        console.log("\tNo es correcto. El resultado calculado es [" + res + "] debería ser [" + resOK + "]");
+    }
+    else {
+        console.log("\tCorrecto!");
+    }
+}
+
+// Pruebas
+compararArrays([1, 2, 3, 4, 5], [-1, -2, -3, -4, -5]);
+compararArrays([1, -2, 3, -4, 5], [-1, 2, -3, 4, -5]);
+compararArrays([], []);
+compararArrays([0], [-0]);
+compararArrays([1], [-1]);
+
 
 /*
 const Test = require('@codewars/test-compat');
