@@ -26,6 +26,33 @@ FUNDAMENTALS
     In otherwords, if the passed in function true for any of the array elements, return false. Otherwise, return true.        
 */
 
+/*
+    Las soluciones
+*/
+
+//1-
+// https://www.codewars.com/kata/reviews/5596a4a69cf26516f30001a1/groups/559c4632579a116625000040
+function none_1(arr, fun) {
+    return !arr.some(fun);
+}
+
+//2- 
+// https://www.codewars.com/kata/reviews/5596a4a69cf26516f30001a1/groups/55c7644670d943e665000029
+const none_2 = (arr, fun) => !arr.some(fun);
+
+//3- 
+// https://www.codewars.com/kata/reviews/5596a4a69cf26516f30001a1/groups/559e08a941f30c62d000001a
+function none_3(arr, fun) {
+    for (var i = 0; i < arr.length; i++) {
+        if (fun(arr[i]) == true) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
 function none(arr, fun) {
     // ...
     // La forma abrevida usando el método some()
