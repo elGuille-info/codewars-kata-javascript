@@ -31,6 +31,9 @@ Y finalizando por los niveles 2 y 1 que serían los más difíciles.<br>
 > Respuestas para katas de 7 kyu<br>
 > [Automedon - CodeWars-7-kyu-Soluitions](https://github.com/Automedon/CodeWars-7-kyu-Soluitions) <br>
 > [Automedon - CodeWars-7-kyu-Soluitions-part-2](https://github.com/Automedon/CodeWars-7-kyu-Soluitions-part-2) <br>
+> <br>
+> Más respuestas para katas de 7 kyu <br>
+> [ParanoidUser - codewars-handbook](https://github.com/ParanoidUser/codewars-handbook/blob/main/kata/7-kyu/index.md) <br>
 
 
 <br>
