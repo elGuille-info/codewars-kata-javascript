@@ -165,7 +165,7 @@ function compararArrays(valor1, valor2, resOK) {
 }
 
 /**
-  * Para comparar dos arrays, el primero evaluado por la función (LaFuncion).
+  * Para comparar dos arrays, el primero evaluado por la función (laFuncion).
   *
   * @param {*} arr El valor del primer array.
   * @param {*} arrOK El resultado que debe dar.
