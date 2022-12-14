@@ -12,6 +12,28 @@ You can assume that all values are integers. Do not mutate the input array/list.
 LISTS, FUNDAMENTALS, ARRAYS
 */
 
+/*
+    Soluciones
+*/
+
+
+//1- 
+// https://www.codewars.com/kata/reviews/589ad4a76778bc40c8001737/groups/5ce4cebf319aec000145bb09
+const invert_1 = array => array.map(num => -num);
+
+
+// Esta debería ser la solución si se desconoce la funcion map.
+
+//2- 
+// https://www.codewars.com/kata/reviews/589ad4a76778bc40c8001737/groups/589b041a229057aba50016bc
+function invert_2(array) {
+    var newArr = [];
+    for (var i = 0; i < array.length; i++) {
+        newArr.push(-array[i]);
+    }
+    return newArr;
+}
+
 // array.map: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 
 // La presentada
