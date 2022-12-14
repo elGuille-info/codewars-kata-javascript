@@ -30,6 +30,33 @@ function multiply_6(a, b) {
     return a * b
 }
 
+//9-
+// https://www.codewars.com/kata/reviews/5197d3d7d2822fb53000001e/groups/5f5f96bee0be5a00011485ca
+
+function multiply_9(a, b) {
+    const numA = `${a}`.split('').map(Number)
+    const numB = `${b}`.split('').map(Number)
+    const numArr = []
+    let t = 1
+    while (numA.length > 0) {
+        let num = []
+        let carry = 0
+        let c = numA.pop()
+        for (let i = numB.length - 1; i >= 0; i--) {
+            let n = c * numB[i] + carry
+            num.push(n % 10)
+            carry = Math.floor(n / 10)
+        }
+        if (carry > 0) {
+            num.push(carry)
+        }
+        let a = +num.reverse().join('') * t
+        numArr.push(a)
+        t *= 10
+    }
+
+    return numArr.reduce((acc, cur) => acc + cur, 0)
+}
 
 function multiply_mal(a, b) {
     a * b
