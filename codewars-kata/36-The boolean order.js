@@ -1,6 +1,9 @@
 /*
     # The boolean order (3 kyu)
 
+    https://www.codewars.com/kata/59eb1e4a0863c7ff7e000008/train/javascript
+    
+
 In this Kata, you will be given boolean values and boolean operators. 
     Your task will be to return the number of arrangements that evaluate to True.
 
