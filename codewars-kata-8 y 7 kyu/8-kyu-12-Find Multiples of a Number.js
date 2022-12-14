@@ -11,8 +11,38 @@ For example, if the parameters passed are (2, 6), the function should return [2,
 FUNDAMENTALS, ARRAYS
 */
 
+// La correcta
 function findMultiples(integer, limit) {
     //your code here
+    let res = [];
+    for (let i = integer; i <= limit; i += integer) {
+        res.push(i);
+    }
+    return res;
+}
+
+// segundo intento
+function findMultiples2(integer, limit) {
+    //your code here
+    let res = [];
+    for (let i = integer; i <= limit; i += integer) {
+        res.push(integer + i - integer);
+        // que obviamente se puede reducir a 
+        //res.push(i);
+    }
+    return res;
+}
+
+// primer intento
+function findMultiples1(integer, limit) {
+    //your code here
+    let res = [];
+    let num = integer;
+    for (let i = integer; i <= limit; i += integer) {
+        res.push(num);
+        num = integer + i;
+    }
+    return res;
 }
 
 /**
@@ -33,16 +63,24 @@ let laFuncion = findMultiples;
   * @see laFuncion Para asignar la función a usar.
   */
 function test2NumArray(num1, num2, arrOK) {
-    console.log(laFuncion.toString() + "(" + num1 + ", " + num2 + ") --> [" + arrOK?.toString() + "]");
+    console.log(laFuncion.name.toString() + "(" + num1 + "," + num2 + ") --> [" + arrOK?.toString() + "]");
 
     let res = laFuncion(num1, num2);
-    if (res.toString() != arrOK.toString()) {
-        console.log("\tNo es correcto. El resultado calculado es [" + res + "] debería ser [" + arrOK + "]");
+    if (res?.toString() != arrOK?.toString()) {
+        console.log("\tNo es correcto. El resultado calculado es [" + res?.toString() + "] debería ser [" + arrOK?.toString() + "]");
     }
     else {
         console.log("\tCorrecto!");
     }
 }
+
+// Pruebas
+test2NumArray(5, 25, [5, 10, 15, 20, 25]);
+test2NumArray(1, 2, [1, 2]);
+test2NumArray(5, 7, [5]);
+test2NumArray(4, 27, [4, 8, 12, 16, 20, 24]);
+test2NumArray(11, 54, [11, 22, 33, 44]);
+test2NumArray(2, 6,[2, 4, 6]);
 
 /*
 const { assert } = require('chai');
