@@ -31,7 +31,7 @@ ALGEBRA, MATHEMATICS, FUNDAMENTALS
     Soluciones
 */
 
-//1- 
+//1-
 // https://www.codewars.com/kata/reviews/62fe4d9c6793d90001161cf7/groups/62fe5d0b3de5a50001e777a2
 function isPythagoreanTriple_1(integers) {
     let massiv = integers.sort((a, b) => a - b)
@@ -46,7 +46,7 @@ function isPythagoreanTriple_2(nums) {
     return a ** 2 + b ** 2 === c ** 2
 }
 
-//3- 
+//3-
 // https://www.codewars.com/kata/reviews/62fe4d9c6793d90001161cf7/groups/631050dabfd03d00012e6b2a
 const isPythagoreanTriple_3 = (arr) => {
 
