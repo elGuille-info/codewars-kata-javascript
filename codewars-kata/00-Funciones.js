@@ -113,7 +113,7 @@ function testArrNum(arr, resOK) {
  */
 function testArrNum(arr, resOK, noMostrarLog) {
     if (!noMostrarLog) {
-        console.log("[" + arr.toString() + "] = " + resOK);  
+        console.log("[" + arr.toString() + "] = " + resOK);
     }
 
     // El resultado de la función
@@ -229,6 +229,16 @@ function prueba3Valores(valor1, valor2, valor3, resOK, noMostrarLog) {
         console.log("\tCorrecto!");
     }
 }
+
+function assertEquals(res, resOK) {
+    //let res = laFuncion(valor1, valor2);
+    if (res == resOK) {
+        console.log("\tCorrecto");
+    } else {
+        console.log("\tNo es correcto, debería ser '" + resOK + "' y devuelve '" + res + "'");
+    }
+}
+
 
 /**
  * Prototipo por si no está definida replaceAll.
