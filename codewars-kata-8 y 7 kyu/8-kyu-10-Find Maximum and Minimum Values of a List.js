@@ -18,12 +18,21 @@ FUNDAMENTALS
 
 /*
     Soluciones
+
+    Explicación de (...list):
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+
 */
+
+// Usando los métodos de la clase Math para averiguar el menor y mayor elemento de un array.
 
 //1- 
 // https://www.codewars.com/kata/reviews/577aec3cb9498e1aed00009a/groups/577b15a2d48e516872000426
 const min_1 = (list) => Math.min(...list);
 const max_1 = (list) => Math.max(...list);
+
+
+// Clasificando los elementos de menor a mayor y viceversa y devolviendo el primer elemento.
 
 //2- 
 // https://www.codewars.com/kata/reviews/577aec3cb9498e1aed00009a/groups/57871af6ba5c4b13eb00036a
@@ -37,6 +46,29 @@ var max_2 = function(list){
     return list[0];
 }
 
+// Clásico, si se desconocen las funciones propias de JS.
+
+//5- 
+// https://www.codewars.com/kata/reviews/577aec3cb9498e1aed00009a/groups/57c6800b40e30255d40000d3
+var min_5 = function(list){
+    var min =list[0];
+    for(var i=0; i<list.length; i++){
+       var cur = list[i];
+       if (cur<min) min=cur;
+    }
+    return min;
+}
+
+var max_5 = function(list){
+    var max =list[0];
+    for(var i=0; i<list.length; i++){
+       var cur = list[i];
+       if (cur>max) max=cur;
+    }
+    return max;
+}
+
+// La presentada, aunque yo lo hubiera hecho como 5- porque desconocía los métodos min y max de la clase Math.
 
 var min = function (list) {
     //return list[0];
@@ -101,7 +133,7 @@ function pruebas(arr) {
 pruebas([-52, 56, 30, 29, -54, 0, -110])
 pruebas([42, 54, 65, 87, 0])
 pruebas([4, 6, 2, 1, 9, 63, -134, 566])
-pruebas ([5])
+pruebas([5])
 
 // testFun(min([-52, 56, 30, 29, -54, 0, -110]), -110);
 // testFun(min([42, 54, 65, 87, 0]), 0);
