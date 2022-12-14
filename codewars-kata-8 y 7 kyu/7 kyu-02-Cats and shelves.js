@@ -38,8 +38,52 @@ inspirers
 ALGORITHMS
 */
 
+/*
+    Soluciones
+*/
+
+//1- 
+// https://www.codewars.com/kata/reviews/632d3b23bea9b500010e5349/groups/632e1e81e97d230001ab0b5e
+const solution_1 = (start, finish, difference = finish - start) =>
+    Math.floor(difference / 3) + difference % 3
+
+//2- 
+// https://www.codewars.com/kata/reviews/632d3b23bea9b500010e5349/groups/632e46ad0c918200016df26a
+function solution_2(start, finish) {
+    let stepsToClimb = finish - start
+
+    let numBigJumps = Math.floor(stepsToClimb / 3)
+
+    let numSmallJumps = stepsToClimb % 3
+
+    return numBigJumps + numSmallJumps
+}
+
+//3-
+// https://www.codewars.com/kata/reviews/632d3b23bea9b500010e5349/groups/6370b84141aa500001807872
+function solution_3(start, finish) 
+{
+  let remainder = (finish - start) % 3;
+  return ((finish - start) - remainder) / 3 + remainder;
+}
+
+// La presentada (basada en esta de Java: https://github.com/ParanoidUser/codewars-handbook/blob/main/kata/7-kyu/cats-and-shelves/main/Kata.java )
 function solution(start, finish) {
     //Mew
+    let distance = finish - start
+    return Math.floor(distance / 3 + distance % 3)
+
+}
+
+function solution_mal(start, finish) {
+    //Mew
+    let total = 0
+    for (let i = start; i <= finish; i++) {
+        total++;
+        let sig = i + 3
+        if (sig >= finish) break;
+    }
+    return total;
 }
 
 
@@ -53,19 +97,22 @@ function solution(start, finish) {
 let laFuncion = solution;
 
 function pruebas(n1, n2, resOK) {
-    console.log(laFuncion.name + "(" + n1 + "," + n2 +") = " + resOK)
+    console.log(laFuncion.name + "(" + n1 + "," + n2 + ") = " + resOK)
 
     let res = laFuncion(n1, n2)
 
     if (res == resOK) {
         console.log("\tCorrecto")
     } else {
-        console.log("\tNo es correcto: '" + res + "' no es '" + resOK + "'")
+        console.log("\tNo es correcto: la respuesta es '" + res + "' y debe ser '" + resOK + "'")
     }
 }
 
 // Pruebas
-pruebas(1,5,2)
+pruebas(1, 5, 2)
+pruebas(3, 3, 0)
+pruebas(2, 4, 2)
+pruebas(400, 759, 121)
 
 
 /*
