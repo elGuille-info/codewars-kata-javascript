@@ -11,14 +11,15 @@ Y finalizando por los niveles 2 y 1 que serían los más difíciles.<br>
 
 <br>
 
-> Mira esto si quieres series de katas de entrenamiento:
-> [Katas-list-of-Training-JS-series](https://github.com/myjinxin2015/Katas-list-of-Training-JS-series)
+> Mira esto si quieres series de katas de entrenamiento: (sin las respuestas) <br>
+> [Katas-list-of-Training-JS-series](https://github.com/myjinxin2015/Katas-list-of-Training-JS-series) <br>
 
 
 <br>
 
-Aquí tienes las respuestas a muchos de los katas de 8 kyu: <br>
-[Automedon - CodeWars-8-kyu-Soluitions](https://github.com/Automedon/CodeWars-8-kyu-Soluitions) <br>
+> 14-dic-2022: <br>
+> Aquí tienes **las respuestas** a muchos de los katas de 8 kyu: <br>
+> [Automedon - CodeWars-8-kyu-Soluitions](https://github.com/Automedon/CodeWars-8-kyu-Soluitions) <br>
 
 
 <br>
