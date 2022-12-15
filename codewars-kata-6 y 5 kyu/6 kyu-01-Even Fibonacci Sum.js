@@ -19,8 +19,56 @@ fibonacci(25997544)==19544084
 ALGORITHMS
 */
 
-// La presentada
+/*
+    Soluciones
+*/
 
+//1- 
+// https://www.codewars.com/kata/reviews/55688b5dc33237baef00000e/groups/5c2c70e90bf7e200013f023a
+function fibonacci_1(max) {
+    if (max < 2) return 0;
+    let [a, b] = [1, 0],
+        sum = 0;
+    while (b < max) {
+        [a, b] = [b, a + b];
+        if (b % 2 === 0 && b < max) sum += b;
+    }
+    return sum;
+}
+
+//2-
+// https://www.codewars.com/kata/reviews/55688b5dc33237baef00000e/groups/61afe2659e66250001b5c054
+function fibonacci_2(m) {
+    let [a, b, n] = [0, 1, 0];
+    while (b < m) [a, b, n] = [b, a + b, b & 1 ? n : n + b];
+    return n;
+}
+
+//3-
+// https://www.codewars.com/kata/reviews/55688b5dc33237baef00000e/groups/58250c2ec4d7f319980000e2
+function fibonacci_3(max) {
+    let res = [0, 1];
+    for (let i = 1; (res[i - 1] + res[i]) < max; i++) {
+        res.push(res[i - 1] + res[i]);
+    }
+    return res.filter(num => num % 2 === 0).reduce((a, b) => a + b);
+}
+
+//4-
+// https://www.codewars.com/kata/reviews/55688b5dc33237baef00000e/groups/5a226a2041d6a06c5b00093b
+function fibonacci_4(max) {
+    let fib0 = 2, fib1 = 8
+    let sum = 0
+    while (fib0 < max) {
+        sum += fib0
+        let fib2 = fib1 * 4 + fib0
+        fib0 = fib1
+        fib1 = fib2
+    }
+    return sum
+}
+
+// La presentada
 function fibonacci(max) {
     // Your code goes here
     let fibs = []
