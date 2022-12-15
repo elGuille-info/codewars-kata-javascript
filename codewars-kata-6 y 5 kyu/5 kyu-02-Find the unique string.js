@@ -24,7 +24,7 @@ Find The Unique (--> retirado)
 FUNDAMENTALS, ALGORITHMS, ARRAYS, STRINGS
 */
 
-String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
+//String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
 
 function findUniq(arr) {
     // do magic
@@ -32,22 +32,28 @@ function findUniq(arr) {
 
     let copia = [];
     for (let i = 0; i < arr.length; i++) {
-        copia.push(arr[i].replaceAllTxt(' ', ''));
+        //copia.push(arr[i].replaceAllTxt(' ', ''));
+        copia.push(arr[i]);
     }
-    copia.sort();
+    copia.sort( (a, b) => a.toLowerCase() === b.toLowerCase() ? 0 : a.toLowerCase() < b.toLowerCase() ? -1 : 1 );
     let res = "";
     let una = copia[0];
     let esUna = false;
-    for (let i = 0; i < copia.length; i++) {
+    for (let i = 1; i < copia.length; i++) {
         esUna = true;
-        for (const c in una) {
-            if (copia[i].indexOf(c) > -1) {
+        for (const c of una) {
+            if (c == ' ') continue;
+
+            if (copia[i].toLowerCase().indexOf(c.toLowerCase()) > -1) {
                 esUna = false;
+                una = copia[i];
                 break;
             }
         }
         if (esUna == false) {
-            una = copia[i];
+            //una = copia[i];
+            res = una;
+            //break;
         }
     }
     return res;
