@@ -14,7 +14,14 @@ Don't forget the space after the closing parentheses!
 ARRAYS, STRINGS, REGULAR EXPRESSIONS, ALGORITHMS
 */
 
+// La presentada
 function createPhoneNumber(numbers) {
+    console.log(numbers)
+    let res = "(" + numbers.slice(0, 3).join('') + ") " + numbers.slice(3, 6).join('') + "-" + numbers.slice(6, numbers.length).join('')
+    return res;
+}
+
+function createPhoneNumber1(numbers) {
     console.log(numbers)
     let res = "("
     for (let i = 0; i < 3; i++) {
