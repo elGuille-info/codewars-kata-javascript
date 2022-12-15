@@ -17,3 +17,25 @@ function fib(n) {
     }
     return b;
 }
+
+/**
+ * Devuelve un array con los números Fibonacci pares (even) hasta el número indicado (no inclusive)
+ * es decir, los números Fibonacci menores del número indicado.
+ * @param {*} n 
+ * @returns 
+ */
+function fibArrayPares(n) {
+    let fibs = []
+    let a = 1;
+    let b = 1;
+    for (let i = 3; i <= n; i++) {
+        let c = a + b;
+        if (c >= n) break;
+        if (c % 2 == 0) {
+            fibs.push(c)
+        }
+        a = b;
+        b = c;
+    }
+    return fibs;
+}
