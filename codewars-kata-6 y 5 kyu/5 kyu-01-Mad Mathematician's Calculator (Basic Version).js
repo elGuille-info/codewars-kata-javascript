@@ -56,7 +56,12 @@ PUZZLES, RESTRICTED
 
 /*
   Soluciones
+
 */
+
+//
+// He presentado la 1- y la ha aceptado después de ver las soluciones... en fin...
+//
 
 //1- 
 // https://www.codewars.com/kata/reviews/5a60c2d3378bd79431001e86/groups/5a60d4fcc7505b5153003c27
@@ -77,6 +82,51 @@ function calc_1(a, b, operator) {
     ["padStart"](3, 0)["split"]([]), x["splice"](Number(ch["Sub"]["concat"](2)), 0, ch["Dot"]), x["join"]([])));
     case ch["Mod"]: return b == 0 ? NaN : " "["repeat"](a)["split"](" "["repeat"](b))["reverse"]()[0]["length"];
   }
+}
+
+//2-
+// https://www.codewars.com/kata/reviews/5a60c2d3378bd79431001e86/groups/5a62ddc48a3dfd59ca000277
+function add(a, b) {
+  return 'x'['repeat'](a)['concat']('x'['repeat'](b))['length']
+}
+function sub(a, b) {
+  let s = 'x'['repeat'](a)['slice'](b)
+  if (s) return s['length']
+  s = 'x'['repeat'](b)['slice'](a)
+  return parseFloat('\x2d'['concat'](s['length']))
+}
+function mul(a, b) {
+  return 'x'['repeat'](a)['repeat'](b)['length']
+}
+function div(a, b) {
+  if (b == 0) return NaN
+  a = parseFloat(''['concat'](a)['concat']('00'))
+  let m = mod(a, b)
+  a = sub(a, m)
+  let x = 0
+  while (a) {
+    x = add(x, 1)
+    a = sub(a, b)
+  }
+  return parseFloat('00'['concat'](x)['replace'](new RegExp('\x2e\x2e$'), '\x2e$\x26'))
+}
+function mod(a, b) {
+  if (b == 0) return NaN
+  let pre = a
+  while (new RegExp('\x2d')['test'](a) == false) {
+    pre = a
+    a = sub(a, b)
+  }
+  return pre
+}
+
+function calc_2(a, b, operator) {
+  if (operator == '\x2b') return add(a, b)
+  if (operator == '\x2d') return sub(a, b)
+  if (operator == '\x2a') return mul(a, b)
+  if (operator == '\x2f') return div(a, b)
+  if (operator == '\x25') return mod(a, b)
+  return NaN
 }
 
 //4-
