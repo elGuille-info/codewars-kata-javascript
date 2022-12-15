@@ -1,5 +1,6 @@
 /*
     # Mad Mathematician's Calculator (Basic Version)
+    https://www.codewars.com/kata/5a60b017fd56cb469e000279/train/javascript
 
 Mad Mathematician's Calculator (Basic Version)
 
