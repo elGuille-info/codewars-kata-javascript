@@ -14,6 +14,11 @@ Don't forget the space after the closing parentheses!
 ARRAYS, STRINGS, REGULAR EXPRESSIONS, ALGORITHMS
 */
 
+/*
+    Soluciones
+    https://www.codewars.com/kata/525f50e3b73515a6db000b83/solutions/javascript
+*/
+
 // La presentada
 function createPhoneNumber(numbers) {
     console.log(numbers)
