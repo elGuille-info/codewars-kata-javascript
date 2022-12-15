@@ -12,20 +12,37 @@ The most frequent number in the array is -1 and it occurs 5 times.
 DATA STRUCTURES, FUNDAMENTALS
 */
 
+// La presentada
 function mostFrequentItemCount(collection) {
     // Do your magic. :)
     if (collection.length == 0) return 0;
-
-
+    let arr = collection.sort((a, b) => {return a - b});
+    let max = 1, total = 0;
+    let num = arr[0];
+    for (let i = 0; i < arr.length; i++) {
+        if (num != arr[i]) {
+            if (total > max ) {
+                max = total;
+            }
+            num = arr[i];
+            total = 1;
+        } else {
+            total++;
+        }
+    }
+    if (total > max) {
+        max = total;
+    }
+    return max;
 }
 
-const getMax = (a, b) => Math.max(a, b);
-const getMin = (a, b) => Math.min(a, b);
+// const getMax = (a, b) => Math.max(a, b);
+// const getMin = (a, b) => Math.min(a, b);
 
-// callback is invoked for each element in the array starting at index 0
-const arr = [1, 100, -1, 150, 30];
-console.log(arr.reduce(getMax));
-console.log(arr.reduce(getMin));
+// // callback is invoked for each element in the array starting at index 0
+// const arr = [1, 100, -1, 150, 30];
+// console.log(arr.reduce(getMax));
+// console.log(arr.reduce(getMin));
 
 
 /**
@@ -50,6 +67,9 @@ function pruebas(arr, resOK) {
 }
 
 // Pruebas
+pruebas([-7,-6,-2,0,0],2)
+pruebas([-13,-15,-2,-5,1,13,4,4], 2)
+pruebas([9], 1);
 pruebas([3, -1, -1], 2);
 pruebas([3, -1, -1, -1, 2, 3, -1, 3, -1, 2, 4, 9, 3], 5);
 
