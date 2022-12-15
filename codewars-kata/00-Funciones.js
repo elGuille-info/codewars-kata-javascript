@@ -258,6 +258,11 @@ function assertEquals(res, resOK) {
     }
 }
 
+/**
+ * 
+ * @param {*} res 
+ * @param {*} resOK 
+ */
 function strictEqual(res, resOK) {
     //let res = laFuncion(valor1, valor2);
     if (res == resOK) {
