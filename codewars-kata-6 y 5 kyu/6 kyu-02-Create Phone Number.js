@@ -19,6 +19,36 @@ ARRAYS, STRINGS, REGULAR EXPRESSIONS, ALGORITHMS
     https://www.codewars.com/kata/525f50e3b73515a6db000b83/solutions/javascript
 */
 
+//1- https://www.codewars.com/kata/reviews/525f50e3b73515a6db000b86/groups/539ceeedb9de00c4da000a4e
+function createPhoneNumber_1(numbers) {
+    var format = "(xxx) xxx-xxxx";
+
+    for (var i = 0; i < numbers.length; i++) {
+        format = format.replace('x', numbers[i]);
+    }
+
+    return format;
+}
+
+//2- https://www.codewars.com/kata/reviews/525f50e3b73515a6db000b86/groups/52604f129a002281d900124b
+function createPhoneNumber_2(numbers) {
+    numbers = numbers.join('');
+    return '(' + numbers.substring(0, 3) + ') '
+        + numbers.substring(3, 6)
+        + '-'
+        + numbers.substring(6);
+}
+
+//3- Es cachonda
+// https://www.codewars.com/kata/reviews/525f50e3b73515a6db000b86/groups/5cb4479ef180cc0001e0849d
+
+
+//4- https://www.codewars.com/kata/reviews/525f50e3b73515a6db000b86/groups/525f76849a0022f9fb000138
+function createPhoneNumber_4(numbers) {
+    return numbers.join('').replace(/(...)(...)(.*)/, '($1) $2-$3');
+}
+
+
 // La presentada
 function createPhoneNumber(numbers) {
     console.log(numbers)
@@ -32,11 +62,11 @@ function createPhoneNumber1(numbers) {
     for (let i = 0; i < 3; i++) {
         res += numbers[i]
     }
-    res +=") "
+    res += ") "
     for (let i = 3; i < 6; i++) {
         res += numbers[i]
     }
-    res +="-"
+    res += "-"
     res += numbers.slice(6, numbers.length).join('')
     return res;
 }
