@@ -156,6 +156,20 @@ WHERE movies.cert <= 15
 SQL, PARSING, SETS, DATABASES, ALGORITHMS
 */
 
+/*
+    Ejemplo para TypeScript:
+        https://github.com/rkschamer/simple-sql-engine
+
+    Ejemplo para JavaScript:
+        https://github.com/kesheshyan/Simple_SQL_Engine
+*/
+
+/*
+    No la he hecho... ni lo he intentado... estoy resfriado y no puedo ni pensar...
+    Y aunque hubiera podido pensar, es mucha tarea... :-P
+*/
+
+
 var movieDatabase = {
     movie: [
         { id: 1, name: 'Avatar', directorID: 1 },
