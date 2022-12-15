@@ -258,6 +258,15 @@ function assertEquals(res, resOK) {
     }
 }
 
+function strictEqual(res, resOK) {
+    //let res = laFuncion(valor1, valor2);
+    if (res == resOK) {
+        console.log("\tCorrecto");
+    } else {
+        console.log("\tNo es correcto, debería ser '" + resOK + "' y devuelve '" + res + "'");
+    }
+}
+
 /**
   * Para comparar un array con el resultado devuelto por laFuncion con los dos parámetros.
   *
