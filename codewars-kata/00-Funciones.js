@@ -279,6 +279,26 @@ function test2NumArray(num1, num2, arrOK) {
 }
 
 /**
+ * Prueba de llamada a función con 3 parámetros.
+ * 
+ * @param {*} a 
+ * @param {*} b 
+ * @param {*} operator 
+ * @param {*} resOK 
+ */
+function pruebas(a, b, operator, resOK) {
+    console.log(laFuncion.name + "(" + a + ", " + b + "," + operator + ") = " + resOK)
+
+    let res = laFuncion(a, b, operator)
+
+    if (res == resOK) {
+        console.log("\tCorrecto")
+    } else {
+        console.log("\tNo es correcto: la respuesta es '" + res + "' y debe ser '" + resOK + "'")
+    }
+}
+
+/**
  * Prototipo por si no está definida replaceAll.
  * 
  * @param {*} search 
