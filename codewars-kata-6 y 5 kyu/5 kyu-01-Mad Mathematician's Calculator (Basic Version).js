@@ -19,6 +19,7 @@ Mathematical operators: +, -, *, /, %
 Bitwise operators: <<, >>, ^, ~, !, |, &
 Other operators: <, >, .
 Note: arrow function is allowed
+
 The modules/functions below are also disabled:
 
 Bypassing functions: require(), eval(), function constructor
