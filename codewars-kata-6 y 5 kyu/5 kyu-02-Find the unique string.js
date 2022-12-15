@@ -1,8 +1,10 @@
 /*
     # Find the unique string
     https://www.codewars.com/kata/585d8c8a28bc7403ea0000c3/train/javascript
-    
-There is an array of strings. All strings contains similar letters except one. Try to find it!
+
+There is an array of strings. 
+    All strings contains similar letters except one. 
+    Try to find it!
 
 findUniq([ 'Aa', 'aaa', 'aaaaa', 'BbBb', 'Aaaa', 'AaAaAa', 'a' ]) === 'BbBb'
 findUniq([ 'abc', 'acb', 'bac', 'foo', 'bca', 'cab', 'cba' ]) === 'foo'
@@ -22,9 +24,51 @@ Find The Unique (--> retirado)
 FUNDAMENTALS, ALGORITHMS, ARRAYS, STRINGS
 */
 
+String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
+
 function findUniq(arr) {
     // do magic
+    console.log(arr)
+
+    let copia = [];
+    for (let i = 0; i < arr.length; i++) {
+        copia.push(arr[i].replaceAllTxt(' ', ''));
+    }
+    copia.sort();
+    let res = "";
+    let una = copia[0];
+    let esUna = false;
+    for (let i = 0; i < copia.length; i++) {
+        esUna = true;
+        for (const c in una) {
+            if (copia[i].indexOf(c) > -1) {
+                esUna = false;
+                break;
+            }
+        }
+        if (esUna == false) {
+            una = copia[i];
+        }
+    }
+    return res;
 }
+
+function strictEqual(res, resOK) {
+    //let res = laFuncion(valor1, valor2);
+
+    if (res == resOK) {
+        console.log("\tLa respuesta es correcta: '" + res + "'");
+    } else {
+        console.log("\tNo es correcto, debería ser '" + resOK + "' y devuelve '" + res + "'");
+    }
+}
+
+//Pruebas
+strictEqual(findUniq(['Aa', 'aaa', 'aaaaa', 'BbBb', 'Aaaa', 'AaAaAa', 'a']), 'BbBb');
+strictEqual(findUniq(['abc', 'acb', 'bac', 'foo', 'bca', 'cab', 'cba']), 'foo');
+strictEqual(findUniq(['silvia', 'vasili', 'victor']), 'victor');
+strictEqual(findUniq(['Tom Marvolo Riddle', 'I am Lord Voldemort', 'Harry Potter']), 'Harry Potter');
+strictEqual(findUniq(['    ', 'a', ' ']), 'a');
 
 /*
 const chai = require("chai");
