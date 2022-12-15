@@ -37,6 +37,91 @@ Examples:
 STRINGS, FUNDAMENTALS
 */
 
+/*
+    Soluciones
+*/
+
+//1- https://www.codewars.com/kata/reviews/6395d12b2b986a00014f0518/groups/6395eded50408f000102f3de
+function phoneWords_1(stringOfNums) {
+    const keys = [' ', , 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz'];
+    const regexp = /2{1,3}|3{1,3}|4{1,3}|5{1,3}|6{1,3}|7{1,4}|8{1,3}|9{1,4}|0{1}/g;
+    let result = '';
+
+    stringOfNums.match(regexp)?.map(nums => {
+        const key = keys[nums[0]];
+        const letter = nums.length - 1;
+        result += key[letter];
+    });
+
+    return result;
+}
+
+//2- https://www.codewars.com/kata/reviews/6395d12b2b986a00014f0518/groups/6397d18f4d2777000112e4d7
+function phoneWords_2(str) {
+    const hash = {
+        2: 'abc',
+        3: 'def',
+        4: 'ghi',
+        5: 'jkl',
+        6: 'mno',
+        7: 'pqrs',
+        8: 'tuv',
+        9: 'wxyz',
+    }
+
+    let word = ''
+
+    for (let i = 0; i < str.length; i++) {
+        const c = str[i]
+
+        if (c === '0') word += ' '
+        else if (c !== '1') {
+            let n = 1
+            while (c === str[i + n]) n++
+            n = Math.min(hash[c].length, n)
+            word += hash[c][n - 1]
+            i += n - 1
+        }
+    }
+
+    return word
+}
+
+//3- https://www.codewars.com/kata/reviews/6395d12b2b986a00014f0518/groups/6397590192f00a000178f269
+function phoneWords_3(stringOfNums) {
+    let obj = {
+        2: "a",
+        22: "b",
+        222: "c",
+        3: "d",
+        33: "e",
+        333: "f",
+        4: "g",
+        44: "h",
+        444: "i",
+        5: "j",
+        55: "k",
+        555: "l",
+        6: "m",
+        66: "n",
+        666: "o",
+        7: "p",
+        77: "q",
+        777: "r",
+        7777: "s",
+        8: "t",
+        88: "u",
+        888: "v",
+        9: "w",
+        99: "x",
+        999: "y",
+        9999: "z",
+        0: " ",
+    };
+
+    let separateLetters = stringOfNums.match(/([1-68])\1{0,2}|([79])\2{0,3}|0/g) || [];
+    return separateLetters.map((e) => obj[e]).join("");
+}
 
 // La presentada
 String.prototype.replaceAllTxt = function replaceAll(search, replace) { return this.split(search).join(replace); }
@@ -45,14 +130,14 @@ function phoneWords(stringOfNums) {
     console.log(stringOfNums)
 
     let res = stringOfNums.replaceAllTxt('1', ' ').replaceAllTxt('222', 'c').replaceAllTxt('22', 'b').replaceAllTxt('2', 'a')
-                          .replaceAllTxt('333', 'f').replaceAllTxt('33', 'e').replaceAllTxt('3', 'd')
-                          .replaceAllTxt('444', 'i').replaceAllTxt('44', 'h').replaceAllTxt('4', 'g')
-                          .replaceAllTxt('555', 'l').replaceAllTxt('55', 'k').replaceAllTxt('5', 'j')
-                          .replaceAllTxt('666', 'o').replaceAllTxt('66', 'n').replaceAllTxt('6', 'm')
-                          .replaceAllTxt('7777', 's').replaceAllTxt('777', 'r').replaceAllTxt('77', 'q').replaceAllTxt('7', 'p')
-                          .replaceAllTxt('888', 'v').replaceAllTxt('88', 'u').replaceAllTxt('8', 't')
-                          .replaceAllTxt('9999', 'z').replaceAllTxt('999', 'y').replaceAllTxt('99', 'x').replaceAllTxt('9', 'w')
-                          .replaceAllTxt(' ','').replaceAllTxt('0',' ') ;
+        .replaceAllTxt('333', 'f').replaceAllTxt('33', 'e').replaceAllTxt('3', 'd')
+        .replaceAllTxt('444', 'i').replaceAllTxt('44', 'h').replaceAllTxt('4', 'g')
+        .replaceAllTxt('555', 'l').replaceAllTxt('55', 'k').replaceAllTxt('5', 'j')
+        .replaceAllTxt('666', 'o').replaceAllTxt('66', 'n').replaceAllTxt('6', 'm')
+        .replaceAllTxt('7777', 's').replaceAllTxt('777', 'r').replaceAllTxt('77', 'q').replaceAllTxt('7', 'p')
+        .replaceAllTxt('888', 'v').replaceAllTxt('88', 'u').replaceAllTxt('8', 't')
+        .replaceAllTxt('9999', 'z').replaceAllTxt('999', 'y').replaceAllTxt('99', 'x').replaceAllTxt('9', 'w')
+        .replaceAllTxt(' ', '').replaceAllTxt('0', ' ');
     return res
 }
 
