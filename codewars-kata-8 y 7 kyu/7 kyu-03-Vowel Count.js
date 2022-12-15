@@ -57,7 +57,7 @@ function getCount(str) {
 
 /**
  * Indicar aquí la función a usar dentro de
- * @see testArrNum
+ * @see pruebas
  *
  * Poner arriba el método usado para las pruebas, aunque no es necesario.
  * Lo importante es asignar el valor a 'laFuncion', aunque eso se hace en el código a comprobar.
